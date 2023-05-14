@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7cn1j"]
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
-[ext_resource type="Texture2D" uid="uid://bu3401tqdi15s" path="res://common/Characters/character_0021.png" id="1_hv6f4"]
+[ext_resource type="Texture2D" uid="uid://dhf80l5irwdtv" path="res://common/Characters/Sprite-0001.png" id="3_8rc0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyim"]
-size = Vector2(66, 36)
+size = Vector2(78, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y81ux"]
-size = Vector2(63.5, 8)
+size = Vector2(76, 6)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
@@ -19,8 +19,7 @@ script = ExtResource("1_7cn1j")
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 scale = Vector2(3, 3)
-texture = ExtResource("1_hv6f4")
-flip_h = true
+texture = ExtResource("3_8rc0n")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -30,13 +29,13 @@ target_position = Vector2(0, 37)
 [node name="HitBox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox"]
-position = Vector2(0, 12)
+position = Vector2(-18, 5)
 shape = SubResource("RectangleShape2D_wdyim")
 
 [node name="HeadBox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HeadBox"]
-position = Vector2(0, -21)
+position = Vector2(-17, -22)
 shape = SubResource("RectangleShape2D_y81ux")
 
 [node name="Areas" type="Node2D" parent="."]
