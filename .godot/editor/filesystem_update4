@@ -1,0 +1,5 @@
+res://game.tscn
+res://Player.gd
+res://game.gd
+res://segments/B.tscn
+res://segments/A.tscn
