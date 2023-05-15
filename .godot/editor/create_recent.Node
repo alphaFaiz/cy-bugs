@@ -1,8 +1,10 @@
-CollisionPolygon2D
+RayCast2D
 CollisionShape2D
+AnimatedSprite2D
+Sprite2D
+AnimationPlayer
+CollisionPolygon2D
 StaticBody2D
 Area2D
-RayCast2D
 Camera2D
-Sprite2D
 Node2D

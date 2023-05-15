@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://b0uawieq135xi"]
+[gd_scene load_steps=2 format=3 uid="uid://b0uawieq135xi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p72fg"]
+size = Vector2(810.25, 231.5)
 
 [node name="StaticBody2D2" type="StaticBody2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-1, 195, 222, 67, 484, 68, 1014, 174, 1017, 420, -130, 430, -129, 201)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(403.875, 335)
+shape = SubResource("RectangleShape2D_p72fg")

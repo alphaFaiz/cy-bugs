@@ -1,17 +1,25 @@
-[gd_scene format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=3 format=3 uid="uid://d06osablfku3n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwbqy"]
+size = Vector2(1149.5, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4mci"]
+size = Vector2(186, 52.75)
 
 [node name="StaticBody2D3" type="StaticBody2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-1, 195, 219, 195, 492, 187, 1014, 174, 1017, 420, -130, 430, -129, 201)
+[node name="ground" type="CollisionShape2D" parent="."]
+position = Vector2(450.25, 312)
+shape = SubResource("RectangleShape2D_lwbqy")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(41, 16, 43, 67, 43, 67, 297, 66, 297, 66, 293, 1, 293, 1)
+[node name="step 1" type="CollisionShape2D" parent="."]
+position = Vector2(262, 83)
+shape = SubResource("RectangleShape2D_j4mci")
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
-position = Vector2(322, -42)
-polygon = PackedVector2Array(41, 16, 43, 67, 43, 67, 297, 66, 297, 66, 293, 1, 293, 1)
+[node name="step 2" type="CollisionShape2D" parent="."]
+position = Vector2(465, -4)
+shape = SubResource("RectangleShape2D_j4mci")
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
-position = Vector2(626, -120)
-polygon = PackedVector2Array(41, 16, 43, 67, 43, 67, 297, 66, 297, 66, 293, 1, 293, 1)
+[node name="step 3" type="CollisionShape2D" parent="."]
+position = Vector2(707, -5)
+shape = SubResource("RectangleShape2D_j4mci")

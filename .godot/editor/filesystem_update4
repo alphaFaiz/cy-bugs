@@ -1,1 +1,6 @@
 res://game.tscn
+res://Player.gd
+res://segments/A.tscn
+res://segments/B.tscn
+res://segments/C.tscn
+res://game.gd

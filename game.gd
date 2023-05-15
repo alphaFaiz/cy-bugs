@@ -1,8 +1,8 @@
 extends Node2D
 
 var segments = [
-	preload("res://segments/A.tscn"),
-	preload("res://segments/B.tscn"),
+	preload("res://segments/C.tscn"),
+	preload("res://segments/C.tscn"),
 	preload("res://segments/C.tscn"),
 ]
 
