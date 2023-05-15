@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://urpahf2ldkac"]
+[gd_scene load_steps=25 format=3 uid="uid://urpahf2ldkac"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7cn1j"]
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
@@ -48,9 +48,13 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("5_wgwl3")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfxd3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_orv6l"]
 atlas = ExtResource("6_25q3h")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qho12"]
+atlas = ExtResource("6_25q3h")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmfaw"]
 atlas = ExtResource("3_31owd")
@@ -109,11 +113,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cfxd3")
+"texture": SubResource("AtlasTexture_orv6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qho12")
 }],
 "loop": true,
 "name": &"prepare_landing",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -143,7 +150,7 @@ script = ExtResource("1_7cn1j")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"prepare_landing"
+animation = &"fly_down"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
