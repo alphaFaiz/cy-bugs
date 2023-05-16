@@ -1,3 +1,5 @@
 res://game.tscn
+res://game.gd
 res://segments/A.tscn
+res://segments/B.tscn
 res://segments/C.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://urpahf2ldkac"]
+[gd_scene load_steps=24 format=3 uid="uid://urpahf2ldkac"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7cn1j"]
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly_forward",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -109,7 +109,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly_up",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -135,10 +135,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyim"]
-size = Vector2(92, 33)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y81ux"]
-size = Vector2(76, 6)
+size = Vector2(82, 25.25)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
@@ -148,37 +145,31 @@ position = Vector2(27, 157)
 script = ExtResource("1_7cn1j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"fly_down"
+animation = &"walk"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="Player"]
 position = Vector2(-20, -1)
-target_position = Vector2(0, 44)
+target_position = Vector2(0, 30)
 
 [node name="HitBox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox"]
-position = Vector2(-16, -11)
+position = Vector2(-11, -6.375)
 shape = SubResource("RectangleShape2D_wdyim")
-
-[node name="HeadBox" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HeadBox"]
-position = Vector2(-17, -48)
-shape = SubResource("RectangleShape2D_y81ux")
 
 [node name="RayCast2D2Top" type="RayCast2D" parent="Player"]
 position = Vector2(-20, -4)
-target_position = Vector2(0, -58)
+target_position = Vector2(0, -24)
 
 [node name="RayCast2DPrepareLanding" type="RayCast2D" parent="Player"]
-target_position = Vector2(0, -96)
+target_position = Vector2(0, -70)
 
 [node name="Areas" type="Node2D" parent="."]
-position = Vector2(29, 199)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [connection signal="body_entered" from="Player/HitBox" to="Player" method="_on_hit_box_body_entered"]
-[connection signal="body_entered" from="Player/HeadBox" to="Player" method="_on_head_box_body_entered"]

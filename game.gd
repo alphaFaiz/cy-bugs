@@ -1,8 +1,8 @@
 extends Node2D
 
 var segments = [
-	preload("res://segments/C.tscn"),
-	preload("res://segments/C.tscn"),
+	preload("res://segments/A.tscn"),
+	preload("res://segments/B.tscn"),
 	preload("res://segments/C.tscn"),
 ]
 
@@ -21,7 +21,7 @@ func _process(delta):
 func _physics_process(delta):
 	for area in $Areas.get_children():
 		area.position.x -= speed * delta
-		if area.position.x < -1024:
+		if area.position.x < -1024 - speed * delta:
 			spawn_inst(area.position.x+2048, 0)
 			area.queue_free()
 
