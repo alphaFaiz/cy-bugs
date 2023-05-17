@@ -1,5 +1,10 @@
+res://segments/C.tscn
 res://game.tscn
-res://game.gd
 res://segments/A.tscn
 res://segments/B.tscn
-res://segments/C.tscn
+res://game.gd
+res://cloudLayer.gd
+res://ParallaxBackground.gd
+res://SkyLayer.gd
+res://MountainLayer.gd
+res://CloudLayer.gd

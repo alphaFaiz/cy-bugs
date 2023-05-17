@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_qq3ww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnpfq"]
-size = Vector2(1022.25, 54.75)
+size = Vector2(1022.25, 57.375)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y48uq"]
 texture = ExtResource("1_qq3ww")
@@ -234,7 +234,7 @@ sources/1 = SubResource("TileSetAtlasSource_y48uq")
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(511, 617)
+position = Vector2(511, 615.688)
 shape = SubResource("RectangleShape2D_bnpfq")
 
 [node name="TileMap" type="TileMap" parent="."]

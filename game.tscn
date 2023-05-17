@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://urpahf2ldkac"]
+[gd_scene load_steps=29 format=3 uid="uid://cis3wco0cnus5"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7cn1j"]
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dsci8ejlwi4jg" path="res://prototype-sprites/kabuto-fly-foward.png" id="4_ym7xk"]
 [ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="5_wgwl3"]
 [ext_resource type="Texture2D" uid="uid://comsqfxswyc5a" path="res://prototype-sprites/kabuto-prepare-landing.png" id="6_25q3h"]
+[ext_resource type="Texture2D" uid="uid://5fd0bw77rlxo" path="res://common/Background/parallax-00.png" id="9_1jwhx"]
+[ext_resource type="Script" path="res://CloudLayer.gd" id="10_46ikd"]
+[ext_resource type="Texture2D" uid="uid://dxxulptcf1hb3" path="res://common/Background/parallax-01.png" id="11_oqshk"]
+[ext_resource type="Script" path="res://MountainLayer.gd" id="12_32ng4"]
+[ext_resource type="Texture2D" uid="uid://cc8q3wlga35pl" path="res://common/Background/parallax-02.png" id="13_wimbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61dsq"]
 atlas = ExtResource("3_feopw")
@@ -140,16 +145,17 @@ size = Vector2(82, 25.25)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(511, 325)
+
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(27, 157)
+position = Vector2(267, 325)
 script = ExtResource("1_7cn1j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
 animation = &"walk"
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="Player"]
 position = Vector2(-20, -1)
@@ -171,5 +177,31 @@ target_position = Vector2(0, -70)
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -112)
+scale = Vector2(1.8, 1.8)
+transform = Transform2D(1.8, 0, 0, 1.8, 0, -112)
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(720, 242.222)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+texture = ExtResource("9_1jwhx")
+
+[node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(720, 242.222)
+motion_mirroring = Vector2(1440, 0)
+script = ExtResource("10_46ikd")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudLayer"]
+texture = ExtResource("11_oqshk")
+
+[node name="MountainLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(718.889, 242.222)
+motion_mirroring = Vector2(1440, 0)
+script = ExtResource("12_32ng4")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainLayer"]
+texture = ExtResource("13_wimbx")
 
 [connection signal="body_entered" from="Player/HitBox" to="Player" method="_on_hit_box_body_entered"]
