@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5fd0bw77rlxo"
-path="res://.godot/imported/parallax-00.png-79375f0ec9de61b2d4c66c558fe9ed53.ctex"
+uid="uid://bjo25lfcc1d0q"
+path="res://.godot/imported/energy-stone-destroy.png-48e806500b35be5eb8429b2710615059.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://common/Background/parallax-00.png"
-dest_files=["res://.godot/imported/parallax-00.png-79375f0ec9de61b2d4c66c558fe9ed53.ctex"]
+source_file="res://prototype-sprites/energy-stone-destroy.png"
+dest_files=["res://.godot/imported/energy-stone-destroy.png-48e806500b35be5eb8429b2710615059.ctex"]
 
 [params]
 

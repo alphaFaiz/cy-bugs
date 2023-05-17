@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://gp5l3oggxsnp"]
+
+[ext_resource type="PackedScene" uid="uid://d2b4pil8rjuvn" path="res://pickup-items/base_pickup.tscn" id="1_v6o7a"]
+[ext_resource type="Texture2D" uid="uid://cbcr4by38am8r" path="res://prototype-sprites/energy-stone-idle.png" id="2_7mnek"]
+[ext_resource type="Texture2D" uid="uid://bjo25lfcc1d0q" path="res://prototype-sprites/energy-stone-destroy.png" id="3_f24be"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxmjj"]
+atlas = ExtResource("2_7mnek")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh8o0"]
+atlas = ExtResource("2_7mnek")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv7y7"]
+atlas = ExtResource("2_7mnek")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd7xy"]
+atlas = ExtResource("2_7mnek")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjaq4"]
+atlas = ExtResource("3_f24be")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5bdt"]
+atlas = ExtResource("3_f24be")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x87m5"]
+atlas = ExtResource("3_f24be")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng2rd"]
+atlas = ExtResource("3_f24be")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq8ar"]
+atlas = ExtResource("3_f24be")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dc8hb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxmjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh8o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv7y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd7xy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjaq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5bdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x87m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng2rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq8ar")
+}],
+"loop": false,
+"name": &"picked",
+"speed": 10.0
+}]
+
+[node name="LightningItem" instance=ExtResource("1_v6o7a")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.017, 1)
+sprite_frames = SubResource("SpriteFrames_dc8hb")

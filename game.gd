@@ -1,5 +1,9 @@
 extends Node2D
 
+var pickup_items = [
+	preload("res://pickup-items/lightning_item.tscn")
+]
+
 var segments = [
 	preload("res://segments/A.tscn"),
 	preload("res://segments/B.tscn"),
