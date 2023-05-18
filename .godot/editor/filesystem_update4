@@ -1,10 +1,8 @@
+res://energy-bar-control.tscn
+res://pickup-items/base_pickup.tscn
+res://pickup-items/lightning_item.tscn
 res://game.tscn
+res://segments/A.tscn
 res://segments/B.tscn
 res://segments/C.tscn
-res://segments/A.tscn
-res://pickup-items/base_pickup.gd
-res://pickup-items/base_pickup.tscn
-res://game.gd
-res://pickup-items/lightning_item.tscn
-res://pickup-items/thunder_.tscn
 res://pickup-items/score_item.tscn

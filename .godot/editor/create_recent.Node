@@ -1,8 +1,12 @@
+TextureRect
+VBoxContainer
+ProgressBar
+TextureProgressBar
+Sprite2D
 AnimatedSprite2D
 AnimationPlayer
 CollisionShape2D
 Area2D
-Sprite2D
 ParallaxLayer
 ParallaxBackground
 TileMap
