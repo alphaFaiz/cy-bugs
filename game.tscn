@@ -146,12 +146,6 @@ size = Vector2(82, 25.25)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
 
-[node name="Control" parent="." instance=ExtResource("2_atb2s")]
-offset_left = 60.0
-offset_top = 135.0
-offset_right = 60.0
-offset_bottom = 135.0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(511, 325)
 
@@ -210,5 +204,11 @@ script = ExtResource("11_iay07")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainLayer"]
 texture = ExtResource("12_e4yh0")
+
+[node name="Control" parent="." instance=ExtResource("2_atb2s")]
+offset_left = 60.0
+offset_top = 135.0
+offset_right = 60.0
+offset_bottom = 135.0
 
 [connection signal="body_entered" from="Player/HitBox" to="Player" method="_on_hit_box_body_entered"]
