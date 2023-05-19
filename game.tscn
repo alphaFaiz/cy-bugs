@@ -205,7 +205,7 @@ script = ExtResource("11_iay07")
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainLayer"]
 texture = ExtResource("12_e4yh0")
 
-[node name="Control" parent="." instance=ExtResource("2_atb2s")]
+[node name="EnergyBar" parent="." instance=ExtResource("2_atb2s")]
 offset_left = 60.0
 offset_top = 135.0
 offset_right = 60.0

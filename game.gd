@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var _energy_bar = $EnergyBar
+@onready var _player = $Player
+
 var pickup_items = [
 	preload("res://pickup-items/lightning_item.tscn")
 ]
@@ -13,6 +16,9 @@ var segments = [
 var speed = 200
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if _player and _energy_bar:
+		_player.connect("energy_changed", _energy_bar.set_energy)
+		#"energy_changed", set_energy
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(1024, 0)

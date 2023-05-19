@@ -1,9 +1,15 @@
+class_name Player
 extends Node2D
+
+signal energy_changed(new_energy)
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
+
+@export var max_energy := 9
+var energy := 1
 
 var grounded = false
 var ceil_touched = false
@@ -72,6 +78,10 @@ func _physics_process(delta):
 		grounded = false
 	else:
 		is_landing = false
+
+func set_energy(new_energy: int) -> void:
+	energy = clamp(new_energy, 0, max_energy)
+	emit_signal("energy_changed", new_energy)
 
 func _on_hit_box_body_entered(body):
 	queue_free()

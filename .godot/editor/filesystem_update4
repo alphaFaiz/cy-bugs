@@ -1,8 +1,14 @@
-res://pickup-items/base_pickup.tscn
-res://pickup-items/lightning_item.tscn
 res://game.tscn
+res://energy-bar-control.gd
+res://game.gd
+res://energy-bar-control.tscn
+res://pickup-items/lightning_item.tscn
+res://pickup-items/base_pickup.gd
+res://Player.gd
+res://pickup-items/base_pickup.tscn
+res://pickup-items/lightning_item.gd
 res://segments/A.tscn
 res://segments/B.tscn
 res://segments/C.tscn
 res://pickup-items/score_item.tscn
-res://energy-bar-control.tscn
+res://EnergyVBoxContainer.gd
