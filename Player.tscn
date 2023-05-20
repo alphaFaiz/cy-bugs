@@ -1,0 +1,171 @@
+[gd_scene load_steps=24 format=3 uid="uid://3652aylf4yu6"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_b6vio"]
+[ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="2_o70cn"]
+[ext_resource type="Texture2D" uid="uid://dsci8ejlwi4jg" path="res://prototype-sprites/kabuto-fly-foward.png" id="3_vue6w"]
+[ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="4_f6xqa"]
+[ext_resource type="Texture2D" uid="uid://comsqfxswyc5a" path="res://prototype-sprites/kabuto-prepare-landing.png" id="5_qnrrs"]
+[ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="6_e3fy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61dsq"]
+atlas = ExtResource("2_o70cn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag3rw"]
+atlas = ExtResource("2_o70cn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi7dt"]
+atlas = ExtResource("3_vue6w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxrib"]
+atlas = ExtResource("3_vue6w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gryw"]
+atlas = ExtResource("3_vue6w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdl72"]
+atlas = ExtResource("3_vue6w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhwvb"]
+atlas = ExtResource("4_f6xqa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh76b"]
+atlas = ExtResource("4_f6xqa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk6de"]
+atlas = ExtResource("4_f6xqa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkytt"]
+atlas = ExtResource("4_f6xqa")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orv6l"]
+atlas = ExtResource("5_qnrrs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qho12"]
+atlas = ExtResource("5_qnrrs")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmfaw"]
+atlas = ExtResource("6_e3fy2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hohge"]
+atlas = ExtResource("6_e3fy2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1khf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61dsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag3rw")
+}],
+"loop": true,
+"name": &"fly_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi7dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxrib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gryw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdl72")
+}],
+"loop": true,
+"name": &"fly_forward",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhwvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh76b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk6de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkytt")
+}],
+"loop": true,
+"name": &"fly_up",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orv6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qho12")
+}],
+"loop": true,
+"name": &"prepare_landing",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmfaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hohge")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyim"]
+size = Vector2(82, 25.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxjt7"]
+radius = 26.0125
+height = 106.05
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_b6vio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_n1khf")
+animation = &"fly_up"
+
+[node name="RayCast2DBottom" type="RayCast2D" parent="."]
+position = Vector2(-20, -1)
+target_position = Vector2(0, 30)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-11, -6.375)
+shape = SubResource("RectangleShape2D_wdyim")
+
+[node name="RayCast2D2Top" type="RayCast2D" parent="."]
+position = Vector2(-20, -4)
+target_position = Vector2(0, -24)
+
+[node name="RayCast2DPrepareLanding" type="RayCast2D" parent="."]
+target_position = Vector2(0, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -2)
+rotation = 1.55509
+shape = SubResource("CapsuleShape2D_hxjt7")

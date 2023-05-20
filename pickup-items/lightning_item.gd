@@ -1,4 +1,4 @@
 extends BasePickup
 
 func apply_effect(player: Player) -> void:
-	pass
+	player.energy += 1

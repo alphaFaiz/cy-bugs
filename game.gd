@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var _energy_bar = $EnergyBar
-@onready var _player = $Player
+@onready var _energy_bar: Control = $EnergyBar
+@onready var _player: Player = $Player
 
 var pickup_items = [
 	preload("res://pickup-items/lightning_item.tscn")

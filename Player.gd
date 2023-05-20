@@ -8,8 +8,13 @@ signal energy_changed(new_energy)
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
 
-@export var max_energy := 9
-var energy := 1
+@export var max_energy := 8
+var energy := 1 : 
+	set(value):
+		energy = clamp(value, 0, max_energy)
+		emit_signal("energy_changed", value)
+	get: 
+		return energy
 
 var grounded = false
 var ceil_touched = false
@@ -78,10 +83,6 @@ func _physics_process(delta):
 		grounded = false
 	else:
 		is_landing = false
-
-func set_energy(new_energy: int) -> void:
-	energy = clamp(new_energy, 0, max_energy)
-	emit_signal("energy_changed", new_energy)
 
 func _on_hit_box_body_entered(body):
 	queue_free()

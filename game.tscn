@@ -1,147 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://deg8ur6ylqrx4"]
+[gd_scene load_steps=9 format=3 uid="uid://deg8ur6ylqrx4"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_7cn1j"]
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
+[ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="2_04a31"]
 [ext_resource type="PackedScene" uid="uid://2s0o3pn7hpkc" path="res://energy-bar-control.tscn" id="2_atb2s"]
-[ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="3_31owd"]
-[ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="3_feopw"]
-[ext_resource type="Texture2D" uid="uid://dsci8ejlwi4jg" path="res://prototype-sprites/kabuto-fly-foward.png" id="4_ym7xk"]
-[ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="5_wgwl3"]
-[ext_resource type="Texture2D" uid="uid://comsqfxswyc5a" path="res://prototype-sprites/kabuto-prepare-landing.png" id="6_25q3h"]
 [ext_resource type="Texture2D" uid="uid://5fd0bw77rlxo" path="res://backgrounds/parallax-00.png" id="8_reqle"]
 [ext_resource type="Script" path="res://backgrounds/CloudLayer.gd" id="9_gxu3y"]
 [ext_resource type="Texture2D" uid="uid://dxxulptcf1hb3" path="res://backgrounds/parallax-01.png" id="10_t4xli"]
 [ext_resource type="Script" path="res://backgrounds/MountainLayer.gd" id="11_iay07"]
 [ext_resource type="Texture2D" uid="uid://cc8q3wlga35pl" path="res://backgrounds/parallax-02.png" id="12_e4yh0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_61dsq"]
-atlas = ExtResource("3_feopw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ag3rw"]
-atlas = ExtResource("3_feopw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fi7dt"]
-atlas = ExtResource("4_ym7xk")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxrib"]
-atlas = ExtResource("4_ym7xk")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gryw"]
-atlas = ExtResource("4_ym7xk")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdl72"]
-atlas = ExtResource("4_ym7xk")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhwvb"]
-atlas = ExtResource("5_wgwl3")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oh76b"]
-atlas = ExtResource("5_wgwl3")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk6de"]
-atlas = ExtResource("5_wgwl3")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkytt"]
-atlas = ExtResource("5_wgwl3")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_orv6l"]
-atlas = ExtResource("6_25q3h")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qho12"]
-atlas = ExtResource("6_25q3h")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmfaw"]
-atlas = ExtResource("3_31owd")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hohge"]
-atlas = ExtResource("3_31owd")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_n1khf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_61dsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ag3rw")
-}],
-"loop": true,
-"name": &"fly_down",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fi7dt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nxrib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8gryw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdl72")
-}],
-"loop": true,
-"name": &"fly_forward",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fhwvb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oh76b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bk6de")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkytt")
-}],
-"loop": true,
-"name": &"fly_up",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orv6l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qho12")
-}],
-"loop": true,
-"name": &"prepare_landing",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cmfaw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hohge")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyim"]
-size = Vector2(82, 25.25)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
@@ -149,31 +15,8 @@ script = ExtResource("1_htrjj")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(511, 325)
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(267, 325)
-script = ExtResource("1_7cn1j")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"fly_up"
-
-[node name="RayCast2DBottom" type="RayCast2D" parent="Player"]
-position = Vector2(-20, -1)
-target_position = Vector2(0, 30)
-
-[node name="HitBox" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HitBox"]
-position = Vector2(-11, -6.375)
-shape = SubResource("RectangleShape2D_wdyim")
-
-[node name="RayCast2D2Top" type="RayCast2D" parent="Player"]
-position = Vector2(-20, -4)
-target_position = Vector2(0, -24)
-
-[node name="RayCast2DPrepareLanding" type="RayCast2D" parent="Player"]
-target_position = Vector2(0, -70)
+[node name="Player" parent="." instance=ExtResource("2_04a31")]
+position = Vector2(279, 300)
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -210,5 +53,3 @@ offset_left = 60.0
 offset_top = 135.0
 offset_right = 60.0
 offset_bottom = 135.0
-
-[connection signal="body_entered" from="Player/HitBox" to="Player" method="_on_hit_box_body_entered"]

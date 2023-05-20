@@ -6,18 +6,19 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	play("idle")
-	self.connect("area_entered", _on_area_entered)
+	self.connect("body_entered", _on_body_entered)
 
 func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_h(fliph)
 	_animated_sprite.set_flip_v(flipv)
 	_animated_sprite.play(animation)
 
-func _on_area_entered(player: Player) -> void:
+func _on_body_entered(node: Node2D) -> void:
+	print("node:", node)
 	play("picked")
+	apply_effect(node)
 	await _animated_sprite.animation_finished
 	queue_free()
-	apply_effect(player)
 
 #func _physics_process(delta: float) -> void:
 #	position.x -= 200 * delta

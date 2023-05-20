@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=8 format=3 uid="uid://d06osablfku3n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_ajwks"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_oaqwc"]
+[ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_huyfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwbqy"]
 size = Vector2(894, 159)
@@ -259,3 +260,6 @@ position = Vector2(126, 459)
 
 [node name="LightningItem3" parent="." instance=ExtResource("2_oaqwc")]
 position = Vector2(812, 280)
+
+[node name="ScoreItem" parent="." instance=ExtResource("3_huyfe")]
+position = Vector2(511, 75)

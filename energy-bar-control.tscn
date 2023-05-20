@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://2s0o3pn7hpkc"]
+[gd_scene load_steps=4 format=3 uid="uid://2s0o3pn7hpkc"]
 
 [ext_resource type="Texture2D" uid="uid://n1py7p1nvjau" path="res://prototype-sprites/energy-bar.png" id="1_67e3t"]
 [ext_resource type="Script" path="res://energy-bar-control.gd" id="1_pj2jc"]
 [ext_resource type="Texture2D" uid="uid://cu1t76xyn6ri7" path="res://prototype-sprites/energy-point.png" id="2_5ms3d"]
-[ext_resource type="Script" path="res://EnergyVBoxContainer.gd" id="3_nq0xh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,7 +29,6 @@ offset_left = 59.0
 offset_top = 19.0
 offset_right = 100.0
 offset_bottom = 199.0
-script = ExtResource("3_nq0xh")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/EnergyVBoxContainer"]
 layout_mode = 2

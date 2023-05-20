@@ -1,3 +1,5 @@
+CollisionShape2D
+CharacterBody2D
 TextureRect
 VBoxContainer
 ProgressBar
@@ -5,7 +7,6 @@ TextureProgressBar
 Sprite2D
 AnimatedSprite2D
 AnimationPlayer
-CollisionShape2D
 Area2D
 ParallaxLayer
 ParallaxBackground
