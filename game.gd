@@ -13,7 +13,7 @@ var segments = [
 	preload("res://segments/C.tscn"),
 ]
 
-var speed = 200
+var speed = 200   
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if _player and _energy_bar:

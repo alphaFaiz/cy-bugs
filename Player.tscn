@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3652aylf4yu6"]
+[gd_scene load_steps=32 format=3 uid="uid://3652aylf4yu6"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_b6vio"]
 [ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="2_o70cn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="4_f6xqa"]
 [ext_resource type="Texture2D" uid="uid://comsqfxswyc5a" path="res://prototype-sprites/kabuto-prepare-landing.png" id="5_qnrrs"]
 [ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="6_e3fy2"]
+[ext_resource type="Texture2D" uid="uid://cgacpj7bkraow" path="res://prototype-sprites/thunder-attack-small.png" id="7_rkn0o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61dsq"]
 atlas = ExtResource("2_o70cn")
@@ -140,6 +141,56 @@ size = Vector2(82, 25.25)
 radius = 26.0125
 height = 106.05
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmb42"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhx4e"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlbrx"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugrdb"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6lln"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvxrm"]
+atlas = ExtResource("7_rkn0o")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38vno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmb42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhx4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlbrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugrdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6lln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvxrm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_b6vio")
 
@@ -169,3 +220,9 @@ target_position = Vector2(0, -70)
 position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
+
+[node name="ThunderAttackAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(17, -23)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_38vno")

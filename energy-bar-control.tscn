@@ -18,7 +18,7 @@ layout_mode = 2
 offset_left = -46.0
 offset_top = -3.0
 offset_right = 117.0
-offset_bottom = 225.0
+offset_bottom = 252.0
 texture = ExtResource("1_67e3t")
 expand_mode = 5
 stretch_mode = 6
@@ -66,6 +66,11 @@ texture = ExtResource("2_5ms3d")
 expand_mode = 5
 
 [node name="TextureRect8" type="TextureRect" parent="TextureRect/EnergyVBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_5ms3d")
+expand_mode = 5
+
+[node name="TextureRect9" type="TextureRect" parent="TextureRect/EnergyVBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_5ms3d")
 expand_mode = 5

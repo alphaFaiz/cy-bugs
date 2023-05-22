@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://deg8ur6ylqrx4"]
+[gd_scene load_steps=10 format=3 uid="uid://deg8ur6ylqrx4"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
 [ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="2_04a31"]
 [ext_resource type="PackedScene" uid="uid://2s0o3pn7hpkc" path="res://energy-bar-control.tscn" id="2_atb2s"]
 [ext_resource type="Texture2D" uid="uid://5fd0bw77rlxo" path="res://backgrounds/parallax-00.png" id="8_reqle"]
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="9_1e63a"]
 [ext_resource type="Script" path="res://backgrounds/CloudLayer.gd" id="9_gxu3y"]
 [ext_resource type="Texture2D" uid="uid://dxxulptcf1hb3" path="res://backgrounds/parallax-01.png" id="10_t4xli"]
 [ext_resource type="Script" path="res://backgrounds/MountainLayer.gd" id="11_iay07"]
@@ -53,3 +54,6 @@ offset_left = 60.0
 offset_top = 135.0
 offset_right = 60.0
 offset_bottom = 135.0
+
+[node name="base_enemy" parent="." instance=ExtResource("9_1e63a")]
+position = Vector2(279, 405)

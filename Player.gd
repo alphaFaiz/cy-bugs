@@ -7,9 +7,10 @@ signal energy_changed(new_energy)
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _attack_sprite = $ThunderAttackAnimatedSprite2D
 
-@export var max_energy := 8
-var energy := 1 : 
+@export var max_energy := 9
+var energy := 9 : 
 	set(value):
 		energy = clamp(value, 0, max_energy)
 		emit_signal("energy_changed", value)
@@ -34,7 +35,8 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 func _physics_process(delta):
 	var up = Input.is_action_pressed("ui_up")
 	var down = Input.is_action_pressed("ui_down")
-		
+	var attack = Input.is_action_just_pressed("attack")
+	
 	if up and not ceil_touched:
 		if is_landing:
 			play("prepare_landing")
@@ -52,6 +54,9 @@ func _physics_process(delta):
 		play("prepare_landing")
 	else: 
 		play("fly_forward")
+
+	if attack:
+		thunder_attack(ceil_touched)
 
 	position.y += y_vel * delta
 
@@ -86,3 +91,13 @@ func _physics_process(delta):
 
 func _on_hit_box_body_entered(body):
 	queue_free()
+
+func thunder_attack(ceil_touched: bool):
+	if energy >= 3:
+		_attack_sprite.show()
+		energy -= 3
+		print(energy)
+		_attack_sprite.set_flip_v(ceil_touched)
+		_attack_sprite.play("default")
+		await _attack_sprite.animation_finished
+		_attack_sprite.hide()
