@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://enemies/base_enemy.gd" id="1_ngmta"]
 [ext_resource type="Texture2D" uid="uid://xtslgaeo3032" path="res://prototype-sprites/bee-walk.png" id="2_vrt3l"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdltj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0owd"]
 atlas = ExtResource("2_vrt3l")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gvnav"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp8mr"]
 atlas = ExtResource("2_vrt3l")
 region = Rect2(64, 0, 64, 64)
 
@@ -15,10 +15,10 @@ region = Rect2(64, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sdltj")
+"texture": SubResource("AtlasTexture_t0owd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gvnav")
+"texture": SubResource("AtlasTexture_qp8mr")
 }],
 "loop": true,
 "name": &"walk",
@@ -39,6 +39,7 @@ script = ExtResource("1_ngmta")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_vkh8a")
 animation = &"walk"
+frame_progress = 0.479252
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3)

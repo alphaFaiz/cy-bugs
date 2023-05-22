@@ -5,11 +5,6 @@ res://segments/A.tscn
 res://segments/B.tscn
 res://segments/C.tscn
 res://pickup-items/score_item.tscn
-res://energy-bar-control.tscn
 res://Player.tscn
+res://energy-bar-control.tscn
 res://enemies/base_enemy.tscn
-res://Player.gd
-res://energy-bar-control.gd
-res://enemies/base_enemy.gd
-res://pickup-items/base_pickup.gd
-res://game.gd
