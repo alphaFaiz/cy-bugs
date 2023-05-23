@@ -18,7 +18,6 @@ var speed = 200
 func _ready():
 	if _player and _energy_bar:
 		_player.connect("energy_changed", _energy_bar.set_energy)
-		#"energy_changed", set_energy
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(1024, 0)

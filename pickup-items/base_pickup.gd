@@ -14,7 +14,6 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.play(animation)
 
 func _on_body_entered(node: Player) -> void:
-	print("node:", node)
 	play("picked")
 	apply_effect(node)
 	await _animated_sprite.animation_finished

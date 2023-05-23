@@ -1,37 +1,38 @@
 class_name BaseEnemy
 extends CharacterBody2D
 
+const explosion_scn = preload("res://effects/explosion.tscn")
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _detection_area: Area2D = $DetectionArea
+@onready var _attack_area: Area2D = $AttackArea
+@onready var _collision_shape: CollisionShape2D = $CollisionShape2D
 
-const SPEED = 300.0
+const SPEED = 80.0
 var _velocity := Vector2.ZERO
-const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _target: Player
 
+var animation_name = "fly"
+var is_attacking = false
+
+func _ready() -> void:
+	_attack_area.connect("body_entered", _on_attack_area_body_entered)
+#	.connect("body_entered", _on_body_entered)
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	_target = find_target()
-	_animated_sprite.play("walk")
+	if is_attacking:
+		_collision_shape.rotate(PI/2)
+		animation_name = "attack"
+	elif _target:
+		animation_name = "approach"
+		orbit_target()
+	else:
+		animation_name = "idle"
+	_animated_sprite.play(animation_name)
 	move_and_slide()
 
 func find_target() -> Player:
@@ -41,17 +42,17 @@ func find_target() -> Player:
 		return playerArray.front()
 	return null
 
-# Steers towards the target position.
-func follow(target_global_position: Vector2) -> void:
-	var desired_velocity := global_position.direction_to(target_global_position) * SPEED
-	var steering := desired_velocity - _velocity
-	velocity += steering / 6.0
-	move_and_slide()
-	#move_and_slide(_velocity, Vector2.ZERO)
+func _on_attack_area_body_entered(player: Player) -> void:
+	is_attacking = true
+
+func destroy() -> void:
+	var enemy_collision = get_child(1)
+	remove_child(enemy_collision)
+	var explosion_inst = explosion_scn.instantiate()
+	add_child(explosion_inst)
+	await explosion_inst.animation_finished
+	queue_free()
 
 # Orbit around the target if there is one.
 func orbit_target() -> void:
-	var target_distance := 200.0
-	var direction := _target.global_position.direction_to(global_position)
-	var offset_from_target := direction.rotated(PI / 6.0) * target_distance
-	follow(_target.global_position + offset_from_target)
+	pass

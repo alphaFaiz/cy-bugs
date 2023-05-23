@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj65hy0xwcdw7"]
+
+[ext_resource type="Script" path="res://effects/thunder_attack.gd" id="1_wmqu0"]
+[ext_resource type="Texture2D" uid="uid://cgacpj7bkraow" path="res://prototype-sprites/thunder-attack-small.png" id="2_5p50d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc1pl"]
+radius = 75.5017
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1fvh"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl015"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bemkc"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0qxy"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ud83"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfxxh"]
+atlas = ExtResource("2_5p50d")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfvcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1fvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl015")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bemkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0qxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ud83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfxxh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="ThunderAttack" type="Area2D"]
+position = Vector2(17, -23)
+scale = Vector2(2, 2)
+script = ExtResource("1_wmqu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lc1pl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vfvcp")
+frame = 5
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

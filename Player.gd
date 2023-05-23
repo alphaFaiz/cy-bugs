@@ -7,10 +7,10 @@ signal energy_changed(new_energy)
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var _attack_sprite = $ThunderAttackAnimatedSprite2D
+var thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
 
 @export var max_energy := 9
-var energy := 9 : 
+var energy := max_energy :
 	set(value):
 		energy = clamp(value, 0, max_energy)
 		emit_signal("energy_changed", value)
@@ -22,10 +22,7 @@ var ceil_touched = false
 var is_landing = false
 
 var gravity = 15
-var jump_speed = -500
-
-var max_y_vel = 300
-var y_vel = 0
+var jump_speed = 500
 
 func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_h(fliph)
@@ -37,15 +34,15 @@ func _physics_process(delta):
 	var down = Input.is_action_pressed("ui_down")
 	var attack = Input.is_action_just_pressed("attack")
 	
-	if up and not ceil_touched:
+	if up and not ceil_touched and position.y > 0:
 		if is_landing:
 			play("prepare_landing")
 		else:
 			play("fly_up")
-		position.y += jump_speed * delta
-	elif down and not grounded:
-		play("fly_down")
 		position.y -= jump_speed * delta
+	elif down and not grounded and position.y < 648:
+		play("fly_down")
+		position.y += jump_speed * delta
 	elif grounded:
 		play("walk")
 	elif ceil_touched:
@@ -57,8 +54,6 @@ func _physics_process(delta):
 
 	if attack:
 		thunder_attack(ceil_touched)
-
-	position.y += y_vel * delta
 
 	if rayCastBottom.is_colliding():
 		var orig = rayCastBottom.global_transform.origin
@@ -89,15 +84,18 @@ func _physics_process(delta):
 	else:
 		is_landing = false
 
-func _on_hit_box_body_entered(body):
+func _on_hit_box_body_entered(body: BaseEnemy):
+	print("body entered")
 	queue_free()
 
 func thunder_attack(ceil_touched: bool):
 	if energy >= 3:
-		_attack_sprite.show()
 		energy -= 3
-		print(energy)
+		var thunder_attack_inst = thunder_attack_scn.instantiate()
+		thunder_attack_inst.position = Vector2(_animated_sprite.position)
+		var _attack_sprite = thunder_attack_inst.get_child(1)
+		add_child(thunder_attack_inst)
 		_attack_sprite.set_flip_v(ceil_touched)
 		_attack_sprite.play("default")
 		await _attack_sprite.animation_finished
-		_attack_sprite.hide()
+		remove_child(thunder_attack_inst)

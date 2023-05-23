@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqanqh8wnjgit"]
+
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_6p3yr"]
+[ext_resource type="Script" path="res://enemies/bee_enemy.gd" id="2_218lu"]
+[ext_resource type="Texture2D" uid="uid://5fiseqmatvsl" path="res://prototype-sprites/bee-approach.png" id="2_q2vea"]
+[ext_resource type="Texture2D" uid="uid://c4ko2cid3k5ba" path="res://prototype-sprites/bee-attack.png" id="3_d6fna"]
+[ext_resource type="Texture2D" uid="uid://bml5iugf48rlk" path="res://prototype-sprites/bee-fly.png" id="4_bcndy"]
+[ext_resource type="Texture2D" uid="uid://xtslgaeo3032" path="res://prototype-sprites/bee-walk.png" id="5_ku754"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl4hy"]
+atlas = ExtResource("2_q2vea")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jb7o"]
+atlas = ExtResource("2_q2vea")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouhsk"]
+atlas = ExtResource("3_d6fna")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xyay"]
+atlas = ExtResource("3_d6fna")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgagj"]
+atlas = ExtResource("4_bcndy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ami2e"]
+atlas = ExtResource("4_bcndy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2gpt"]
+atlas = ExtResource("4_bcndy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0owd"]
+atlas = ExtResource("5_ku754")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp8mr"]
+atlas = ExtResource("5_ku754")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18sv5"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl4hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jb7o")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouhsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xyay")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgagj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ami2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2gpt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0owd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp8mr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="bee_enemy" instance=ExtResource("1_6p3yr")]
+script = ExtResource("2_218lu")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_18sv5")
