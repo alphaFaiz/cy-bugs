@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://vrhs2s0s3mhy"]
+
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_6vr4p"]
+[ext_resource type="Script" path="res://enemies/caucasus_enemy.gd" id="2_ofmd7"]
+[ext_resource type="Texture2D" uid="uid://ba8mls1ubmq7o" path="res://prototype-sprites/caucasus-prepare-landing.png" id="3_aqyxf"]
+[ext_resource type="Texture2D" uid="uid://bln8uo14b33s2" path="res://prototype-sprites/caucasus-attack.png" id="4_tocv2"]
+[ext_resource type="Texture2D" uid="uid://dmno6t0462d2f" path="res://prototype-sprites/Caucasus-fly-foward.png" id="5_js36y"]
+[ext_resource type="Texture2D" uid="uid://1blpm6dcev1p" path="res://prototype-sprites/Caucasus-walk.png" id="6_0c68b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byr13"]
+atlas = ExtResource("3_aqyxf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sihj"]
+atlas = ExtResource("3_aqyxf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nm0r"]
+atlas = ExtResource("4_tocv2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n3ln"]
+atlas = ExtResource("4_tocv2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i85v"]
+atlas = ExtResource("5_js36y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ryhn"]
+atlas = ExtResource("5_js36y")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blkld"]
+atlas = ExtResource("5_js36y")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0rkg"]
+atlas = ExtResource("5_js36y")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3a70"]
+atlas = ExtResource("6_0c68b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfwyd"]
+atlas = ExtResource("6_0c68b")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hna6s"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byr13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sihj")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nm0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n3ln")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i85v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ryhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blkld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0rkg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3a70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfwyd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="caucasus_enemy" instance=ExtResource("1_6vr4p")]
+script = ExtResource("2_ofmd7")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.7, 1.7)
+sprite_frames = SubResource("SpriteFrames_hna6s")
+animation = &"attack"

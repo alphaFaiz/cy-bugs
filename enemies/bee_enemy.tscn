@@ -98,4 +98,8 @@ animations = [{
 script = ExtResource("2_218lu")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_18sv5")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-1, -2)

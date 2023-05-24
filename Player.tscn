@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3652aylf4yu6"]
+[gd_scene load_steps=23 format=3 uid="uid://3652aylf4yu6"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_b6vio"]
 [ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="2_o70cn"]
@@ -133,9 +133,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyim"]
-size = Vector2(82, 25.25)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxjt7"]
 radius = 26.0125
 height = 106.05
@@ -154,9 +151,10 @@ target_position = Vector2(0, 30)
 
 [node name="HitBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-11, -6.375)
-shape = SubResource("RectangleShape2D_wdyim")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-7, -2)
+rotation = 1.55509
+shape = SubResource("CapsuleShape2D_hxjt7")
 
 [node name="RayCast2D2Top" type="RayCast2D" parent="."]
 position = Vector2(-20, -4)

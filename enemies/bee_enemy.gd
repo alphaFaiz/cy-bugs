@@ -8,7 +8,10 @@ func orbit_target() -> void:
 	
 # Steers towards the target position.
 func follow(target_global_position: Vector2) -> void:
-	var desired_velocity := global_position.direction_to(target_global_position) * SPEED
+	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * SPEED
 	var steering := desired_velocity - _velocity
 	velocity += steering / 6.0
-	move_and_slide()
+
+func _on_attack_area_body_entered(player: Player) -> void:
+	is_attacking = true
+	_collision_shape.rotate(PI/2)

@@ -25,7 +25,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_target = find_target()
 	if is_attacking:
-		_collision_shape.rotate(PI/2)
 		animation_name = "attack"
 	elif _target:
 		animation_name = "approach"
@@ -33,7 +32,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		animation_name = "idle"
 	_animated_sprite.play(animation_name)
-	move_and_slide()
+	move_and_collide(velocity * delta)
+#	move_and_slide()delta
 
 func find_target() -> Player:
 	var overlapping_bodies := _detection_area.get_overlapping_bodies()
@@ -43,7 +43,7 @@ func find_target() -> Player:
 	return null
 
 func _on_attack_area_body_entered(player: Player) -> void:
-	is_attacking = true
+	pass
 
 func destroy() -> void:
 	var enemy_collision = get_child(1)

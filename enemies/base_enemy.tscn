@@ -94,14 +94,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aghni"]
-radius = 20.0132
-height = 96.051
+radius = 23.0286
+height = 92.0201
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8oyo"]
-radius = 330.055
+radius = 431.042
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7w3qt"]
-radius = 143.283
+radius = 232.078
 
 [node name="base_enemy" type="CharacterBody2D"]
 script = ExtResource("1_ngmta")

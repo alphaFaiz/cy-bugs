@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=10 format=3 uid="uid://d06osablfku3n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_ajwks"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_oaqwc"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_huyfe"]
 [ext_resource type="PackedScene" uid="uid://bqanqh8wnjgit" path="res://enemies/bee_enemy.tscn" id="4_k07mv"]
+[ext_resource type="PackedScene" uid="uid://vrhs2s0s3mhy" path="res://enemies/caucasus_enemy.tscn" id="5_wanw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cxm3"]
 texture = ExtResource("1_ajwks")
@@ -267,3 +268,6 @@ position = Vector2(511, 75)
 
 [node name="bee_enemy" parent="." instance=ExtResource("4_k07mv")]
 position = Vector2(603, 199)
+
+[node name="caucasus_enemy" parent="." instance=ExtResource("5_wanw6")]
+position = Vector2(601, 327)

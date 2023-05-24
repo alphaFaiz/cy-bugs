@@ -7,7 +7,8 @@ signal energy_changed(new_energy)
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
-var thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
+const thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
+const explosion_scn = preload("res://effects/explosion.tscn")
 
 @export var max_energy := 9
 var energy := max_energy :
@@ -24,6 +25,11 @@ var is_landing = false
 var gravity = 15
 var jump_speed = 500
 
+var bounds_bw
+var bounds_fw
+var bounds_uw
+var bounds_dw
+
 func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_h(fliph)
 	_animated_sprite.set_flip_v(flipv)
@@ -34,13 +40,13 @@ func _physics_process(delta):
 	var down = Input.is_action_pressed("ui_down")
 	var attack = Input.is_action_just_pressed("attack")
 	
-	if up and not ceil_touched and position.y > 0:
+	if up and not ceil_touched:
 		if is_landing:
 			play("prepare_landing")
 		else:
 			play("fly_up")
 		position.y -= jump_speed * delta
-	elif down and not grounded and position.y < 648:
+	elif down and not grounded:
 		play("fly_down")
 		position.y += jump_speed * delta
 	elif grounded:
@@ -83,9 +89,13 @@ func _physics_process(delta):
 		grounded = false
 	else:
 		is_landing = false
-
+	
 func _on_hit_box_body_entered(body: BaseEnemy):
-	print("body entered")
+	var hitbox = get_child(2)
+	remove_child(hitbox)
+	var explosion_inst = explosion_scn.instantiate()
+	add_child(explosion_inst)
+	await explosion_inst.animation_finished
 	queue_free()
 
 func thunder_attack(ceil_touched: bool):
