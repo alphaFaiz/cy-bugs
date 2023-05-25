@@ -15,10 +15,10 @@ script = ExtResource("1_htrjj")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(511, 325)
 
+[node name="Areas" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("2_04a31")]
 position = Vector2(279, 300)
-
-[node name="Areas" type="Node2D" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(0, -112)

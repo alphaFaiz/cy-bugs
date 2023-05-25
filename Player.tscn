@@ -1,11 +1,49 @@
-[gd_scene load_steps=23 format=3 uid="uid://3652aylf4yu6"]
+[gd_scene load_steps=41 format=3 uid="uid://3652aylf4yu6"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_b6vio"]
 [ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="2_o70cn"]
+[ext_resource type="Texture2D" uid="uid://mqwlw8jnl6ny" path="res://prototype-sprites/kabuto-cocoon-walk.png" id="2_rwjiq"]
 [ext_resource type="Texture2D" uid="uid://dsci8ejlwi4jg" path="res://prototype-sprites/kabuto-fly-foward.png" id="3_vue6w"]
 [ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="4_f6xqa"]
 [ext_resource type="Texture2D" uid="uid://comsqfxswyc5a" path="res://prototype-sprites/kabuto-prepare-landing.png" id="5_qnrrs"]
+[ext_resource type="Texture2D" uid="uid://dhtb6mm8f4665" path="res://prototype-sprites/kabuto-cast-off.png" id="6_1wgpl"]
 [ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="6_e3fy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqe8s"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jrcr"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfpmq"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a4g1"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrk4d"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v1c1"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3558"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juamc"]
+atlas = ExtResource("2_rwjiq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b14i7"]
+atlas = ExtResource("2_rwjiq")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61dsq"]
 atlas = ExtResource("2_o70cn")
@@ -55,6 +93,34 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("5_qnrrs")
 region = Rect2(64, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym8qg"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5vd4"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giuyl"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgltf"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q481k"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46n4r"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xpu4"]
+atlas = ExtResource("6_1wgpl")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmfaw"]
 atlas = ExtResource("6_e3fy2")
 region = Rect2(0, 0, 64, 64)
@@ -65,6 +131,43 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n1khf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqe8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jrcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfpmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a4g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrk4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v1c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3558")
+}],
+"loop": false,
+"name": &"cast_off",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juamc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b14i7")
+}],
+"loop": true,
+"name": &"cocoon_walk",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_61dsq")
@@ -123,6 +226,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ym8qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5vd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giuyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgltf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q481k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46n4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xpu4")
+}],
+"loop": false,
+"name": &"put_on",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cmfaw")
 }, {
 "duration": 1.0,
@@ -143,7 +272,7 @@ script = ExtResource("1_b6vio")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"fly_up"
+animation = &"put_on"
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="."]
 position = Vector2(-20, -1)

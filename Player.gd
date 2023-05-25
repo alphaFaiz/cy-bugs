@@ -21,9 +21,14 @@ var energy := max_energy :
 var grounded = false
 var ceil_touched = false
 var is_landing = false
+var is_switching_form = false
+var is_casted_off = true
 
-var gravity = 15
 var jump_speed = 500
+var gravity = 200
+var y_vel = 0
+var max_y_vel = 300
+var jumping = false
 
 var bounds_bw
 var bounds_fw
@@ -39,28 +44,54 @@ func _physics_process(delta):
 	var up = Input.is_action_pressed("ui_up")
 	var down = Input.is_action_pressed("ui_down")
 	var attack = Input.is_action_just_pressed("attack")
+	var switch_form = Input.is_action_pressed("switch_form")
 	
-	if up and not ceil_touched:
-		if is_landing:
-			play("prepare_landing")
+	if is_switching_form:
+		if is_casted_off:
+			play("put_on")
+			await _animated_sprite.animation_finished
+			is_casted_off = false
 		else:
-			play("fly_up")
-		position.y -= jump_speed * delta
-	elif down and not grounded:
-		play("fly_down")
-		position.y += jump_speed * delta
-	elif grounded:
-		play("walk")
-	elif ceil_touched:
-		play("walk", false, true)
-	elif is_landing:
-		play("prepare_landing")
-	else: 
-		play("fly_forward")
-
+			play("cast_off")
+			await _animated_sprite.animation_finished
+			is_casted_off = true
+		is_switching_form = false
+	elif is_casted_off:
+		if up and not ceil_touched:
+			if is_landing:
+				play("prepare_landing")
+			else:
+				play("fly_up")
+			position.y -= jump_speed * delta
+		elif down and not grounded:
+			play("fly_down")
+			position.y += jump_speed * delta
+		elif grounded:
+			play("walk")
+		elif ceil_touched:
+			play("walk", false, true)
+		elif is_landing:
+			play("prepare_landing")
+		else: 
+			play("fly_forward")
+	else:
+		if not grounded and not jumping:
+			y_vel = min(max_y_vel, y_vel+gravity)
+			play("cocoon_walk")
+			grounded = false
+		elif up and grounded:
+			y_vel = -jump_speed
+			jumping = true
+		elif not up:
+			jumping = false
+		position.y += y_vel * delta
+		
 	if attack:
 		thunder_attack(ceil_touched)
 
+	if switch_form:
+		is_switching_form = true
+		
 	if rayCastBottom.is_colliding():
 		var orig = rayCastBottom.global_transform.origin
 		var coll = rayCastBottom.get_collision_point()
@@ -69,6 +100,7 @@ func _physics_process(delta):
 		grounded = true
 		is_landing = false
 		ceil_touched = false
+		jumping = false
 		position.y -= depth
 	else:
 		grounded = false
