@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1024
 
+[editor]
+
+movie_writer/movie_file="/home/nmt97/Projects/Godot/record.avi"
+
 [input]
 
 attack={

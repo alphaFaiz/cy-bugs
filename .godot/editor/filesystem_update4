@@ -1,6 +1,5 @@
-res://Player.tscn
-res://Player.gd
 res://pickup-items/score_item.tscn
+res://Player.tscn
 res://game.tscn
 res://enemies/bee_enemy.tscn
 res://segments/A.tscn
@@ -9,3 +8,6 @@ res://segments/B.tscn
 res://segments/C.tscn
 res://enemies/base_enemy.tscn
 res://enemies/worm_enemy.tscn
+res://game.gd
+res://Player.gd
+res://segments/D.tscn
