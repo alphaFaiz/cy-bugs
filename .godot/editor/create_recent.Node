@@ -1,6 +1,7 @@
+Timer
+CollisionShape2D
 AnimatedSprite2D
 Area2D
-CollisionShape2D
 CharacterBody2D
 TextureRect
 VBoxContainer

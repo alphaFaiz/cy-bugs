@@ -37,11 +37,11 @@ region = Rect2(320, 0, 64, 64)
 atlas = ExtResource("6_1wgpl")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_juamc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ma5w"]
 atlas = ExtResource("2_rwjiq")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b14i7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioyt3"]
 atlas = ExtResource("2_rwjiq")
 region = Rect2(64, 0, 64, 64)
 
@@ -159,14 +159,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_juamc")
+"texture": SubResource("AtlasTexture_7ma5w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b14i7")
+"texture": SubResource("AtlasTexture_ioyt3")
 }],
 "loop": true,
 "name": &"cocoon_walk",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -248,7 +248,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"put_on",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -263,7 +263,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hxjt7"]
-radius = 26.0125
+radius = 21.9973
 height = 106.05
 
 [node name="Player" type="CharacterBody2D"]
@@ -287,7 +287,7 @@ shape = SubResource("CapsuleShape2D_hxjt7")
 
 [node name="RayCast2D2Top" type="RayCast2D" parent="."]
 position = Vector2(-20, -4)
-target_position = Vector2(0, -24)
+target_position = Vector2(0, -27)
 
 [node name="RayCast2DPrepareLanding" type="RayCast2D" parent="."]
 target_position = Vector2(0, -70)
@@ -297,4 +297,5 @@ position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
 
+[connection signal="crash_to_wall" from="." to="." method="_on_crash_to_wall"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

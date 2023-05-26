@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckqgjcdl36ypt"]
+[gd_scene load_steps=9 format=3 uid="uid://catcuhdek2gth"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_qs8cx"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_au0ym"]

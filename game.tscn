@@ -53,3 +53,5 @@ offset_left = 60.0
 offset_top = 135.0
 offset_right = 60.0
 offset_bottom = 135.0
+
+[node name="Timer" type="Timer" parent="."]

@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 		animation_name = "idle"
 	_animated_sprite.play(animation_name)
 	move_and_collide(velocity * delta)
-#	move_and_slide()delta
 
 func find_target() -> Player:
 	var overlapping_bodies := _detection_area.get_overlapping_bodies()

@@ -33,7 +33,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+	
 func _physics_process(delta):
 	#after the character is moved clamp its position to the end of the camera bounds
 	if _player:
@@ -42,8 +42,8 @@ func _physics_process(delta):
 
 	for area in $Areas.get_children():
 		area.position.x -= speed * delta
-		if area.position.x < -1024 - speed * delta:
-			spawn_inst(area.position.x+2048, 0)
+		if area.position.x < -bounds_fw - speed * delta:
+			spawn_inst(area.position.x + bounds_fw * 2, 0)
 			area.queue_free()
 
 func spawn_inst(x, y):
