@@ -1,5 +1,6 @@
-Timer
 CollisionShape2D
+StaticBody2D
+Timer
 AnimatedSprite2D
 Area2D
 CharacterBody2D
@@ -14,6 +15,5 @@ ParallaxBackground
 TileMap
 RayCast2D
 CollisionPolygon2D
-StaticBody2D
 Camera2D
 Node2D

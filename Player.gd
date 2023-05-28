@@ -21,6 +21,7 @@ var energy := max_energy :
 		return energy
 
 var grounded = false
+var undergrounded = false
 var ceil_touched = false
 var jumping = false
 var is_ceil_landing = false
@@ -89,14 +90,29 @@ func _physics_process(delta):
 			y_vel = min(max_y_vel, y_vel+gravity)
 			position.y += y_vel * delta
 #			grounded = false
-		elif up and grounded:
+		elif up and undergrounded:
 			y_vel = -jump_speed * 4
 			jumping = true
 			position.y += y_vel * delta
+			undergrounded = false
+		elif down and grounded:
+			undergrounded = true
+#			rayCastBottom.collision_mask = 2
 		elif not up:
 			play("cocoon_walk")
 			jumping = false
 		
+		
+#		if grounded and rayCastBottom.collision_mask == 2:
+#
+#			undergrounded = true
+#		else:
+#			undergrounded = false
+		if undergrounded:
+			print(grounded, rayCastBottom.collision_mask == 2)
+			rayCastBottom.collision_mask = 2
+		else:
+			rayCastBottom.collision_mask = 1
 		
 #	move_and_collide(velocity * delta)
 	move_and_slide()
@@ -104,7 +120,7 @@ func _physics_process(delta):
 	if attack:
 		thunder_attack(ceil_touched)
 
-	if switch_form:
+	if switch_form and not undergrounded:
 		is_switching_form = true
 		
 	if rayCastBottom.is_colliding():
