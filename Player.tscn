@@ -284,7 +284,6 @@ target_position = Vector2(0, 30)
 position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
-disabled = true
 
 [node name="RayCast2D2Top" type="RayCast2D" parent="."]
 position = Vector2(-20, -4)
@@ -297,7 +296,5 @@ target_position = Vector2(0, -70)
 position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
-disabled = true
 
-[connection signal="crash_to_wall" from="." to="." method="_on_crash_to_wall"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

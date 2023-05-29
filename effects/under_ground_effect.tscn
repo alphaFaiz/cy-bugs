@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://n05ds4q4hp63"]
+
+[ext_resource type="Texture2D" uid="uid://mfoxlspj6cir" path="res://prototype-sprites/under-ground-effect.png" id="1_q8uju"]
+
+[node name="under-ground-effect" type="Sprite2D"]
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_q8uju")

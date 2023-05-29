@@ -2,14 +2,17 @@ class_name Player
 extends CharacterBody2D
 
 signal energy_changed(new_energy)
-signal crash_to_wall
+signal walk_underground
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _hitbox = $HitBox
+
 const thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
 const explosion_scn = preload("res://effects/explosion.tscn")
+
 @onready var stable_position = position.x
 
 @export var max_energy := 9
@@ -23,12 +26,12 @@ var energy := max_energy :
 var grounded = false
 var undergrounded = false
 var ceil_touched = false
-var jumping = false
 var is_ceil_landing = false
 var is_switching_form = false
-var is_casted_off = true
+var is_casted_off = false
 var crashed = false
 
+var current_mask = 1
 var jump_speed = 500
 var gravity = 200
 var y_vel = 0
@@ -40,7 +43,6 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.play(animation)
 
 func _physics_process(delta):
-	var down = Input.is_action_pressed("ui_down")
 	var attack = Input.is_action_just_pressed("attack")
 	var switch_form = Input.is_action_pressed("switch_form")
 	var skill = Input.is_action_just_pressed("skill")
@@ -64,6 +66,7 @@ func _physics_process(delta):
 		is_switching_form = false
 	elif is_casted_off:
 		var up = Input.is_action_pressed("ui_up")
+		var down = Input.is_action_pressed("ui_down")
 		if up and not ceil_touched:
 			if is_ceil_landing:
 				play("prepare_landing")
@@ -86,34 +89,21 @@ func _physics_process(delta):
 			$HitBox/CollisionShape2D2.disabled = !$HitBox/CollisionShape2D2.disabled
 	else:
 		var up = Input.is_action_just_pressed("ui_up")
-		if not grounded and not jumping:
+		var down = Input.is_action_just_pressed("ui_down")
+		if not grounded and not undergrounded:
 			y_vel = min(max_y_vel, y_vel+gravity)
 			position.y += y_vel * delta
-#			grounded = false
 		elif up and undergrounded:
-			y_vel = -jump_speed * 4
-			jumping = true
+			y_vel = -jump_speed/2 * 4
 			position.y += y_vel * delta
-			undergrounded = false
+			current_mask = 1
 		elif down and grounded:
-			undergrounded = true
-#			rayCastBottom.collision_mask = 2
+			current_mask = 2
 		elif not up:
+			if undergrounded:
+				emit_signal("walk_underground")
 			play("cocoon_walk")
-			jumping = false
-		
-		
-#		if grounded and rayCastBottom.collision_mask == 2:
-#
-#			undergrounded = true
-#		else:
-#			undergrounded = false
-		if undergrounded:
-			print(grounded, rayCastBottom.collision_mask == 2)
-			rayCastBottom.collision_mask = 2
-		else:
-			rayCastBottom.collision_mask = 1
-		
+
 #	move_and_collide(velocity * delta)
 	move_and_slide()
 	
@@ -122,24 +112,29 @@ func _physics_process(delta):
 
 	if switch_form and not undergrounded:
 		is_switching_form = true
-		
+		current_mask = 1
+	
 	if rayCastBottom.is_colliding():
 		var orig = rayCastBottom.global_transform.origin
 		var coll = rayCastBottom.get_collision_point()
 		var dist = abs(orig.y - coll.y)
 		var depth = abs(rayCastBottom.target_position.y - dist)
 		position.y -= depth - 1
-		grounded = true
+		if current_mask == 2:
+			undergrounded = true
+			grounded = false
+		else:
+			undergrounded = false
+			grounded = true
 		is_ceil_landing = false
 		ceil_touched = false
-		jumping = false
 	else:
 		grounded = false
+		undergrounded = false
 				
 	if rayCastPrepareLanding.is_colliding():
 		is_ceil_landing = true
 		grounded = false
-		jumping = false
 	else:
 		is_ceil_landing = false
 	
@@ -155,6 +150,8 @@ func _physics_process(delta):
 		grounded = false
 	else:
 		ceil_touched = false
+	
+	changeCollisionMask(current_mask)
 
 func _on_hit_box_body_entered(body: BaseEnemy):
 	crashed = true
@@ -171,6 +168,11 @@ func thunder_attack(ceil_touched: bool):
 		_attack_sprite.play("default")
 		await _attack_sprite.animation_finished
 		remove_child(thunder_attack_inst)
+
+func changeCollisionMask(mask: int) -> void:
+	collision_mask = mask
+	rayCastBottom.collision_mask = mask
+	_hitbox.collision_mask = mask
  
 func destroy() -> void:
 	var hitbox = get_child(2)
