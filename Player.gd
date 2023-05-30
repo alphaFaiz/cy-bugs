@@ -2,7 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 signal energy_changed(new_energy)
-signal walk_underground
+signal walk_underground(enter, normal_walk, exit)
+signal ground_landing
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
@@ -24,6 +25,8 @@ var energy := max_energy :
 		return energy
 
 var grounded = false
+var entering_underground = false
+var exiting_underground = false
 var undergrounded = false
 var ceil_touched = false
 var is_ceil_landing = false
@@ -94,19 +97,33 @@ func _physics_process(delta):
 			y_vel = min(max_y_vel, y_vel+gravity)
 			position.y += y_vel * delta
 		elif up and undergrounded:
-			y_vel = -jump_speed/2 * 4
+			emit_signal("walk_underground", false, false, true)
+			y_vel = -jump_speed * 2
 			position.y += y_vel * delta
 			current_mask = 1
-		elif down and grounded:
+			exiting_underground = true
+		#Only allow go underground when the platform's mask contains only "1"
+		elif down and grounded and rayCastBottom.get_collider().collision_mask == 1:
 			current_mask = 2
-		elif not up:
+			entering_underground = true
+		elif not up and not exiting_underground:
 			if undergrounded:
-				emit_signal("walk_underground")
+				emit_signal("walk_underground", false, true, false)
 			play("cocoon_walk")
-
+		
 #	move_and_collide(velocity * delta)
 	move_and_slide()
 	
+	if entering_underground: 
+		emit_signal("walk_underground", true, false, false)
+	else:
+		entering_underground = false
+	
+#	if exiting_underground: 
+#		emit_signal("walk_underground", false, false, true)
+#	else:
+#		exiting_underground = false
+		
 	if attack:
 		thunder_attack(ceil_touched)
 
@@ -116,18 +133,23 @@ func _physics_process(delta):
 	
 	if rayCastBottom.is_colliding():
 		var orig = rayCastBottom.global_transform.origin
-		var coll = rayCastBottom.get_collision_point()
+		var coll = rayCastBottom.get_collision_point()		
 		var dist = abs(orig.y - coll.y)
 		var depth = abs(rayCastBottom.target_position.y - dist)
 		position.y -= depth - 1
-		if current_mask == 2:
+		
+		if rayCastBottom.get_collision_mask_value(2):
 			undergrounded = true
 			grounded = false
 		else:
 			undergrounded = false
 			grounded = true
+			emit_signal("ground_landing", false, false, false, true)
 		is_ceil_landing = false
 		ceil_touched = false
+		entering_underground = false
+		if exiting_underground and rayCastBottom.get_collider().collision_mask == 1:
+			exiting_underground = false
 	else:
 		grounded = false
 		undergrounded = false
