@@ -30,7 +30,7 @@ func _ready():
 	if _player and _energy_bar:
 		_player.connect("energy_changed", _energy_bar.set_energy)
 		_player.connect("walk_underground", add_underground_effect)
-		_player.connect("ground_landing", add_underground_effect)
+#		_player.connect("ground_landing", add_underground_effect)
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(bounds_fw, 0)
@@ -60,34 +60,38 @@ func spawn_inst(x, y):
 	inst.position = Vector2(x, y)
 	_areas.add_child(inst)
 	
-func add_underground_effect(is_entering, walking, is_exiting, is_landing) -> bool:
+func add_underground_effect(is_entering, walking, is_exiting) -> bool:
+	print(is_entering, walking, is_exiting)
 	var segment_index = current_segment_index
 	var old_dirt_effect = _areas.get_child(segment_index).get_child(-1) #The last index will be equal to the dirt effect
 	var regex = RegEx.new()
 	regex.compile("underGroundEffect")
 	var matchNodeName = regex.search(old_dirt_effect.name)
 	
-	var dirt_effect = underground_dirt_scn.instantiate()
+	var dirt_effect
 	var segment_position = _areas.get_child(segment_index).global_transform.origin
 	var player_position = _player.global_transform.origin
 	var player_height = _player.get_node("CollisionShape2D").shape.height
 	var animation_name = "default"
 		
 	#init new dirt effect if there's no dirt node or old node has finished the animation
-	if walking and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
+	if is_entering and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
+		dirt_effect = underground_dirt_scn.instantiate()
+		animation_name = "enter"
+		dirt_effect.position = player_position - segment_position + Vector2(0, player_height/1.5)
+	elif walking and matchNodeName and not old_dirt_effect.is_playing():
+		dirt_effect = underground_dirt_scn.instantiate()
 		dirt_effect.position = player_position - segment_position
 		_areas.get_child(segment_index).add_child(dirt_effect)
-	elif is_entering or is_exiting:
-		if is_entering:
-			animation_name = "enter"
-			dirt_effect.position = player_position - segment_position + Vector2(0, player_height/1.5)
-		elif is_exiting:
-			animation_name = "exit"
-			dirt_effect.position = player_position - segment_position - Vector2(0, player_height/7)
-	elif is_landing and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
-		animation_name = "ground_landing"
-		dirt_effect.position = player_position - segment_position
-	_areas.get_child(segment_index).add_child(dirt_effect)
-	dirt_effect.play(animation_name)
+	elif is_exiting:
+		dirt_effect = underground_dirt_scn.instantiate()
+		animation_name = "exit"
+		dirt_effect.position = player_position - segment_position - Vector2(0, player_height/7)
+#	elif is_landing and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
+#		animation_name = "ground_landing"
+#		dirt_effect.position = player_position - segment_position
+	if dirt_effect:
+		_areas.get_child(segment_index).add_child(dirt_effect)
+		dirt_effect.play(animation_name)
 	return true
 	

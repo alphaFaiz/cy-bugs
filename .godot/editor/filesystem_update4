@@ -1,11 +1,5 @@
-res://pickup-items/score_item.tscn
-res://game.gd
 res://Player.tscn
-res://pickup-items/base_pickup.tscn
+res://game.gd
 res://game.tscn
-res://pickup-items/lightning_item.tscn
-res://effects/under_ground_effect.tscn
-res://segments/A.tscn
-res://segments/B.tscn
-res://segments/C.tscn
 res://Player.gd
+res://effects/under_ground_effect.tscn

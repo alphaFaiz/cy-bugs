@@ -106,6 +106,7 @@ func _physics_process(delta):
 		elif down and grounded and rayCastBottom.get_collider().collision_mask == 1:
 			current_mask = 2
 			entering_underground = true
+			emit_signal("walk_underground", true, false, false)
 		elif not up and not exiting_underground:
 			if undergrounded:
 				emit_signal("walk_underground", false, true, false)
@@ -114,16 +115,11 @@ func _physics_process(delta):
 #	move_and_collide(velocity * delta)
 	move_and_slide()
 	
-	if entering_underground: 
-		emit_signal("walk_underground", true, false, false)
-	else:
-		entering_underground = false
-	
-#	if exiting_underground: 
-#		emit_signal("walk_underground", false, false, true)
+#	if entering_underground: 
+#		emit_signal("walk_underground", true, false, false)
 #	else:
-#		exiting_underground = false
-		
+#		entering_underground = false
+			
 	if attack:
 		thunder_attack(ceil_touched)
 
@@ -144,12 +140,13 @@ func _physics_process(delta):
 		else:
 			undergrounded = false
 			grounded = true
-			emit_signal("ground_landing", false, false, false, true)
+#			emit_signal("ground_landing", false, false, false, true)
 		is_ceil_landing = false
 		ceil_touched = false
-		entering_underground = false
 		if exiting_underground and rayCastBottom.get_collider().collision_mask == 1:
 			exiting_underground = false
+		if entering_underground and rayCastBottom.get_collider().collision_mask != 1:
+			entering_underground = false
 	else:
 		grounded = false
 		undergrounded = false

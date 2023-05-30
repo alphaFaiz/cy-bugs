@@ -25,25 +25,25 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("1_q8uju")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqoyb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8y8p"]
 atlas = ExtResource("2_kimmo")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 94, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gedyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmamb"]
 atlas = ExtResource("2_kimmo")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(94, 0, 94, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ai7wh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhtw3"]
 atlas = ExtResource("2_kimmo")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(188, 0, 94, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjuw2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwk4n"]
 atlas = ExtResource("2_kimmo")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(282, 0, 94, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg7wy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_066tq"]
 atlas = ExtResource("2_kimmo")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(376, 0, 94, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfj8f"]
 atlas = ExtResource("3_5st81")
@@ -109,23 +109,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 16.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fqoyb")
+"texture": SubResource("AtlasTexture_t8y8p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gedyv")
+"texture": SubResource("AtlasTexture_wmamb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ai7wh")
+"texture": SubResource("AtlasTexture_dhtw3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xjuw2")
+"texture": SubResource("AtlasTexture_lwk4n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wg7wy")
+"texture": SubResource("AtlasTexture_066tq")
 }],
 "loop": false,
 "name": &"enter",
@@ -178,5 +178,5 @@ animations = [{
 [node name="underGroundEffect" type="AnimatedSprite2D"]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_lpg6g")
-animation = &"ground_landing"
+animation = &"enter"
 autoplay = "default"
