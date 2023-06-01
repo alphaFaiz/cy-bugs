@@ -218,6 +218,7 @@ func clock_up() -> bool:
 	energy -= 2
 	is_in_speed_force = true
 	var clockup_effect = clockup_speed_scn.instantiate()
+	clockup_effect.position = Vector2(-80, 0)
 	add_child(clockup_effect)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:

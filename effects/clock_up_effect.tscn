@@ -2,54 +2,54 @@
 
 [ext_resource type="Texture2D" uid="uid://ccum02xrn5enq" path="res://prototype-sprites/clock-up-effect.png" id="1_y8ept"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7s510"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg7kc"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(0, 0, 192, 64)
+region = Rect2(0, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xj6o3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc8nx"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(192, 0, 192, 64)
+region = Rect2(128, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbwe4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8eut"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(384, 0, 192, 64)
+region = Rect2(256, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f0rqr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqkgj"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(576, 0, 192, 64)
+region = Rect2(384, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c01ul"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ity4h"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(768, 0, 192, 64)
+region = Rect2(512, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5680n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yehf2"]
 atlas = ExtResource("1_y8ept")
-region = Rect2(960, 0, 192, 64)
+region = Rect2(640, 0, 128, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_44req"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7s510")
+"texture": SubResource("AtlasTexture_fg7kc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xj6o3")
+"texture": SubResource("AtlasTexture_kc8nx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fbwe4")
+"texture": SubResource("AtlasTexture_f8eut")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f0rqr")
+"texture": SubResource("AtlasTexture_pqkgj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c01ul")
+"texture": SubResource("AtlasTexture_ity4h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5680n")
+"texture": SubResource("AtlasTexture_yehf2")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="clockUpEffect" type="AnimatedSprite2D"]

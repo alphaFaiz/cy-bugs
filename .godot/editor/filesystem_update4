@@ -1,6 +1,4 @@
 res://Player.tscn
-res://enemies/base_enemy.gd
-res://Player.gd
 res://game.tscn
 res://effects/under_ground_effect.tscn
 res://effects/clock_up_effect.tscn
@@ -9,8 +7,4 @@ res://effects/explosion.tscn
 res://enemies/worm_enemy.tscn
 res://enemies/caucasus_enemy.tscn
 res://enemies/bee_enemy.tscn
-res://enemies/bee_enemy.gd
-res://enemies/caucasus_enemy.gd
-res://game.gd
-res://enemies/worm_enemy.gd
-res://energy-bar-control.tscn
+res://Player.gd
