@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://catcuhdek2gth"]
+[gd_scene load_steps=8 format=3 uid="uid://catcuhdek2gth"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_qs8cx"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_au0ym"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_qcbl2"]
-[ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="4_n0g1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cxm3"]
 texture = ExtResource("1_qs8cx")
@@ -264,6 +263,3 @@ position = Vector2(812, 280)
 
 [node name="ScoreItem" parent="." instance=ExtResource("3_qcbl2")]
 position = Vector2(511, 75)
-
-[node name="Player" parent="." instance=ExtResource("4_n0g1b")]
-position = Vector2(336, 297)

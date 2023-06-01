@@ -2,15 +2,19 @@ class_name Player
 extends CharacterBody2D
 
 signal energy_changed(new_energy)
-signal walk_underground(enter, normal_walk, exit)
+signal walk_underground(enter, normal_walk, exit, landing_ground)
 signal ground_landing
+signal clockup_mode(turned_on)
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
 @onready var rayCastTop = $RayCast2D2Top
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _hitbox = $HitBox
+@onready var regenEnergyTimer = $RegenEnergyTimer
+@onready var clockupTimer = $ClockupTimer
 
+const clockup_speed_scn = preload("res://effects/clock_up_effect.tscn")
 const thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
 const explosion_scn = preload("res://effects/explosion.tscn")
 
@@ -33,6 +37,7 @@ var is_ceil_landing = false
 var is_switching_form = false
 var is_casted_off = false
 var crashed = false
+var is_in_speed_force = false
 
 var current_mask = 1
 var jump_speed = 500
@@ -45,6 +50,9 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_v(flipv)
 	_animated_sprite.play(animation)
 
+func _ready() -> void:
+	regenEnergyTimer.start()
+
 func _physics_process(delta):
 	var attack = Input.is_action_just_pressed("attack")
 	var switch_form = Input.is_action_pressed("switch_form")
@@ -55,16 +63,19 @@ func _physics_process(delta):
 			crashed = true
 			destroy()
 		else:
-			position.x = stable_position	
+			position.x = stable_position
 
 	if is_switching_form:
 		if is_casted_off:
 			play("put_on")
 			await _animated_sprite.animation_finished
+			regenEnergyTimer.start()
 			is_casted_off = false
+			if is_in_speed_force: clockupTimer.emit_signal("timeout")
 		else:
 			play("cast_off")
 			await _animated_sprite.animation_finished
+			regenEnergyTimer.stop()
 			is_casted_off = true
 		is_switching_form = false
 	elif is_casted_off:
@@ -88,8 +99,7 @@ func _physics_process(delta):
 		else: 
 			play("fly_forward")
 		if skill: #clock up
-			$CollisionShape2D.disabled = !$CollisionShape2D.disabled
-			$HitBox/CollisionShape2D2.disabled = !$HitBox/CollisionShape2D2.disabled
+			clock_up()
 	else:
 		var up = Input.is_action_just_pressed("ui_up")
 		var down = Input.is_action_just_pressed("ui_down")
@@ -97,7 +107,7 @@ func _physics_process(delta):
 			y_vel = min(max_y_vel, y_vel+gravity)
 			position.y += y_vel * delta
 		elif up and undergrounded:
-			emit_signal("walk_underground", false, false, true)
+			emit_signal("walk_underground", false, false, true, false)
 			y_vel = -jump_speed * 2
 			position.y += y_vel * delta
 			current_mask = 1
@@ -106,20 +116,15 @@ func _physics_process(delta):
 		elif down and grounded and rayCastBottom.get_collider().collision_mask == 1:
 			current_mask = 2
 			entering_underground = true
-			emit_signal("walk_underground", true, false, false)
+			emit_signal("walk_underground", true, false, false, false)
 		elif not up and not exiting_underground:
 			if undergrounded:
-				emit_signal("walk_underground", false, true, false)
+				emit_signal("walk_underground", false, true, false, false)
 			play("cocoon_walk")
 		
 #	move_and_collide(velocity * delta)
 	move_and_slide()
 	
-#	if entering_underground: 
-#		emit_signal("walk_underground", true, false, false)
-#	else:
-#		entering_underground = false
-			
 	if attack:
 		thunder_attack(ceil_touched)
 
@@ -127,6 +132,8 @@ func _physics_process(delta):
 		is_switching_form = true
 		current_mask = 1
 	
+	if is_in_speed_force:
+		emit_signal("clockup_mode", true, clockupTimer.get_time_left())
 	if rayCastBottom.is_colliding():
 		var orig = rayCastBottom.global_transform.origin
 		var coll = rayCastBottom.get_collision_point()		
@@ -139,12 +146,15 @@ func _physics_process(delta):
 			grounded = false
 		else:
 			undergrounded = false
-			grounded = true
-#			emit_signal("ground_landing", false, false, false, true)
+			if not grounded:
+				grounded = true
+				#emit landing animation
+#				emit_signal("walk_underground", false, false, false, true)
 		is_ceil_landing = false
 		ceil_touched = false
 		if exiting_underground and rayCastBottom.get_collider().collision_mask == 1:
 			exiting_underground = false
+			emit_signal("walk_underground", false, false, false, true)
 		if entering_underground and rayCastBottom.get_collider().collision_mask != 1:
 			entering_underground = false
 	else:
@@ -200,3 +210,40 @@ func destroy() -> void:
 	add_child(explosion_inst)
 	await explosion_inst.animation_finished
 	queue_free()
+
+func clock_up() -> bool:
+	print("clock up")
+	if not clockupTimer.is_stopped() or energy < 5 or is_in_speed_force:
+		return false
+	energy -= 2
+	is_in_speed_force = true
+	var clockup_effect = clockup_speed_scn.instantiate()
+	add_child(clockup_effect)
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for enemy in enemies:
+		enemy.velocity /= 12
+		enemy.speed /= 12
+		enemy.animation_speed /= 3.0
+	emit_signal("clockup_mode", true)
+	clockupTimer.start()
+	return true
+
+func _on_regen_energy_timer_timeout() -> void:
+	energy += 1
+
+func _on_clock_over() -> void:
+	print("clock over")
+	is_in_speed_force = false
+	clockupTimer.stop()
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for enemy in enemies:
+		if enemy.speed < enemy.default_speed:
+#			enemy.velocity *= 12
+			enemy.speed *= 12
+			enemy.animation_speed = enemy.default_animation_speed
+	var regex = RegEx.new()
+	regex.compile("clockUpEffect")
+	var clock_up_effect = get_children().filter(func (node): return regex.search(node.name )).front()
+	if clock_up_effect:
+		remove_child(clock_up_effect)
+	emit_signal("clockup_mode", false, 0)

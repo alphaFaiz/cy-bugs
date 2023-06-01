@@ -7,7 +7,11 @@ const explosion_scn = preload("res://effects/explosion.tscn")
 @onready var _attack_area: Area2D = $AttackArea
 @onready var _collision_shape: CollisionShape2D = $CollisionShape2D
 
-const SPEED = 80.0
+var default_speed = 80.0
+var default_animation_speed = 1
+
+var speed = default_speed
+var animation_speed = default_animation_speed
 var _velocity := Vector2.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,13 +36,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		animation_name = "idle"
 	_animated_sprite.play(animation_name)
+	_animated_sprite.speed_scale = animation_speed
 	move_and_collide(velocity * delta)
 
 func find_target() -> Player:
 	var overlapping_bodies := _detection_area.get_overlapping_bodies()
 	if not overlapping_bodies.is_empty():
 		var playerArray = overlapping_bodies.filter(func(body): return body is Player)
-		return playerArray.front()
+		var player = playerArray.front()
+		if player and player.global_position.x < global_position.x:
+			return player
 	return null
 
 func _on_attack_area_body_entered(player: Player) -> void:

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://byv8alxt13t7e"]
+
+[ext_resource type="Texture2D" uid="uid://ccum02xrn5enq" path="res://prototype-sprites/clock-up-effect.png" id="1_y8ept"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s510"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(0, 0, 192, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj6o3"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(192, 0, 192, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbwe4"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(384, 0, 192, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0rqr"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(576, 0, 192, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c01ul"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(768, 0, 192, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5680n"]
+atlas = ExtResource("1_y8ept")
+region = Rect2(960, 0, 192, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44req"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s510")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj6o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbwe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0rqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c01ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5680n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="clockUpEffect" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_44req")
+autoplay = "default"

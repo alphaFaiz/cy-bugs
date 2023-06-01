@@ -9,10 +9,10 @@ func _physics_process(delta: float) -> void:
 
 # Steers towards the target position.
 func follow(target_global_position: Vector2) -> void:
-	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * SPEED
+	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * speed
 	var steering := desired_velocity - _velocity
 	velocity += steering
 
 func _on_attack_area_body_entered(player: Player) -> void:
 	is_attacking = true
-	velocity -= Vector2(SPEED, 0)
+	velocity -= Vector2(speed, 0)

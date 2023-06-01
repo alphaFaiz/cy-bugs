@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=10 format=3 uid="uid://d06osablfku3n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_ajwks"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_oaqwc"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_huyfe"]
+[ext_resource type="PackedScene" uid="uid://c6kw7m0h7cxdr" path="res://enemies/worm_enemy.tscn" id="4_ixs6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cxm3"]
 texture = ExtResource("1_ajwks")
@@ -283,3 +284,6 @@ shape = SubResource("RectangleShape2D_lwbqy")
 [node name="step 1" type="CollisionShape2D" parent="."]
 position = Vector2(494, 148.961)
 shape = SubResource("RectangleShape2D_j4mci")
+
+[node name="worm_enemy" parent="." instance=ExtResource("4_ixs6e")]
+position = Vector2(324, 103)

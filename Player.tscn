@@ -275,7 +275,7 @@ sprite_frames = SubResource("SpriteFrames_n1khf")
 animation = &"cast_off"
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="."]
-position = Vector2(-20, -1)
+position = Vector2(8, 0)
 target_position = Vector2(0, 30)
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -284,6 +284,7 @@ target_position = Vector2(0, 30)
 position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
+disabled = true
 
 [node name="RayCast2D2Top" type="RayCast2D" parent="."]
 position = Vector2(-20, -4)
@@ -297,4 +298,12 @@ position = Vector2(-7, -2)
 rotation = 1.55509
 shape = SubResource("CapsuleShape2D_hxjt7")
 
+[node name="RegenEnergyTimer" type="Timer" parent="."]
+
+[node name="ClockupTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="RegenEnergyTimer" to="." method="_on_regen_energy_timer_timeout"]
+[connection signal="timeout" from="ClockupTimer" to="." method="_on_clock_over"]

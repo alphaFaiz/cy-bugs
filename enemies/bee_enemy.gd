@@ -8,7 +8,7 @@ func orbit_target() -> void:
 	
 # Steers towards the target position.
 func follow(target_global_position: Vector2) -> void:
-	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * SPEED
+	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * speed
 	var steering := desired_velocity - _velocity
 	velocity += steering / 6.0
 

@@ -65,29 +65,29 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("3_5st81")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7kip"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_trc5i"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 104, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tsdyh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_655oo"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(104, 0, 104, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mu7nl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv8jg"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(208, 0, 104, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5f1j6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf0xw"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(312, 0, 104, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xf28t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_71lfw"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(416, 0, 104, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_peugh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhs6j"]
 atlas = ExtResource("4_s73s5")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(520, 0, 104, 84)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lpg6g"]
 animations = [{
@@ -153,30 +153,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7kip")
+"texture": SubResource("AtlasTexture_trc5i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tsdyh")
+"texture": SubResource("AtlasTexture_655oo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mu7nl")
+"texture": SubResource("AtlasTexture_tv8jg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5f1j6")
+"texture": SubResource("AtlasTexture_vf0xw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xf28t")
+"texture": SubResource("AtlasTexture_71lfw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_peugh")
+"texture": SubResource("AtlasTexture_vhs6j")
 }],
 "loop": false,
 "name": &"ground_landing",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="underGroundEffect" type="AnimatedSprite2D"]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_lpg6g")
-animation = &"enter"
+animation = &"ground_landing"
 autoplay = "default"

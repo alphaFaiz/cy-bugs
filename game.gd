@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var _energy_bar: Control = $EnergyBar
 @onready var _player: Player = $Player
+@onready var _energy_bar: Control = $EnergyBar
+@onready var _clockup_bar: Control = $ClockupBar
 @onready var _areas: Node2D = $Areas
 #get the viewport size and divide by 2 since this is where the camera is positioned
 @onready var view = get_viewport_rect().size / 2
@@ -30,7 +31,7 @@ func _ready():
 	if _player and _energy_bar:
 		_player.connect("energy_changed", _energy_bar.set_energy)
 		_player.connect("walk_underground", add_underground_effect)
-#		_player.connect("ground_landing", add_underground_effect)
+		_player.connect("clockup_mode", handle_clockup)
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(bounds_fw, 0)
@@ -59,9 +60,8 @@ func spawn_inst(x, y):
 	var inst = segments[index].instantiate()
 	inst.position = Vector2(x, y)
 	_areas.add_child(inst)
-	
-func add_underground_effect(is_entering, walking, is_exiting) -> bool:
-	print(is_entering, walking, is_exiting)
+
+func add_underground_effect(is_entering, walking, is_exiting, ground_landing) -> bool:
 	var segment_index = current_segment_index
 	var old_dirt_effect = _areas.get_child(segment_index).get_child(-1) #The last index will be equal to the dirt effect
 	var regex = RegEx.new()
@@ -72,8 +72,9 @@ func add_underground_effect(is_entering, walking, is_exiting) -> bool:
 	var segment_position = _areas.get_child(segment_index).global_transform.origin
 	var player_position = _player.global_transform.origin
 	var player_height = _player.get_node("CollisionShape2D").shape.height
+	var player_width = _player.get_node("CollisionShape2D").shape.radius
 	var animation_name = "default"
-		
+	
 	#init new dirt effect if there's no dirt node or old node has finished the animation
 	if is_entering and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
 		dirt_effect = underground_dirt_scn.instantiate()
@@ -87,11 +88,19 @@ func add_underground_effect(is_entering, walking, is_exiting) -> bool:
 		dirt_effect = underground_dirt_scn.instantiate()
 		animation_name = "exit"
 		dirt_effect.position = player_position - segment_position - Vector2(0, player_height/7)
-#	elif is_landing and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
-#		animation_name = "ground_landing"
-#		dirt_effect.position = player_position - segment_position
+	elif ground_landing:
+		dirt_effect = underground_dirt_scn.instantiate()
+		animation_name = "ground_landing"
+		dirt_effect.position = player_position - segment_position + Vector2(player_width/5, player_height/7)
 	if dirt_effect:
 		_areas.get_child(segment_index).add_child(dirt_effect)
 		dirt_effect.play(animation_name)
 	return true
-	
+
+func handle_clockup(turned_on, time_left) -> void:
+	if turned_on:
+		_clockup_bar.show()
+		var player_clockup_timer = _player.get_node("ClockupTimer")
+		_clockup_bar.value = time_left * 100/player_clockup_timer.wait_time
+	else:
+		_clockup_bar.hide()
