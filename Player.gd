@@ -220,6 +220,7 @@ func clock_up() -> bool:
 	var clockup_effect = clockup_speed_scn.instantiate()
 	clockup_effect.position = Vector2(-80, 0)
 	add_child(clockup_effect)
+	_animated_sprite.material.set_shader_parameter("contrast", 2)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		enemy.velocity /= 12
@@ -234,6 +235,7 @@ func _on_regen_energy_timer_timeout() -> void:
 
 func _on_clock_over() -> void:
 	print("clock over")
+	_animated_sprite.material.set_shader_parameter("contrast", 1)
 	is_in_speed_force = false
 	clockupTimer.stop()
 	var enemies = get_tree().get_nodes_in_group("Enemy")

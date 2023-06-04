@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=11 format=3 uid="uid://d06osablfku3n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_ajwks"]
+[ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_msve3"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_oaqwc"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_huyfe"]
 [ext_resource type="PackedScene" uid="uid://c6kw7m0h7cxdr" path="res://enemies/worm_enemy.tscn" id="4_ixs6e"]
@@ -245,6 +246,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="TileMap" type="TileMap" parent="."]
+material = ExtResource("1_msve3")
 position = Vector2(0, 115)
 tile_set = SubResource("TileSet_kc1ai")
 format = 2

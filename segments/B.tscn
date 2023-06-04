@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0uawieq135xi"]
+[gd_scene load_steps=10 format=3 uid="uid://b0uawieq135xi"]
 
+[ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_0i0m3"]
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_kp3ie"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_pnhei"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_2cbpc"]
@@ -242,6 +243,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="TileMap" type="TileMap" parent="."]
+material = ExtResource("1_0i0m3")
 position = Vector2(99, 294)
 tile_set = SubResource("TileSet_3bady")
 format = 2

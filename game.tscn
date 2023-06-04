@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://deg8ur6ylqrx4"]
+[gd_scene load_steps=11 format=3 uid="uid://deg8ur6ylqrx4"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
+[ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_qrysc"]
 [ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="2_04a31"]
 [ext_resource type="PackedScene" uid="uid://2s0o3pn7hpkc" path="res://energy-bar-control.tscn" id="2_atb2s"]
 [ext_resource type="Texture2D" uid="uid://5fd0bw77rlxo" path="res://backgrounds/parallax-00.png" id="8_reqle"]
@@ -19,6 +20,7 @@ script = ExtResource("1_htrjj")
 position = Vector2(511, 325)
 
 [node name="Areas" type="Node2D" parent="."]
+material = ExtResource("1_qrysc")
 
 [node name="Player" parent="." instance=ExtResource("2_04a31")]
 position = Vector2(279, 300)

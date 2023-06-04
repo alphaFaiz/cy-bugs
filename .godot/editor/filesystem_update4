@@ -1,10 +1,6 @@
-res://Player.tscn
-res://game.tscn
-res://effects/under_ground_effect.tscn
-res://effects/clock_up_effect.tscn
-res://enemies/base_enemy.tscn
+res://segments/B.tscn
+res://Clockup_material.tres
+res://segments/C.tscn
 res://effects/explosion.tscn
-res://enemies/worm_enemy.tscn
-res://enemies/caucasus_enemy.tscn
-res://enemies/bee_enemy.tscn
-res://Player.gd
+res://pickup-items/stamina_leaf_item.tscn
+res://segments/A.tscn

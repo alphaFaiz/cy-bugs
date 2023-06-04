@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://biwvgki1qd4a5"]
+[gd_scene load_steps=12 format=3 uid="uid://biwvgki1qd4a5"]
 
 [ext_resource type="Texture2D" uid="uid://cs4xpvt3ps84x" path="res://prototype-sprites/explosion.png" id="1_x6v6r"]
+[ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_y7xy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxs2r"]
 atlas = ExtResource("1_x6v6r")
@@ -67,6 +68,7 @@ animations = [{
 }]
 
 [node name="explosion" type="AnimatedSprite2D"]
+material = ExtResource("1_y7xy5")
 scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_lonor")
 autoplay = "default"

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ckqgtk1p6dliv"]
+
+[ext_resource type="Shader" path="res://Clockup.gdshader" id="1_ju6dd"]
+
+[resource]
+shader = ExtResource("1_ju6dd")
+shader_parameter/contrast = 1.0

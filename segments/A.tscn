@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cae35cykyc24n"]
+[gd_scene load_steps=11 format=3 uid="uid://cae35cykyc24n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_qq3ww"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_h8fsk"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_n4n10"]
+[ext_resource type="PackedScene" uid="uid://cfx8phkl3rp5u" path="res://pickup-items/stamina_leaf_item.tscn" id="4_c5odq"]
 [ext_resource type="PackedScene" uid="uid://bqanqh8wnjgit" path="res://enemies/bee_enemy.tscn" id="4_qdqpt"]
 [ext_resource type="PackedScene" uid="uid://vrhs2s0s3mhy" path="res://enemies/caucasus_enemy.tscn" id="5_c61wd"]
 
@@ -212,6 +213,9 @@ collision_mask = 1
 position = Vector2(514, 570)
 collision_layer = 1
 collision_mask = 1
+
+[node name="stamina_leaf_item" parent="." instance=ExtResource("4_c5odq")]
+position = Vector2(161, 486)
 
 [node name="DigableGround" type="StaticBody2D" parent="."]
 position = Vector2(516, 568)
