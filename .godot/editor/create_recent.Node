@@ -1,6 +1,7 @@
+Label
+Timer
 ProgressBar
 TextureProgressBar
-Timer
 AnimatedSprite2D
 StaticBody2D
 Area2D

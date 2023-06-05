@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var _player: Player = $Player
 @onready var _energy_bar: Control = $EnergyBar
+@onready var _stamina_bar: ProgressBar = $StaminaBar
 @onready var _clockup_bar: Control = $ClockupBar
+@onready var _point_label: Label = $PointLabel
 @onready var _areas: Node2D = $Areas
 #get the viewport size and divide by 2 since this is where the camera is positioned
 @onready var view = get_viewport_rect().size / 2
@@ -28,10 +30,12 @@ var current_segment_index = 0
 var speed = 200   
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if _player and _energy_bar:
+	if _player and _energy_bar and _stamina_bar:
 		_player.connect("energy_changed", _energy_bar.set_energy)
 		_player.connect("walk_underground", add_underground_effect)
 		_player.connect("clockup_mode", handle_clockup)
+		_player.connect("stamina_changed", _stamina_bar.set_stamina)
+		_player.connect("point_changed", _point_label.set_point)
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(bounds_fw, 0)
@@ -41,7 +45,7 @@ func _process(delta):
 	pass
 	
 func _physics_process(delta):
-	#after the character is moved clamp its position to the end of the camera bounds
+	#after the character is moved, clamp its position to the end of the camera bounds
 	if _player:
 		_player.global_position.x = clamp(_player.global_position.x, bounds_bw, bounds_fw)
 		_player.global_position.y = clamp(_player.global_position.y, bounds_uw, bounds_dw)
@@ -71,6 +75,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 	var dirt_effect
 	var segment_position = _areas.get_child(segment_index).global_transform.origin
 	var player_position = _player.global_transform.origin
+
 	var player_height = _player.get_node("CollisionShape2D").shape.height
 	var player_width = _player.get_node("CollisionShape2D").shape.radius
 	var animation_name = "default"

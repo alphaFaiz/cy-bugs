@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://v0qe50hcgq20"]
+
+[ext_resource type="Script" path="res://ui/point_label.gd" id="1_r36dh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8ok8"]
+font_size = 20
+
+[node name="PointLabel" type="Label"]
+layout_direction = 3
+offset_left = 854.0
+offset_top = 51.0
+offset_right = 894.0
+offset_bottom = 74.0
+label_settings = SubResource("LabelSettings_r8ok8")
+script = ExtResource("1_r36dh")

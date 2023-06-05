@@ -1,17 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://deg8ur6ylqrx4"]
+[gd_scene load_steps=12 format=3 uid="uid://kjh7kfkwxcg1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
 [ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_qrysc"]
 [ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="2_04a31"]
-[ext_resource type="PackedScene" uid="uid://2s0o3pn7hpkc" path="res://energy-bar-control.tscn" id="2_atb2s"]
+[ext_resource type="PackedScene" uid="uid://cn1iat65somp8" path="res://ui/energy-bar-control.tscn" id="2_atb2s"]
 [ext_resource type="Texture2D" uid="uid://5fd0bw77rlxo" path="res://backgrounds/parallax-00.png" id="8_reqle"]
 [ext_resource type="Script" path="res://backgrounds/CloudLayer.gd" id="9_gxu3y"]
+[ext_resource type="PackedScene" uid="uid://dsquq0jymkv0a" path="res://ui/stamina_bar.tscn" id="10_0vx1d"]
 [ext_resource type="Texture2D" uid="uid://dxxulptcf1hb3" path="res://backgrounds/parallax-01.png" id="10_t4xli"]
+[ext_resource type="PackedScene" uid="uid://v0qe50hcgq20" path="res://ui/point_label.tscn" id="11_f4hx3"]
 [ext_resource type="Script" path="res://backgrounds/MountainLayer.gd" id="11_iay07"]
 [ext_resource type="Texture2D" uid="uid://cc8q3wlga35pl" path="res://backgrounds/parallax-02.png" id="12_e4yh0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbru1"]
-bg_color = Color(0.286275, 0.678431, 0.603922, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
@@ -59,15 +58,7 @@ offset_top = 135.0
 offset_right = 60.0
 offset_bottom = 135.0
 
-[node name="StaminaBar" type="ProgressBar" parent="."]
-offset_left = 43.0
-offset_top = 140.0
-offset_right = 52.0
-offset_bottom = 290.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_xbru1")
-value = 55.0
-fill_mode = 3
-show_percentage = false
+[node name="StaminaBar" parent="." instance=ExtResource("10_0vx1d")]
 
 [node name="ClockupBar" type="ProgressBar" parent="."]
 offset_left = 110.0
@@ -76,3 +67,9 @@ offset_right = 120.0
 offset_bottom = 289.0
 fill_mode = 3
 show_percentage = false
+
+[node name="PointLabel" parent="." instance=ExtResource("11_f4hx3")]
+offset_left = -992.0
+offset_top = 27.0
+offset_right = -952.0
+offset_bottom = 55.0

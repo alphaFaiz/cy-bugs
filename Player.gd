@@ -2,9 +2,11 @@ class_name Player
 extends CharacterBody2D
 
 signal energy_changed(new_energy)
+signal stamina_changed(new_stamina)
 signal walk_underground(enter, normal_walk, exit, landing_ground)
 signal ground_landing
 signal clockup_mode(turned_on)
+signal point_changed(new_point)
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
@@ -20,6 +22,13 @@ const explosion_scn = preload("res://effects/explosion.tscn")
 
 @onready var stable_position = position.x
 
+@onready var point := 0 :
+	set(value):
+		point = value
+		emit_signal("point_changed", value)
+	get: 
+		return point
+
 @export var max_energy := 9
 var energy := max_energy :
 	set(value):
@@ -27,6 +36,14 @@ var energy := max_energy :
 		emit_signal("energy_changed", value)
 	get: 
 		return energy
+
+@export var max_stamina := 100.0
+var stamina := max_stamina :
+	set(value):
+		stamina = clamp(value, 0, max_stamina)
+		emit_signal("stamina_changed", value)
+	get: 
+		return stamina
 
 var grounded = false
 var entering_underground = false
@@ -38,6 +55,7 @@ var is_switching_form = false
 var is_casted_off = false
 var crashed = false
 var is_in_speed_force = false
+var is_exhausted = false
 
 var current_mask = 1
 var jump_speed = 500
@@ -57,15 +75,18 @@ func _physics_process(delta):
 	var attack = Input.is_action_just_pressed("attack")
 	var switch_form = Input.is_action_pressed("switch_form")
 	var skill = Input.is_action_just_pressed("skill")
+
+	if is_exhausted:
+		destroy(true)
 	
 	if position.x < stable_position and not crashed:
 		if abs(position.x - stable_position) >=1:
 			crashed = true
-			destroy()
+			await destroy(false)
 		else:
 			position.x = stable_position
 
-	if is_switching_form:
+	if is_switching_form and not is_exhausted:
 		if is_casted_off:
 			play("put_on")
 			await _animated_sprite.animation_finished
@@ -78,7 +99,7 @@ func _physics_process(delta):
 			regenEnergyTimer.stop()
 			is_casted_off = true
 		is_switching_form = false
-	elif is_casted_off:
+	elif is_casted_off and not is_exhausted:
 		var up = Input.is_action_pressed("ui_up")
 		var down = Input.is_action_pressed("ui_down")
 		if up and not ceil_touched:
@@ -96,7 +117,7 @@ func _physics_process(delta):
 			play("walk", false, true)
 		elif is_ceil_landing:
 			play("prepare_landing")
-		else: 
+		else:
 			play("fly_forward")
 		if skill: #clock up
 			clock_up()
@@ -120,7 +141,8 @@ func _physics_process(delta):
 		elif not up and not exiting_underground:
 			if undergrounded:
 				emit_signal("walk_underground", false, true, false, false)
-			play("cocoon_walk")
+			if not is_exhausted:
+				play("cocoon_walk")
 		
 #	move_and_collide(velocity * delta)
 	move_and_slide()
@@ -148,8 +170,6 @@ func _physics_process(delta):
 			undergrounded = false
 			if not grounded:
 				grounded = true
-				#emit landing animation
-#				emit_signal("walk_underground", false, false, false, true)
 		is_ceil_landing = false
 		ceil_touched = false
 		if exiting_underground and rayCastBottom.get_collider().collision_mask == 1:
@@ -184,7 +204,7 @@ func _physics_process(delta):
 
 func _on_hit_box_body_entered(body: BaseEnemy):
 	crashed = true
-	destroy()
+	await destroy(false)
 
 func thunder_attack(ceil_touched: bool):
 	if energy >= 3:
@@ -203,9 +223,15 @@ func changeCollisionMask(mask: int) -> void:
 	rayCastBottom.collision_mask = mask
 	_hitbox.collision_mask = mask
  
-func destroy() -> void:
-	var hitbox = get_child(2)
+func destroy(is_exhausted) -> void:
+	var hitbox = get_node("HitBox")
 	remove_child(hitbox)
+	if is_exhausted and is_casted_off:
+		play("exhausted")
+		await _animated_sprite.animation_finished
+	elif is_exhausted and not is_casted_off:
+		play("cocoon_exhausted")
+		await _animated_sprite.animation_finished
 	var explosion_inst = explosion_scn.instantiate()
 	add_child(explosion_inst)
 	await explosion_inst.animation_finished
@@ -220,7 +246,7 @@ func clock_up() -> bool:
 	var clockup_effect = clockup_speed_scn.instantiate()
 	clockup_effect.position = Vector2(-80, 0)
 	add_child(clockup_effect)
-	_animated_sprite.material.set_shader_parameter("contrast", 2)
+#	_animated_sprite.material.set_shader_parameter("contrast", 2)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		enemy.velocity /= 12
@@ -235,7 +261,7 @@ func _on_regen_energy_timer_timeout() -> void:
 
 func _on_clock_over() -> void:
 	print("clock over")
-	_animated_sprite.material.set_shader_parameter("contrast", 1)
+#	_animated_sprite.material.set_shader_parameter("contrast", 1)
 	is_in_speed_force = false
 	clockupTimer.stop()
 	var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -250,3 +276,13 @@ func _on_clock_over() -> void:
 	if clock_up_effect:
 		remove_child(clock_up_effect)
 	emit_signal("clockup_mode", false, 0)
+
+
+func _on_stamina_timer_timeout() -> void:
+	if is_casted_off:
+		stamina -= 0.2
+	else:
+		stamina -= 0.1
+	print(stamina)
+	if stamina == 0 and not crashed:
+		is_exhausted = true

@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://2s0o3pn7hpkc"]
+[gd_scene load_steps=4 format=3 uid="uid://cn1iat65somp8"]
 
 [ext_resource type="Texture2D" uid="uid://n1py7p1nvjau" path="res://prototype-sprites/energy-bar.png" id="1_67e3t"]
-[ext_resource type="Script" path="res://energy-bar-control.gd" id="1_pj2jc"]
+[ext_resource type="Script" path="res://ui/energy-bar-control.gd" id="1_pj2jc"]
 [ext_resource type="Texture2D" uid="uid://cu1t76xyn6ri7" path="res://prototype-sprites/energy-point.png" id="2_5ms3d"]
 
-[node name="Control" type="Control"]
+[node name="Enery-Bar-Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

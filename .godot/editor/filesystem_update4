@@ -4,3 +4,11 @@ res://segments/C.tscn
 res://effects/explosion.tscn
 res://pickup-items/stamina_leaf_item.tscn
 res://segments/A.tscn
+res://game.tscn
+res://ui/energy-bar-control.tscn
+res://ui/stamina_bar.tscn
+res://Player.tscn
+res://pickup-items/score_item.tscn
+res://ui/point_label.tscn
+res://Player.gd
+res://pickup-items/score_item.gd
