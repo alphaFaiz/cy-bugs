@@ -1,13 +1,13 @@
-res://enemies/drake_dragonfly_enemy.gd
 res://enemies/drake_dragonfly_enemy.tscn
 res://Clockup_material.tres
 res://segments/A.tscn
-res://effects/drake_bullet.tscn
 res://enemies/base_enemy.tscn
 res://Player.tscn
 res://enemies/bee_enemy.tscn
 res://enemies/caucasus_enemy.tscn
 res://segments/B.tscn
-res://effects/drake_bullet.gd
 res://enemies/drake_bullet_enemy.tscn
 res://enemies/drake_bullet_enemy.gd
+res://enemies/drake_dragonfly_enemy.gd
+res://Player.gd
+res://game.gd

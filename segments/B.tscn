@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0uawieq135xi"]
+[gd_scene load_steps=11 format=3 uid="uid://b0uawieq135xi"]
 
 [ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_0i0m3"]
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_kp3ie"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_2cbpc"]
 [ext_resource type="PackedScene" uid="uid://vrhs2s0s3mhy" path="res://enemies/caucasus_enemy.tscn" id="4_xhyyr"]
 [ext_resource type="PackedScene" uid="uid://cnsyk6d1p4wir" path="res://enemies/drake_dragonfly_enemy.tscn" id="6_ihea1"]
-[ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="7_yexia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6kvq"]
 texture = ExtResource("1_kp3ie")
@@ -289,7 +288,4 @@ position = Vector2(782, 107)
 position = Vector2(774, 384)
 
 [node name="drake_enemy" parent="." instance=ExtResource("6_ihea1")]
-position = Vector2(456, 428)
-
-[node name="Player" parent="." instance=ExtResource("7_yexia")]
-position = Vector2(206, 426)
+position = Vector2(844, 180)

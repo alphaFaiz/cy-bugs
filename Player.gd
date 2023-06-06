@@ -252,6 +252,8 @@ func clock_up() -> bool:
 		enemy.velocity /= 12
 		enemy.speed /= 12
 		enemy.animation_speed /= 3.0
+		if enemy.get_node("Timer"):
+			print(enemy)
 	emit_signal("clockup_mode", true)
 	clockupTimer.start()
 	return true

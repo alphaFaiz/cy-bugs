@@ -27,7 +27,7 @@ var segments = [
 ]
 var current_segment_index = 0
 
-var speed = 200   
+var speed = 100   
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if _player and _energy_bar and _stamina_bar:

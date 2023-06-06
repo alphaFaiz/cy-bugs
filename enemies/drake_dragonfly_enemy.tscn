@@ -119,7 +119,6 @@ animation = &"attack"
 position = Vector2(2, 3)
 
 [node name="DetectionArea" parent="." index="2"]
-visible = true
 position = Vector2(2, 2)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
@@ -127,7 +126,6 @@ position = Vector2(-422, -3)
 shape = SubResource("CircleShape2D_808hn")
 
 [node name="AttackArea" parent="." index="3"]
-visible = true
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
@@ -135,6 +133,5 @@ position = Vector2(-320, -4)
 shape = SubResource("CircleShape2D_ndefg")
 
 [node name="ShootTimer" type="Timer" parent="." index="6"]
-wait_time = 2.0
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

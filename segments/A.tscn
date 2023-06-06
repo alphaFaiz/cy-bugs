@@ -230,10 +230,10 @@ position = Vector2(512.938, 636.766)
 shape = SubResource("RectangleShape2D_bnpfq")
 
 [node name="bee_enemy" parent="." instance=ExtResource("4_qdqpt")]
-position = Vector2(276, 238)
+position = Vector2(868, 287)
 
 [node name="caucasus_enemy" parent="." instance=ExtResource("5_c61wd")]
 position = Vector2(856, 392)
 
 [node name="drake_enemy" parent="." instance=ExtResource("7_jmpsx")]
-position = Vector2(695, 459)
+position = Vector2(883, 208)
