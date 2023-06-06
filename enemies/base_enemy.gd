@@ -6,6 +6,8 @@ const explosion_scn = preload("res://effects/explosion.tscn")
 @onready var _detection_area: Area2D = $DetectionArea
 @onready var _attack_area: Area2D = $AttackArea
 @onready var _collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var _top_raycast: RayCast2D = $RayCastTop
+@onready var _bottom_raycast: RayCast2D = $RayCastBottom
 
 var default_speed = 80.0
 var default_animation_speed = 1
@@ -30,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	_target = find_target()
 	if is_attacking:
 		animation_name = "attack"
+		attack_player()
 	elif _target:
 		animation_name = "approach"
 		orbit_target()
@@ -49,6 +52,9 @@ func find_target() -> Player:
 	return null
 
 func _on_attack_area_body_entered(player: Player) -> void:
+	pass
+
+func attack_player():
 	pass
 
 func destroy() -> void:

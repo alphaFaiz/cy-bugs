@@ -95,14 +95,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aghni"]
-radius = 23.0286
-height = 92.0201
+radius = 15.0296
+height = 109.924
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8oyo"]
-radius = 431.042
+resource_local_to_scene = true
+radius = 157.918
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7w3qt"]
-radius = 232.078
+resource_local_to_scene = true
+radius = 110.164
 
 [node name="base_enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_ngmta")
@@ -130,3 +132,9 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_7w3qt")
+
+[node name="RayCastTop" type="RayCast2D" parent="."]
+target_position = Vector2(0, -28)
+
+[node name="RayCastBottom" type="RayCast2D" parent="."]
+target_position = Vector2(0, 28)

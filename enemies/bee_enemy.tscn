@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqanqh8wnjgit"]
+[gd_scene load_steps=19 format=3 uid="uid://bqanqh8wnjgit"]
 
 [ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_6p3yr"]
 [ext_resource type="Script" path="res://enemies/bee_enemy.gd" id="2_218lu"]
@@ -94,6 +94,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lc53"]
+resource_local_to_scene = true
+radius = 383.575
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v4d7g"]
+resource_local_to_scene = true
+radius = 272.046
+
 [node name="bee_enemy" instance=ExtResource("1_6p3yr")]
 script = ExtResource("2_218lu")
 
@@ -103,3 +111,15 @@ sprite_frames = SubResource("SpriteFrames_18sv5")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -2)
+
+[node name="DetectionArea" parent="." index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_6lc53")
+
+[node name="AttackArea" parent="." index="3"]
+visible = true
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_v4d7g")

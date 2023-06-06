@@ -283,6 +283,5 @@ func _on_stamina_timer_timeout() -> void:
 		stamina -= 0.2
 	else:
 		stamina -= 0.1
-	print(stamina)
 	if stamina == 0 and not crashed:
 		is_exhausted = true

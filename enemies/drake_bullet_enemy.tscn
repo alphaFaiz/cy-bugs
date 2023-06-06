@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://b24eghi870kf7"]
+
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_b1uuo"]
+[ext_resource type="Texture2D" uid="uid://lhguxi0pwqx3" path="res://prototype-sprites/Drake-bullet.png" id="2_24q8c"]
+[ext_resource type="Script" path="res://enemies/drake_bullet_enemy.gd" id="2_bsfi5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siygg"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h4nu"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp58x"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c023"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2bob"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t86r1"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h23hh"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qbxm"]
+atlas = ExtResource("2_24q8c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s00om"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siygg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h4nu")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp58x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c023")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2bob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t86r1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h23hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qbxm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuwr0"]
+radius = 14.1421
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56fer"]
+resource_local_to_scene = true
+radius = 25.9615
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xit6u"]
+resource_local_to_scene = true
+radius = 19.2354
+
+[node name="drake_bullet_enemy" instance=ExtResource("1_b1uuo")]
+script = ExtResource("2_bsfi5")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(5, 0)
+sprite_frames = SubResource("SpriteFrames_s00om")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_cuwr0")
+
+[node name="DetectionArea" parent="." index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_56fer")
+
+[node name="AttackArea" parent="." index="3"]
+visible = true
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_xit6u")

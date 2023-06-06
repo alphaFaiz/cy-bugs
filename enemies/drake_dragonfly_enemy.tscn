@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=3 uid="uid://cnsyk6d1p4wir"]
+
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_tsqlu"]
+[ext_resource type="Script" path="res://enemies/drake_dragonfly_enemy.gd" id="2_2khrb"]
+[ext_resource type="Texture2D" uid="uid://dvhfofo2d3io" path="res://prototype-sprites/Drake-flying-forward.png" id="3_snsvo"]
+[ext_resource type="Texture2D" uid="uid://ddj2g8k8b8hxt" path="res://prototype-sprites/Drake-attack.png" id="4_c140e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0fh7"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaig3"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj0vf"]
+atlas = ExtResource("4_c140e")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n53ei"]
+atlas = ExtResource("4_c140e")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5fy5"]
+atlas = ExtResource("4_c140e")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpdsb"]
+atlas = ExtResource("4_c140e")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph7xa"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh2yk"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdda8"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv1hg"]
+atlas = ExtResource("3_snsvo")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uscnj"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0fh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaig3")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj0vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n53ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5fy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpdsb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph7xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh2yk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdda8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv1hg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_808hn"]
+resource_local_to_scene = true
+radius = 479.067
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndefg"]
+resource_local_to_scene = true
+radius = 378.223
+
+[node name="drake_enemy" instance=ExtResource("1_tsqlu")]
+script = ExtResource("2_2khrb")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_uscnj")
+animation = &"attack"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, 3)
+
+[node name="DetectionArea" parent="." index="2"]
+visible = true
+position = Vector2(2, 2)
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+position = Vector2(-422, -3)
+shape = SubResource("CircleShape2D_808hn")
+
+[node name="AttackArea" parent="." index="3"]
+visible = true
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2(-320, -4)
+shape = SubResource("CircleShape2D_ndefg")
+
+[node name="ShootTimer" type="Timer" parent="." index="6"]
+wait_time = 2.0
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

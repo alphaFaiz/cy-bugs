@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vrhs2s0s3mhy"]
+[gd_scene load_steps=20 format=3 uid="uid://vrhs2s0s3mhy"]
 
 [ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_6vr4p"]
 [ext_resource type="Script" path="res://enemies/caucasus_enemy.gd" id="2_ofmd7"]
@@ -101,6 +101,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bh7fc"]
+resource_local_to_scene = true
+radius = 449.964
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vfgc"]
+resource_local_to_scene = true
+radius = 320.451
+
 [node name="caucasus_enemy" instance=ExtResource("1_6vr4p")]
 script = ExtResource("2_ofmd7")
 
@@ -108,3 +116,15 @@ script = ExtResource("2_ofmd7")
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_hna6s")
 animation = &"attack"
+
+[node name="DetectionArea" parent="." index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_bh7fc")
+
+[node name="AttackArea" parent="." index="3"]
+visible = true
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_0vfgc")
