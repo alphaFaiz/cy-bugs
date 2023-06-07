@@ -7,7 +7,6 @@ res://enemies/bee_enemy.tscn
 res://enemies/caucasus_enemy.tscn
 res://segments/B.tscn
 res://enemies/drake_bullet_enemy.tscn
-res://enemies/drake_bullet_enemy.gd
-res://enemies/drake_dragonfly_enemy.gd
+res://enemies/kick_hopper_enemy.tscn
+res://enemies/hopper_enemy.gd
 res://Player.gd
-res://game.gd

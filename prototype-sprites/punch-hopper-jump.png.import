@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6t8teclxf3bh"
-path="res://.godot/imported/Leonardo_Diffusion_beetle_eating_leaf_2.jpg-ec3b7a55bac8a4a6fab9dff7f37edd8e.ctex"
+uid="uid://de4rvs1v7v6jy"
+path="res://.godot/imported/punch-hopper-jump.png-4370e6e3de66a765091bd637e3e0da02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://prototype-sprites/Leonardo_Diffusion_beetle_eating_leaf_2.jpg"
-dest_files=["res://.godot/imported/Leonardo_Diffusion_beetle_eating_leaf_2.jpg-ec3b7a55bac8a4a6fab9dff7f37edd8e.ctex"]
+source_file="res://prototype-sprites/punch-hopper-jump.png"
+dest_files=["res://.godot/imported/punch-hopper-jump.png-4370e6e3de66a765091bd637e3e0da02.ctex"]
 
 [params]
 

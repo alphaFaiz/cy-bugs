@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6m46yn8qecf0"
-path="res://.godot/imported/Leonardo_Diffusion_beetle_eating_leaf_3.jpg-3ff923be82e7080f2174e0db8b39e00d.ctex"
+uid="uid://b7vg2mpdbwwf5"
+path="res://.godot/imported/kick-hopper-idle.png-aeb37fd8a191d1a0914c77e1423db2d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://prototype-sprites/Leonardo_Diffusion_beetle_eating_leaf_3.jpg"
-dest_files=["res://.godot/imported/Leonardo_Diffusion_beetle_eating_leaf_3.jpg-3ff923be82e7080f2174e0db8b39e00d.ctex"]
+source_file="res://prototype-sprites/kick-hopper-idle.png"
+dest_files=["res://.godot/imported/kick-hopper-idle.png-aeb37fd8a191d1a0914c77e1423db2d0.ctex"]
 
 [params]
 

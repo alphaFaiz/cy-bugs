@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"approach",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -74,7 +74,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -96,12 +96,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_808hn"]
 resource_local_to_scene = true
-radius = 479.067
+radius = 94.1329
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndefg"]
 resource_local_to_scene = true
@@ -114,15 +114,15 @@ script = ExtResource("2_2khrb")
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_uscnj")
 animation = &"attack"
+autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(2, 3)
 
 [node name="DetectionArea" parent="." index="2"]
-position = Vector2(2, 2)
+position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
-position = Vector2(-422, -3)
 shape = SubResource("CircleShape2D_808hn")
 
 [node name="AttackArea" parent="." index="3"]
@@ -133,5 +133,6 @@ position = Vector2(-320, -4)
 shape = SubResource("CircleShape2D_ndefg")
 
 [node name="ShootTimer" type="Timer" parent="." index="6"]
+wait_time = 1.5
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

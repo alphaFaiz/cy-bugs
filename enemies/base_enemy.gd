@@ -52,7 +52,7 @@ func find_target() -> Player:
 	return null
 
 func _on_attack_area_body_entered(player: Player) -> void:
-	pass
+	is_attacking = true
 
 func attack_player():
 	pass

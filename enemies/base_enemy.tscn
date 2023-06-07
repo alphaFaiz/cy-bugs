@@ -138,3 +138,5 @@ target_position = Vector2(0, -28)
 
 [node name="RayCastBottom" type="RayCast2D" parent="."]
 target_position = Vector2(0, 28)
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

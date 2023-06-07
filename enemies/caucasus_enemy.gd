@@ -10,7 +10,5 @@ func follow(target_global_position: Vector2) -> void:
 	var steering := desired_velocity - _velocity
 	velocity += steering / 3.0
 
-func _on_attack_area_body_entered(player: Player) -> void:
-	is_attacking = true
-	velocity += Vector2(-speed * 4, 0)
-#	move_and_collide(velocity)
+func attack_player() -> void:
+	velocity += Vector2(-speed, 0)

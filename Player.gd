@@ -59,7 +59,9 @@ var is_exhausted = false
 
 var current_mask = 1
 var jump_speed = 500
-var gravity = 200
+#var gravity = 200
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var y_vel = 0
 var max_y_vel = 300
 
@@ -252,8 +254,7 @@ func clock_up() -> bool:
 		enemy.velocity /= 12
 		enemy.speed /= 12
 		enemy.animation_speed /= 3.0
-		if enemy.get_node("Timer"):
-			print(enemy)
+		enemy.gravity /= 12
 	emit_signal("clockup_mode", true)
 	clockupTimer.start()
 	return true
@@ -269,8 +270,8 @@ func _on_clock_over() -> void:
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		if enemy.speed < enemy.default_speed:
-#			enemy.velocity *= 12
 			enemy.speed *= 12
+			enemy.gravity = gravity
 			enemy.animation_speed = enemy.default_animation_speed
 	var regex = RegEx.new()
 	regex.compile("clockUpEffect")

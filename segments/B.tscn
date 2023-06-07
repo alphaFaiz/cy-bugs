@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_kp3ie"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_pnhei"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_2cbpc"]
-[ext_resource type="PackedScene" uid="uid://vrhs2s0s3mhy" path="res://enemies/caucasus_enemy.tscn" id="4_xhyyr"]
-[ext_resource type="PackedScene" uid="uid://cnsyk6d1p4wir" path="res://enemies/drake_dragonfly_enemy.tscn" id="6_ihea1"]
+[ext_resource type="PackedScene" uid="uid://cev3sd1andtkf" path="res://enemies/kick_hopper_enemy.tscn" id="6_i3crk"]
+[ext_resource type="PackedScene" uid="uid://3652aylf4yu6" path="res://Player.tscn" id="7_74wtq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6kvq"]
 texture = ExtResource("1_kp3ie")
@@ -281,11 +281,8 @@ shape = SubResource("RectangleShape2D_m82b5")
 position = Vector2(498.938, 681)
 shape = SubResource("RectangleShape2D_p72fg")
 
-[node name="caucasus_enemy" parent="." instance=ExtResource("4_xhyyr")]
-position = Vector2(782, 107)
+[node name="kick_hopper_enemy" parent="." instance=ExtResource("6_i3crk")]
+position = Vector2(444, 447)
 
-[node name="caucasus_enemy2" parent="." instance=ExtResource("4_xhyyr")]
-position = Vector2(774, 384)
-
-[node name="drake_enemy" parent="." instance=ExtResource("6_ihea1")]
-position = Vector2(844, 180)
+[node name="Player" parent="." instance=ExtResource("7_74wtq")]
+position = Vector2(302, 443)
