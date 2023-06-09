@@ -363,7 +363,7 @@ script = ExtResource("1_b6vio")
 material = ExtResource("2_juuw2")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"cocoon_exhausted"
+animation = &"fly_forward"
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="."]
 position = Vector2(8, 0)

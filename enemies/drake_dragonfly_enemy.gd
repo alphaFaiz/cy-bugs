@@ -28,7 +28,7 @@ func moving() -> void:
 	elif _top_raycast.is_colliding() or global_position.y <= sprite_height:
 		head_down = true	
 
-func attack_player():
+func attack_player(delta = null):
 	if shoot_timer.is_stopped():
 		shoot_timer.start()
 	

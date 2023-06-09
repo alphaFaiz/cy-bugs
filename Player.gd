@@ -52,7 +52,7 @@ var undergrounded = false
 var ceil_touched = false
 var is_ceil_landing = false
 var is_switching_form = false
-var is_casted_off = false
+var is_casted_off = true
 var crashed = false
 var is_in_speed_force = false
 var is_exhausted = false
@@ -60,7 +60,8 @@ var is_exhausted = false
 var current_mask = 1
 var jump_speed = 500
 #var gravity = 200
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: int = default_gravity
 
 var y_vel = 0
 var max_y_vel = 300
@@ -131,9 +132,8 @@ func _physics_process(delta):
 			position.y += y_vel * delta
 		elif up and undergrounded:
 			emit_signal("walk_underground", false, false, true, false)
-			y_vel = -jump_speed * 2
+			y_vel = -jump_speed * 4
 			position.y += y_vel * delta
-			current_mask = 1
 			exiting_underground = true
 		#Only allow go underground when the platform's mask contains only "1"
 		elif down and grounded and rayCastBottom.get_collider().collision_mask == 1:
@@ -171,6 +171,7 @@ func _physics_process(delta):
 		else:
 			undergrounded = false
 			if not grounded:
+				current_mask = 1
 				grounded = true
 		is_ceil_landing = false
 		ceil_touched = false
@@ -180,9 +181,10 @@ func _physics_process(delta):
 		if entering_underground and rayCastBottom.get_collider().collision_mask != 1:
 			entering_underground = false
 	else:
+		if undergrounded and current_mask == 2:
+			current_mask = 1
 		grounded = false
 		undergrounded = false
-				
 	if rayCastPrepareLanding.is_colliding():
 		is_ceil_landing = true
 		grounded = false
@@ -271,7 +273,7 @@ func _on_clock_over() -> void:
 	for enemy in enemies:
 		if enemy.speed < enemy.default_speed:
 			enemy.speed *= 12
-			enemy.gravity = gravity
+			enemy.gravity = default_gravity
 			enemy.animation_speed = enemy.default_animation_speed
 	var regex = RegEx.new()
 	regex.compile("clockUpEffect")

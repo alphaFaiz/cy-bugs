@@ -1,0 +1,169 @@
+[gd_scene load_steps=24 format=3 uid="uid://dsm0egd0ukrjd"]
+
+[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_t5m6s"]
+[ext_resource type="Script" path="res://enemies/sasword_scorpion_enemy.gd" id="2_f0qs1"]
+[ext_resource type="Texture2D" uid="uid://c57dowfo12a0l" path="res://prototype-sprites/sasword-scorpion-walk.png" id="2_kl37c"]
+[ext_resource type="Texture2D" uid="uid://ddcc5k6k6kgya" path="res://prototype-sprites/sasword-scorpion-attack.png" id="3_6nt1a"]
+[ext_resource type="Texture2D" uid="uid://cvkc17uh6k1gy" path="res://prototype-sprites/sasword-scorpion-idle.png" id="3_wurov"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwj33"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5d6h"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kayvh"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5aj3"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frm0d"]
+atlas = ExtResource("3_6nt1a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_widw7"]
+atlas = ExtResource("3_6nt1a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcqhk"]
+atlas = ExtResource("3_6nt1a")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2dp7"]
+atlas = ExtResource("3_6nt1a")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htv4q"]
+atlas = ExtResource("3_wurov")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_636hm"]
+atlas = ExtResource("3_wurov")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh7mf"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a4o8"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v050j"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0n78"]
+atlas = ExtResource("2_kl37c")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sexlw"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwj33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5d6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kayvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5aj3")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frm0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_widw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcqhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2dp7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htv4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_636hm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a4o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v050j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0n78")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmu"]
+size = Vector2(62.6206, 95.9312)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gyfv"]
+resource_local_to_scene = true
+radius = 224.009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xl82"]
+resource_local_to_scene = true
+radius = 154.0
+
+[node name="sasword_scorpion_enemy" instance=ExtResource("1_t5m6s")]
+script = ExtResource("2_f0qs1")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_sexlw")
+animation = &"approach"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_7xxmu")
+
+[node name="DetectionArea" parent="." index="2"]
+visible = true
+
+[node name="CollisionShape2D" parent="DetectionArea" index="0"]
+position = Vector2(-161, 0)
+shape = SubResource("CircleShape2D_3gyfv")
+
+[node name="AttackArea" parent="." index="3"]
+visible = true
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2(-100, 1)
+shape = SubResource("CircleShape2D_1xl82")
+
+[node name="RayCastBottom" parent="." index="5"]
+target_position = Vector2(0, 39)

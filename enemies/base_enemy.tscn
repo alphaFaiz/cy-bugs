@@ -95,8 +95,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aghni"]
-radius = 15.0296
-height = 109.924
+radius = 22.9972
+height = 68.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8oyo"]
 resource_local_to_scene = true
@@ -140,3 +140,4 @@ target_position = Vector2(0, -28)
 target_position = Vector2(0, 28)
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

@@ -103,7 +103,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,9 +147,7 @@ script = ExtResource("2_oic3w")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_epj8h")
-animation = &"approach"
-frame = 4
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_p8wj4")

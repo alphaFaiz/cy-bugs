@@ -17,12 +17,14 @@ var animation_speed = default_animation_speed
 var _velocity := Vector2.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var default_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = default_gravity
 
 var _target: Player
 
 var animation_name = "fly"
 var is_attacking = false
+var grounded = false
 
 func _ready() -> void:
 	_attack_area.connect("body_entered", _on_attack_area_body_entered)
@@ -32,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	_target = find_target()
 	if is_attacking:
 		animation_name = "attack"
-		attack_player()
+		attack_player(delta)
 	elif _target:
 		animation_name = "approach"
 		orbit_target()
@@ -46,15 +48,14 @@ func find_target() -> Player:
 	var overlapping_bodies := _detection_area.get_overlapping_bodies()
 	if not overlapping_bodies.is_empty():
 		var playerArray = overlapping_bodies.filter(func(body): return body is Player)
-		var player = playerArray.front()
-		if player and player.global_position.x < global_position.x:
-			return player
+		if playerArray.size():
+			return playerArray.front()
 	return null
 
 func _on_attack_area_body_entered(player: Player) -> void:
 	is_attacking = true
 
-func attack_player():
+func attack_player(delta = null):
 	pass
 
 func destroy() -> void:
@@ -68,3 +69,6 @@ func destroy() -> void:
 # Orbit around the target if there is one.
 func orbit_target() -> void:
 	pass
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	is_attacking = false

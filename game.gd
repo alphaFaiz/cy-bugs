@@ -22,8 +22,8 @@ var pickup_items = [
 const underground_dirt_scn = preload("res://effects/under_ground_effect.tscn")
 var segments = [
 	preload("res://segments/A.tscn"),
-	preload("res://segments/B.tscn"),
-	preload("res://segments/C.tscn"),
+	preload("res://segments/A.tscn"),
+	preload("res://segments/A.tscn"),
 ]
 var current_segment_index = 0
 
@@ -71,7 +71,6 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 	var regex = RegEx.new()
 	regex.compile("underGroundEffect")
 	var matchNodeName = regex.search(old_dirt_effect.name)
-	
 	var dirt_effect
 	var segment_position = _areas.get_child(segment_index).global_transform.origin
 	var player_position = _player.global_transform.origin
@@ -85,7 +84,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 		dirt_effect = underground_dirt_scn.instantiate()
 		animation_name = "enter"
 		dirt_effect.position = player_position - segment_position + Vector2(0, player_height/1.5)
-	elif walking and matchNodeName and not old_dirt_effect.is_playing():
+	elif walking and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
 		dirt_effect = underground_dirt_scn.instantiate()
 		dirt_effect.position = player_position - segment_position
 		_areas.get_child(segment_index).add_child(dirt_effect)
