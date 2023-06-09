@@ -109,14 +109,10 @@ autoplay = "idle"
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_cuwr0")
 
-[node name="DetectionArea" parent="." index="2"]
-visible = true
-
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
+position = Vector2(112, 0)
 shape = SubResource("CircleShape2D_56fer")
 
-[node name="AttackArea" parent="." index="3"]
-visible = true
-
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2(64, 0)
 shape = SubResource("CircleShape2D_xit6u")

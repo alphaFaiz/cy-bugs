@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d06osablfku3n"]
+[gd_scene load_steps=14 format=3 uid="uid://d06osablfku3n"]
 
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_ajwks"]
 [ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_msve3"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_oaqwc"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_huyfe"]
-[ext_resource type="PackedScene" uid="uid://c6kw7m0h7cxdr" path="res://enemies/worm_enemy.tscn" id="4_ixs6e"]
+[ext_resource type="PackedScene" uid="uid://dsm0egd0ukrjd" path="res://enemies/sasword_scorpion_enemy.tscn" id="5_8b0r6"]
+[ext_resource type="PackedScene" uid="uid://cev3sd1andtkf" path="res://enemies/kick_hopper_enemy.tscn" id="6_vruss"]
+[ext_resource type="PackedScene" uid="uid://4qan3aoyne2w" path="res://enemies/punch_hopper_enemy.tscn" id="7_brlyp"]
+[ext_resource type="PackedScene" uid="uid://bqanqh8wnjgit" path="res://enemies/bee_enemy.tscn" id="8_p38ww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cxm3"]
 texture = ExtResource("1_ajwks")
@@ -287,5 +290,14 @@ shape = SubResource("RectangleShape2D_lwbqy")
 position = Vector2(494, 148.961)
 shape = SubResource("RectangleShape2D_j4mci")
 
-[node name="worm_enemy" parent="." instance=ExtResource("4_ixs6e")]
-position = Vector2(324, 103)
+[node name="sasword_scorpion_enemy" parent="." instance=ExtResource("5_8b0r6")]
+position = Vector2(678, 101)
+
+[node name="kick_hopper_enemy" parent="." instance=ExtResource("6_vruss")]
+position = Vector2(622, 447)
+
+[node name="punch_hopper_enemy" parent="." instance=ExtResource("7_brlyp")]
+position = Vector2(708, 400)
+
+[node name="bee_enemy" parent="." instance=ExtResource("8_p38ww")]
+position = Vector2(804, 42)

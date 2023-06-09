@@ -149,8 +149,14 @@ script = ExtResource("2_v0wl2")
 sprite_frames = SubResource("SpriteFrames_epj8h")
 animation = &"approach"
 
+[node name="DetectionArea" parent="." index="2"]
+visible = false
+
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_p8wj4")
+
+[node name="AttackArea" parent="." index="3"]
+visible = false
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_dvbx1")

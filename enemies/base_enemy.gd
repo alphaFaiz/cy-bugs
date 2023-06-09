@@ -70,5 +70,5 @@ func destroy() -> void:
 func orbit_target() -> void:
 	pass
 
-func _on_attack_area_body_exited(body: Node2D) -> void:
+func _on_attack_area_body_exited(player: Player) -> void:
 	is_attacking = false

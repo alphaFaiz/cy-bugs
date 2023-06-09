@@ -135,9 +135,8 @@ size = Vector2(62.6206, 95.9312)
 resource_local_to_scene = true
 radius = 224.009
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1xl82"]
-resource_local_to_scene = true
-radius = 154.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgqnt"]
+size = Vector2(353, 99)
 
 [node name="sasword_scorpion_enemy" instance=ExtResource("1_t5m6s")]
 script = ExtResource("2_f0qs1")
@@ -152,18 +151,18 @@ position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_7xxmu")
 
 [node name="DetectionArea" parent="." index="2"]
-visible = true
+visible = false
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 position = Vector2(-161, 0)
 shape = SubResource("CircleShape2D_3gyfv")
 
 [node name="AttackArea" parent="." index="3"]
-visible = true
+visible = false
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(-100, 1)
-shape = SubResource("CircleShape2D_1xl82")
+position = Vector2(-122.5, -14.5)
+shape = SubResource("RectangleShape2D_hgqnt")
 
 [node name="RayCastBottom" parent="." index="5"]
 target_position = Vector2(0, 39)

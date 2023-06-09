@@ -22,8 +22,8 @@ var pickup_items = [
 const underground_dirt_scn = preload("res://effects/under_ground_effect.tscn")
 var segments = [
 	preload("res://segments/A.tscn"),
-	preload("res://segments/A.tscn"),
-	preload("res://segments/A.tscn"),
+	preload("res://segments/B.tscn"),
+	preload("res://segments/C.tscn"),
 ]
 var current_segment_index = 0
 

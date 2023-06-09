@@ -96,7 +96,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aghni"]
 radius = 22.9972
-height = 68.0
+height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8oyo"]
 resource_local_to_scene = true
@@ -122,13 +122,13 @@ rotation = 1.55509
 shape = SubResource("CapsuleShape2D_aghni")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(-111, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_c8oyo")
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(-63, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_7w3qt")

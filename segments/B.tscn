@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0uawieq135xi"]
+[gd_scene load_steps=11 format=3 uid="uid://b0uawieq135xi"]
 
 [ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="1_0i0m3"]
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="1_kp3ie"]
 [ext_resource type="PackedScene" uid="uid://gp5l3oggxsnp" path="res://pickup-items/lightning_item.tscn" id="2_pnhei"]
 [ext_resource type="PackedScene" uid="uid://blaprf7osksqh" path="res://pickup-items/score_item.tscn" id="3_2cbpc"]
 [ext_resource type="PackedScene" uid="uid://dsm0egd0ukrjd" path="res://enemies/sasword_scorpion_enemy.tscn" id="5_db02u"]
+[ext_resource type="PackedScene" uid="uid://vrhs2s0s3mhy" path="res://enemies/caucasus_enemy.tscn" id="6_mxmum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6kvq"]
 texture = ExtResource("1_kp3ie")
@@ -281,4 +282,10 @@ position = Vector2(498.938, 681)
 shape = SubResource("RectangleShape2D_p72fg")
 
 [node name="sasword_scorpion_enemy" parent="." instance=ExtResource("5_db02u")]
-position = Vector2(717, 429)
+position = Vector2(717, 480)
+
+[node name="caucasus_enemy" parent="." instance=ExtResource("6_mxmum")]
+position = Vector2(813, 90)
+
+[node name="caucasus_enemy2" parent="." instance=ExtResource("6_mxmum")]
+position = Vector2(609, 334)

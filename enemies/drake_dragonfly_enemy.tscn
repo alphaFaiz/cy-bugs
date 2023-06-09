@@ -105,7 +105,7 @@ radius = 94.1329
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndefg"]
 resource_local_to_scene = true
-radius = 378.223
+radius = 684.012
 
 [node name="drake_enemy" instance=ExtResource("1_tsqlu")]
 script = ExtResource("2_2khrb")
@@ -120,19 +120,20 @@ autoplay = "idle"
 position = Vector2(2, 3)
 
 [node name="DetectionArea" parent="." index="2"]
+visible = false
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_808hn")
 
 [node name="AttackArea" parent="." index="3"]
+visible = false
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(-320, -4)
+position = Vector2(-596, -4)
 shape = SubResource("CircleShape2D_ndefg")
 
 [node name="ShootTimer" type="Timer" parent="." index="6"]
-wait_time = 1.5
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

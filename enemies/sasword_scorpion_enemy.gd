@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		grounded = false
 	move_and_collide(velocity * delta)
-#	move_and_slide()
 
 func orbit_target() -> void:
 	var desired_velocity: Vector2 = global_position.direction_to(_target.global_position) * speed
@@ -41,4 +40,3 @@ func attack_player(delta = null):
 		velocity *= 4
 		_animated_sprite.speed_scale = animation_speed
 		_animated_sprite.play("attack")
-	#	await _animated_sprite.animation_finished
