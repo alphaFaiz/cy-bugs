@@ -1,7 +1,10 @@
+TextureButton
+AnimatedSprite2D
+AnimationPlayer
+Control
 Timer
 RayCast2D
 CollisionShape2D
-AnimatedSprite2D
 CharacterBody2D
 Label
 ProgressBar
@@ -11,7 +14,6 @@ Area2D
 Sprite2D
 TextureRect
 VBoxContainer
-AnimationPlayer
 ParallaxLayer
 ParallaxBackground
 TileMap

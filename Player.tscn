@@ -363,7 +363,9 @@ script = ExtResource("1_b6vio")
 material = ExtResource("2_juuw2")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
-animation = &"fly_forward"
+animation = &"walk"
+frame = 1
+frame_progress = 0.452553
 
 [node name="RayCast2DBottom" type="RayCast2D" parent="."]
 position = Vector2(8, 0)

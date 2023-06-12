@@ -36,6 +36,7 @@ func _ready():
 		_player.connect("clockup_mode", handle_clockup)
 		_player.connect("stamina_changed", _stamina_bar.set_stamina)
 		_player.connect("point_changed", _point_label.set_point)
+		_player.connect("game_over", handle_game_over)
 	randomize()
 	spawn_inst(0, 0)
 	spawn_inst(bounds_fw, 0)
@@ -43,6 +44,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func handle_game_over():
+	get_tree().change_scene_to_file("res://ui/game-over.tscn")
 	
 func _physics_process(delta):
 	#after the character is moved, clamp its position to the end of the camera bounds

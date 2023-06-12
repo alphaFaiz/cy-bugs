@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://lruas7lofysg"]
+
+[ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="1_sxkdo"]
+[ext_resource type="Script" path="res://ui/game-over.gd" id="1_sxxry"]
+[ext_resource type="Texture2D" uid="uid://c1uiso5tt8dog" path="res://prototype-sprites/replay-button-idle.png" id="2_mty3d"]
+[ext_resource type="Texture2D" uid="uid://dlsjgf8ustgtm" path="res://prototype-sprites/replay-button-pressed.png" id="3_ywqux"]
+[ext_resource type="Texture2D" uid="uid://4k3y0noeidg2" path="res://prototype-sprites/exit-button-idle.png" id="4_loady"]
+[ext_resource type="Texture2D" uid="uid://bfp5v7fsnx1qs" path="res://prototype-sprites/exit-button-pressed.png" id="5_t86hf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llq3b"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(5120, 0, 1024, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quhl3"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(4096, 0, 1024, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j68kt"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(3072, 0, 1024, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhjb"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(2048, 0, 1024, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf1k8"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(1024, 0, 1024, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wij6b"]
+atlas = ExtResource("1_sxkdo")
+region = Rect2(0, 0, 1024, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecmpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llq3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quhl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j68kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luhjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf1k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wij6b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="game-over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxxry")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(513, 325)
+sprite_frames = SubResource("SpriteFrames_ecmpi")
+autoplay = "default"
+
+[node name="ReplayButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 252.0
+offset_right = 488.0
+offset_bottom = 380.0
+texture_normal = ExtResource("2_mty3d")
+texture_pressed = ExtResource("3_ywqux")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 252.0
+offset_right = 669.0
+offset_bottom = 380.0
+texture_normal = ExtResource("4_loady")
+texture_pressed = ExtResource("5_t86hf")
+
+[connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

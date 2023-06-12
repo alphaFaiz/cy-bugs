@@ -7,6 +7,7 @@ signal walk_underground(enter, normal_walk, exit, landing_ground)
 signal ground_landing
 signal clockup_mode(turned_on)
 signal point_changed(new_point)
+signal game_over
 
 @onready var rayCastBottom = $RayCast2DBottom
 @onready var rayCastPrepareLanding = $RayCast2DPrepareLanding
@@ -239,6 +240,7 @@ func destroy(is_exhausted) -> void:
 	var explosion_inst = explosion_scn.instantiate()
 	add_child(explosion_inst)
 	await explosion_inst.animation_finished
+	emit_signal("game_over")
 	queue_free()
 
 func clock_up() -> bool:
