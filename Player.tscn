@@ -1,9 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://3652aylf4yu6"]
+[gd_scene load_steps=55 format=3 uid="uid://bp4t61akwt6bb"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_b6vio"]
-[ext_resource type="Material" uid="uid://ckqgtk1p6dliv" path="res://Clockup_material.tres" id="2_juuw2"]
 [ext_resource type="Texture2D" uid="uid://b63wpywcg2h8e" path="res://prototype-sprites/kabuto-fly-down.png" id="2_o70cn"]
 [ext_resource type="Texture2D" uid="uid://mqwlw8jnl6ny" path="res://prototype-sprites/kabuto-cocoon-walk.png" id="2_rwjiq"]
+[ext_resource type="Material" path="res://resources/Clockup_material.tres" id="2_uu08t"]
 [ext_resource type="Texture2D" uid="uid://dsci8ejlwi4jg" path="res://prototype-sprites/kabuto-fly-foward.png" id="3_vue6w"]
 [ext_resource type="Texture2D" uid="uid://cnesidf3e6tmr" path="res://prototype-sprites/kabuto-fly-up.png" id="4_f6xqa"]
 [ext_resource type="Texture2D" uid="uid://bpnhtlktmf16x" path="res://prototype-sprites/kabuto-cocoon-exhausted-walk.png" id="4_nl43w"]
@@ -360,7 +360,7 @@ height = 106.05
 script = ExtResource("1_b6vio")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_juuw2")
+material = ExtResource("2_uu08t")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_n1khf")
 animation = &"walk"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cogfsg7tm68nd"]
+[gd_scene load_steps=30 format=3 uid="uid://cogfsg7tm68nd"]
 
 [ext_resource type="Script" path="res://main-menu.gd" id="1_m6ma2"]
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="2_kcjcb"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://0li1n0b6f8uo" path="res://prototype-sprites/play-button-pressed.png" id="4_0bmic"]
 [ext_resource type="Texture2D" uid="uid://1f6mfrrdeysy" path="res://prototype-sprites/setting-button-idle.png" id="5_hbg1t"]
 [ext_resource type="Texture2D" uid="uid://cgw48544qt70g" path="res://prototype-sprites/setting-button-pressed.png" id="6_2tiwg"]
-[ext_resource type="Texture2D" uid="uid://dduptnh2y5xqx" path="res://prototype-sprites/score-button-idle.png" id="7_gge8w"]
-[ext_resource type="Texture2D" uid="uid://dthek2g6fqkfi" path="res://prototype-sprites/score-button-pressed.png" id="8_h0n3p"]
+[ext_resource type="Texture2D" uid="uid://h32lnbxistpa" path="res://prototype-sprites/about-button-idle.png" id="7_2y8fp"]
+[ext_resource type="Texture2D" uid="uid://cp4kjo124or6p" path="res://prototype-sprites/about-button-pressed.png" id="8_21c1c"]
 [ext_resource type="Texture2D" uid="uid://dhtb6mm8f4665" path="res://prototype-sprites/kabuto-cast-off.png" id="9_544ev"]
 [ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="9_ueyaj"]
+[ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="11_23lmf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28h4d"]
 atlas = ExtResource("2_kcjcb")
@@ -137,6 +138,12 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_p7182"]
+font = ExtResource("11_23lmf")
+font_size = 20
+outline_size = 3
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+
 [node name="main-menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -165,19 +172,29 @@ offset_bottom = 599.0
 texture_normal = ExtResource("5_hbg1t")
 texture_pressed = ExtResource("6_2tiwg")
 
-[node name="HighScoreButton" type="TextureButton" parent="."]
+[node name="AboutButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 615.0
 offset_top = 470.0
 offset_right = 743.0
 offset_bottom = 598.0
-texture_normal = ExtResource("7_gge8w")
-texture_pressed = ExtResource("8_h0n3p")
+texture_normal = ExtResource("7_2y8fp")
+texture_pressed = ExtResource("8_21c1c")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(513, 324)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_i4oeh")
 autoplay = "default"
+
+[node name="HighScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 112.0
+offset_right = 643.0
+offset_bottom = 202.0
+label_settings = SubResource("LabelSettings_p7182")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

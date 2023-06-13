@@ -5,10 +5,15 @@ extends Control
 @onready var highscore_button = $HighScoreButton
 @onready var characterAnimation = $CharacterAnimatedSprite2D
 
+@onready var score_label = $HighScoreLabel
+var save_file_path = "user://save/"
+var save_file_name = "PlayerScore.tres"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if ResourceLoader.exists(save_file_path + save_file_name):
+		var playerData = ResourceLoader.load(save_file_path + save_file_name)
+		score_label.text = "HIGHEST SCORE: " + str(playerData.high_score)
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

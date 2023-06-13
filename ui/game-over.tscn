@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lruas7lofysg"]
+[gd_scene load_steps=16 format=3 uid="uid://lruas7lofysg"]
 
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="1_sxkdo"]
 [ext_resource type="Script" path="res://ui/game-over.gd" id="1_sxxry"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlsjgf8ustgtm" path="res://prototype-sprites/replay-button-pressed.png" id="3_ywqux"]
 [ext_resource type="Texture2D" uid="uid://4k3y0noeidg2" path="res://prototype-sprites/exit-button-idle.png" id="4_loady"]
 [ext_resource type="Texture2D" uid="uid://bfp5v7fsnx1qs" path="res://prototype-sprites/exit-button-pressed.png" id="5_t86hf"]
+[ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="7_e5i0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llq3b"]
 atlas = ExtResource("1_sxkdo")
@@ -57,6 +58,12 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_e1mcn"]
+font = ExtResource("7_e5i0j")
+font_size = 20
+outline_size = 2
+outline_color = Color(0.137255, 0.137255, 0.137255, 1)
+
 [node name="game-over" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -88,6 +95,16 @@ offset_right = 669.0
 offset_bottom = 380.0
 texture_normal = ExtResource("4_loady")
 texture_pressed = ExtResource("5_t86hf")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 124.0
+offset_right = 788.0
+offset_bottom = 253.0
+label_settings = SubResource("LabelSettings_e1mcn")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

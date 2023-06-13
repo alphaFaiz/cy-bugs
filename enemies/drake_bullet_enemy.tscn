@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://b24eghi870kf7"]
 
-[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_b1uuo"]
+[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_b1uuo"]
 [ext_resource type="Texture2D" uid="uid://lhguxi0pwqx3" path="res://prototype-sprites/Drake-bullet.png" id="2_24q8c"]
 [ext_resource type="Script" path="res://enemies/drake_bullet_enemy.gd" id="2_bsfi5"]
 

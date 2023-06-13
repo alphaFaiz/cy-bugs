@@ -1,23 +1,13 @@
 extends Resource
 
-const SAVE_FILE_PATH = "user://save_game.save"
+class_name PlayerData
+
+@export var latest_score = 0
 
 @export var high_score = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-#func save_score():
-#	ResourceSaver.save(SAVE_FILE_PATH, self)
-#
-#var save_path = "user://save_game.tres"
-#
-#func save_score():
-#	var file = FileAccess.open(save_path, FileAccess.WRITE)
-#	file.store_var(highscore)
+func change_latest_score(value: int):
+	latest_score = value
+	
+func change_high_score(value: int):
+	high_score = value

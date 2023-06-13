@@ -15,6 +15,11 @@ extends Node2D
 @onready var bounds_uw = camera_pos.y - view.y #the camera bounds at the top
 @onready var bounds_dw = camera_pos.y + view.y #the camera bounds at the bottom
 
+#save game
+var save_file_path = "user://save/"
+var save_file_name = "PlayerScore.tres"
+var playerData
+
 var pickup_items = [
 	preload("res://pickup-items/lightning_item.tscn")
 ]
@@ -26,11 +31,19 @@ var segments = [
 	preload("res://segments/C.tscn"),
 ]
 var current_segment_index = 0
+var player_height = 0
 
 var speed = 200   
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	verify_save_directory(save_file_path)
+	if ResourceLoader.exists(save_file_path + save_file_name):
+		playerData = ResourceLoader.load(save_file_path + save_file_name)
+	else:
+		playerData = PlayerData.new()
+
 	if _player and _energy_bar and _stamina_bar:
+		player_height = _player.get_node("CollisionShape2D").shape.radius
 		_player.connect("energy_changed", _energy_bar.set_energy)
 		_player.connect("walk_underground", add_underground_effect)
 		_player.connect("clockup_mode", handle_clockup)
@@ -41,18 +54,24 @@ func _ready():
 	spawn_inst(0, 0)
 	spawn_inst(bounds_fw, 0)
 	
+func verify_save_directory(path: String):
+	DirAccess.make_dir_absolute(path)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
-func handle_game_over():
+func handle_game_over(current_point):
+	if current_point > playerData.high_score:
+		playerData.change_high_score(current_point)
+	playerData.change_latest_score(current_point)
+	ResourceSaver.save(playerData, save_file_path + save_file_name)
 	get_tree().change_scene_to_file("res://ui/game-over.tscn")
 	
 func _physics_process(delta):
 	#after the character is moved, clamp its position to the end of the camera bounds
 	if _player:
 		_player.global_position.x = clamp(_player.global_position.x, bounds_bw, bounds_fw)
-		_player.global_position.y = clamp(_player.global_position.y, bounds_uw, bounds_dw)
+		_player.global_position.y = clamp(_player.global_position.y, bounds_uw + player_height * 2, bounds_dw)
 
 	var player_position = _player.global_transform.origin
 	for area in _areas.get_children():
