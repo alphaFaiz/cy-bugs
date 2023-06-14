@@ -95,8 +95,8 @@ func _ready() -> void:
 	print("spawn_enemy_times: ", spawn_enemy_times)
 	for i in spawn_enemy_times:
 		spawn_enemy()
-	for i in spawn_item_times:
-		spawn_item()
+#	for i in spawn_item_times:
+#		spawn_item()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -110,6 +110,13 @@ func spawn_item():
 	var inst = items[index].src.instantiate()
 	#get instance height
 	var inst_height = inst.get_node("CollisionShape2D").shape.radius
+	if has_step:
+		var spawn_y_ranges = [step.position.y, y_down_border - y_end_of_step]
+		var range_index = randi() % len(spawn_y_ranges.size) + 1
+		y_position = randi() % int(spawn_y_ranges[range_index]) + 1
+		#divide 3 (or maybe 4) areas (above the step, under the step, next to the step), 
+		#random to select one of the area and spawn it
+		pass
 	if not item.can_be_underground:
 		y_position = randi() % int(y_underground_border) + 1
 	elif y_underground_border < y_position:

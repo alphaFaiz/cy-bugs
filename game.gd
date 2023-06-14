@@ -125,7 +125,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 
 func handle_clockup(turned_on, time_left) -> void:
 	if turned_on:
-		_areas.material.set_shader_parameter("contrast", 2)
+		_areas.material.set_shader_parameter("contrast", 1.2)
 		_clockup_bar.show()
 		var player_clockup_timer = _player.get_node("ClockupTimer")
 		_clockup_bar.value = time_left * 100/player_clockup_timer.wait_time
