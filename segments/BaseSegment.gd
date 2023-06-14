@@ -102,6 +102,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func spawn_item():
+	randomize()
 	var index = randi() % len(items)
 	var item = items[index]
 	var x_position = randi() % int(x_right_border) + 1
@@ -113,7 +114,8 @@ func spawn_item():
 		y_position = randi() % int(y_underground_border) + 1
 	elif y_underground_border < y_position:
 		y_position = y_spawn_underground
-
+#	if has_step:
+		
 	#check around positions for duplicate
 	var smaller_position = Vector2(x_position, y_position)/1.2
 	var larger_position = Vector2(x_position, y_position)*1.2
