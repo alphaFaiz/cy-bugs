@@ -1,7 +1,7 @@
 extends BaseEnemy
 
 func orbit_target() -> void:
-	var direction := _target.global_position.direction_to(global_position)
+#	var direction := _target.global_position.direction_to(global_position)
 	follow(_target.global_position)
 	
 # Steers towards the target position.

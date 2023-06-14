@@ -23,12 +23,12 @@ func moving() -> void:
 	else:
 		velocity = Vector2(0, -speed)
 		
-	if _bottom_raycast.is_colliding():
+	if _bottom_raycast.is_colliding() or global_position.y >= get_viewport_rect().size.y:
 		head_down = false
 	elif _top_raycast.is_colliding() or global_position.y <= sprite_height:
 		head_down = true	
 
-func attack_player(delta = null):
+func attack_player(_delta = null):
 	if shoot_timer.is_stopped():
 		shoot_timer.start()
 	

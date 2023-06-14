@@ -12,5 +12,5 @@ func follow(target_global_position: Vector2) -> void:
 	var steering := desired_velocity - _velocity
 	velocity += steering / 6.0
 
-func attack_player(delta = null):
+func attack_player(_delta = null):
 	_collision_shape.rotate(PI/2)

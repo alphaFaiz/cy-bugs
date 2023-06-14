@@ -34,7 +34,7 @@ func orbit_target() -> void:
 	desired_velocity.y = 0
 	velocity += desired_velocity / 20.0
 
-func attack_player(delta = null):
+func attack_player(_delta = null):
 	if not is_attacked:
 		is_attacked = true
 		velocity *= 4

@@ -13,20 +13,21 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_v(flipv)
 	_animated_sprite.play(animation)
 
-func _on_body_entered(node: Player) -> void:
-	play("picked")
-	apply_effect(node)
-	await _animated_sprite.animation_finished
-	queue_free()
+func _on_body_entered(node: Node) -> void:
+	if node is Player:
+		play("picked")
+		apply_effect(node)
+		await _animated_sprite.animation_finished
+		queue_free()
 
 #func _physics_process(delta: float) -> void:
 #	position.x -= 200 * delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # Virtual function. Applies this pickup's effect on the body node.
-func apply_effect(player: Player) -> void:
+func apply_effect(_player: Player) -> void:
 	pass
 

@@ -134,6 +134,9 @@ position = Vector2(0, 3)
 position = Vector2(-596, -4)
 shape = SubResource("CircleShape2D_ndefg")
 
+[node name="RayCastBottom" parent="." index="5"]
+position = Vector2(-50, 0)
+
 [node name="ShootTimer" type="Timer" parent="." index="6"]
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

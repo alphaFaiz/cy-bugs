@@ -5,7 +5,7 @@ signal energy_changed(new_energy)
 signal stamina_changed(new_stamina)
 signal walk_underground(enter, normal_walk, exit, landing_ground)
 signal ground_landing
-signal clockup_mode(turned_on)
+signal clockup_mode(turned_on, time_left)
 signal point_changed(new_point)
 signal game_over(current_point)
 
@@ -73,7 +73,8 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.play(animation)
 
 func _ready() -> void:
-	regenEnergyTimer.start()
+#	regenEnergyTimer.start()
+	pass
 
 func _physics_process(delta):
 	var attack = Input.is_action_just_pressed("attack")
@@ -81,12 +82,12 @@ func _physics_process(delta):
 	var skill = Input.is_action_just_pressed("skill")
 
 	if is_exhausted:
-		destroy(true)
+		destroy()
 	
 	if position.x < stable_position and not crashed:
 		if abs(position.x - stable_position) >=1:
 			crashed = true
-			await destroy(false)
+			await destroy()
 		else:
 			position.x = stable_position
 
@@ -153,6 +154,10 @@ func _physics_process(delta):
 	if attack:
 		thunder_attack(ceil_touched)
 
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		position.x += direction * 10
+	
 	if switch_form and not undergrounded:
 		is_switching_form = true
 		current_mask = 1
@@ -207,18 +212,19 @@ func _physics_process(delta):
 	
 	changeCollisionMask(current_mask)
 
-func _on_hit_box_body_entered(body: BaseEnemy):
-	crashed = true
-	await destroy(false)
+func _on_hit_box_body_entered(body: Node):
+	if body is BaseEnemy:
+		crashed = true
+		await destroy()
 
-func thunder_attack(ceil_touched: bool):
+func thunder_attack(is_ceil_touched: bool):
 	if energy >= 3:
 		energy -= 3
 		var thunder_attack_inst = thunder_attack_scn.instantiate()
 		thunder_attack_inst.position = Vector2(_animated_sprite.position)
 		var _attack_sprite = thunder_attack_inst.get_child(1)
 		add_child(thunder_attack_inst)
-		_attack_sprite.set_flip_v(ceil_touched)
+		_attack_sprite.set_flip_v(is_ceil_touched)
 		_attack_sprite.play("default")
 		await _attack_sprite.animation_finished
 		remove_child(thunder_attack_inst)
@@ -228,7 +234,7 @@ func changeCollisionMask(mask: int) -> void:
 	rayCastBottom.collision_mask = mask
 	_hitbox.collision_mask = mask
  
-func destroy(is_exhausted) -> void:
+func destroy() -> void:
 	var hitbox = get_node("HitBox")
 	remove_child(hitbox)
 	if is_exhausted and is_casted_off:
@@ -259,7 +265,7 @@ func clock_up() -> bool:
 		enemy.speed /= 12
 		enemy.animation_speed /= 3.0
 		enemy.gravity /= 12
-	emit_signal("clockup_mode", true)
+	emit_signal("clockup_mode", true, clockupTimer.get_time_left())
 	clockupTimer.start()
 	return true
 
@@ -287,8 +293,8 @@ func _on_clock_over() -> void:
 
 func _on_stamina_timer_timeout() -> void:
 	if is_casted_off:
-		stamina -= 1
+		stamina -= 0.4
 	else:
-		stamina -= 0.2
+		stamina -= 0.1
 	if stamina == 0 and not crashed:
 		is_exhausted = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://dsm0egd0ukrjd"]
 
-[ext_resource type="PackedScene" uid="uid://dwnh4p0oumwto" path="res://enemies/base_enemy.tscn" id="1_t5m6s"]
+[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_t5m6s"]
 [ext_resource type="Script" path="res://enemies/sasword_scorpion_enemy.gd" id="2_f0qs1"]
 [ext_resource type="Texture2D" uid="uid://c57dowfo12a0l" path="res://prototype-sprites/sasword-scorpion-walk.png" id="2_kl37c"]
 [ext_resource type="Texture2D" uid="uid://ddcc5k6k6kgya" path="res://prototype-sprites/sasword-scorpion-attack.png" id="3_6nt1a"]
@@ -129,7 +129,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmu"]
-size = Vector2(62.6206, 95.9312)
+size = Vector2(62.6206, 76.8992)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gyfv"]
 resource_local_to_scene = true
@@ -147,7 +147,7 @@ sprite_frames = SubResource("SpriteFrames_sexlw")
 animation = &"approach"
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-2, -4)
+position = Vector2(-11.5148, -3.85054)
 shape = SubResource("RectangleShape2D_7xxmu")
 
 [node name="DetectionArea" parent="." index="2"]

@@ -32,7 +32,7 @@ func hopper_move(delta: float) -> void:
 	if not grounded and not jumping:
 		velocity.y += gravity * delta
 
-func attack_player(delta = null):
+func attack_player(_delta = null):
 	_animated_sprite.speed_scale = animation_speed
 	_animated_sprite.play("attack")
 	if gravity < default_gravity:

@@ -27,7 +27,8 @@ var is_attacking = false
 var grounded = false
 
 func _ready() -> void:
-	_attack_area.connect("body_entered", _on_attack_area_body_entered)
+	pass
+#	_attack_area.connect("body_entered", _on_attack_area_body_entered)
 #	.connect("body_entered", _on_body_entered)
 
 func _physics_process(delta: float) -> void:
@@ -52,10 +53,11 @@ func find_target() -> Player:
 			return playerArray.front()
 	return null
 
-func _on_attack_area_body_entered(player: Player) -> void:
-	is_attacking = true
+func _on_attack_area_body_entered(node: Node) -> void:
+	if node is Player:
+		is_attacking = true
 
-func attack_player(delta = null):
+func attack_player(_delta = null):
 	pass
 
 func destroy() -> void:
@@ -70,5 +72,6 @@ func destroy() -> void:
 func orbit_target() -> void:
 	pass
 
-func _on_attack_area_body_exited(player: Player) -> void:
-	is_attacking = false
+func _on_attack_area_body_exited(node: Node) -> void:
+	if node is Player:
+		is_attacking = false

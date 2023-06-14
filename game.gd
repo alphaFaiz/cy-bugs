@@ -26,8 +26,8 @@ var pickup_items = [
 
 const underground_dirt_scn = preload("res://effects/under_ground_effect.tscn")
 var segments = [
-	preload("res://segments/A.tscn"),
-	preload("res://segments/B.tscn"),
+	preload("res://segments/C.tscn"),
+	preload("res://segments/C.tscn"),
 	preload("res://segments/C.tscn"),
 ]
 var current_segment_index = 0
@@ -57,7 +57,7 @@ func _ready():
 func verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func handle_game_over(current_point):
@@ -110,7 +110,6 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 	elif walking and (!matchNodeName || matchNodeName and not old_dirt_effect.is_playing()):
 		dirt_effect = underground_dirt_scn.instantiate()
 		dirt_effect.position = player_position - segment_position
-		_areas.get_child(segment_index).add_child(dirt_effect)
 	elif is_exiting:
 		dirt_effect = underground_dirt_scn.instantiate()
 		animation_name = "exit"

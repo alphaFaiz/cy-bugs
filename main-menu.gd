@@ -2,7 +2,6 @@ extends Control
 
 @onready var play_button = $PlayButton
 @onready var setting_button = $SettingButton
-@onready var highscore_button = $HighScoreButton
 @onready var characterAnimation = $CharacterAnimatedSprite2D
 
 @onready var score_label = $HighScoreLabel
@@ -16,7 +15,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not characterAnimation.is_playing():
 		characterAnimation.play("walk")
 
