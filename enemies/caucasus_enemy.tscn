@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://vrhs2s0s3mhy"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_6vr4p"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_6vr4p"]
 [ext_resource type="Script" path="res://enemies/caucasus_enemy.gd" id="2_ofmd7"]
 [ext_resource type="Texture2D" uid="uid://ba8mls1ubmq7o" path="res://prototype-sprites/caucasus-prepare-landing.png" id="3_aqyxf"]
 [ext_resource type="Texture2D" uid="uid://bln8uo14b33s2" path="res://prototype-sprites/caucasus-attack.png" id="4_tocv2"]
@@ -115,7 +115,7 @@ script = ExtResource("2_ofmd7")
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_hna6s")
-animation = &"attack"
+animation = &"walk"
 
 [node name="DetectionArea" parent="." index="2"]
 visible = false

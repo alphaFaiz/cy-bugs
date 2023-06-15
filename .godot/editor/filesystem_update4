@@ -1,8 +1,7 @@
-res://segments/C.tscn
+res://segments/test-environment.tscn
+res://enemies/kick_hopper_enemy.tscn
+res://enemies/hopper_enemy.gd
+res://Player.gd
+res://enemies/punch_hopper_enemy.tscn
 res://segments/BaseSegment.gd
-res://segments/A.tscn
-res://segments/B.tscn
-res://segments/BaseSegment.tscn
-res://Player.tscn
-res://main-menu.tscn
 res://game.gd

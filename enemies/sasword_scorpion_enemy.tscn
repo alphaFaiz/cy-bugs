@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://dsm0egd0ukrjd"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_t5m6s"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_t5m6s"]
 [ext_resource type="Script" path="res://enemies/sasword_scorpion_enemy.gd" id="2_f0qs1"]
 [ext_resource type="Texture2D" uid="uid://c57dowfo12a0l" path="res://prototype-sprites/sasword-scorpion-walk.png" id="2_kl37c"]
 [ext_resource type="Texture2D" uid="uid://ddcc5k6k6kgya" path="res://prototype-sprites/sasword-scorpion-attack.png" id="3_6nt1a"]

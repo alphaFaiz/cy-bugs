@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	elif _target:
 		animation_name = "approach"
 		orbit_target()
+	elif _bottom_raycast.is_colliding():# and _bottom_raycast.get_collider().collision_mask == 1:
+		animation_name = "walk"
 	else:
 		animation_name = "idle"
 	_animated_sprite.play(animation_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://c62elcy8ir21"]
 
 [ext_resource type="Script" path="res://enemies/base_enemy.gd" id="1_ngmta"]
 [ext_resource type="Texture2D" uid="uid://5fiseqmatvsl" path="res://prototype-sprites/bee-approach.png" id="2_hlknh"]
@@ -122,12 +122,14 @@ rotation = 1.55509
 shape = SubResource("CapsuleShape2D_aghni")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(-111, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_c8oyo")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(-63, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]

@@ -11,6 +11,7 @@ func _physics_process(delta: float) -> void:
 		_animated_sprite.play(animation_name)
 		orbit_target()
 	else:
+		velocity.x = 0
 		animation_name = "idle"
 		_animated_sprite.play(animation_name)
 	_animated_sprite.speed_scale = animation_speed

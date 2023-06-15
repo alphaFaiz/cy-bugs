@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cev3sd1andtkf"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_hfn06"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_hfn06"]
 [ext_resource type="Script" path="res://enemies/hopper_enemy.gd" id="2_oic3w"]
 [ext_resource type="Texture2D" uid="uid://cetqnkobscnhj" path="res://prototype-sprites/kick-hopper-jump.png" id="3_mrfhs"]
 [ext_resource type="Texture2D" uid="uid://b7vg2mpdbwwf5" path="res://prototype-sprites/kick-hopper-idle.png" id="4_02h0m"]
@@ -86,7 +86,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"approach",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -103,7 +103,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 20.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,16 +147,13 @@ script = ExtResource("2_oic3w")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_epj8h")
-animation = &"attack"
-
-[node name="DetectionArea" parent="." index="2"]
-visible = false
+animation = &"approach"
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_p8wj4")
 
 [node name="AttackArea" parent="." index="3"]
-visible = false
+visible = true
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_dvbx1")

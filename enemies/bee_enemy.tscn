@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bqanqh8wnjgit"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_6p3yr"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_6p3yr"]
 [ext_resource type="Script" path="res://enemies/bee_enemy.gd" id="2_218lu"]
 [ext_resource type="Texture2D" uid="uid://5fiseqmatvsl" path="res://prototype-sprites/bee-approach.png" id="2_q2vea"]
 [ext_resource type="Texture2D" uid="uid://c4ko2cid3k5ba" path="res://prototype-sprites/bee-attack.png" id="3_d6fna"]
@@ -108,6 +108,8 @@ script = ExtResource("2_218lu")
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_18sv5")
+animation = &"walk"
+frame_progress = 0.919697
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -2)
@@ -120,6 +122,7 @@ position = Vector2(-343, 0)
 shape = SubResource("CircleShape2D_6lc53")
 
 [node name="AttackArea" parent="." index="3"]
+visible = false
 position = Vector2(-233, 0)
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]

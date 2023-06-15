@@ -148,8 +148,8 @@ func _physics_process(delta):
 			if not is_exhausted:
 				play("cocoon_walk")
 		
-#	move_and_collide(velocity * delta)
-	move_and_slide()
+	move_and_collide(velocity * delta)
+#	move_and_slide()
 	
 	if attack:
 		thunder_attack(ceil_touched)
@@ -164,7 +164,7 @@ func _physics_process(delta):
 	
 	if is_in_speed_force:
 		emit_signal("clockup_mode", true, clockupTimer.get_time_left())
-	if rayCastBottom.is_colliding():
+	if rayCastBottom.is_colliding() and not rayCastBottom.get_collider() is BaseEnemy:
 		var orig = rayCastBottom.global_transform.origin
 		var coll = rayCastBottom.get_collision_point()		
 		var dist = abs(orig.y - coll.y)
@@ -197,7 +197,7 @@ func _physics_process(delta):
 	else:
 		is_ceil_landing = false
 	
-	if rayCastTop.is_colliding():
+	if rayCastTop.is_colliding() and not rayCastBottom.get_collider() is BaseEnemy:
 		var orig = rayCastTop.global_transform.origin
 		var coll = rayCastTop.get_collision_point()
 		var dist = abs(orig.y - coll.y)

@@ -61,6 +61,8 @@ func _process(_delta):
 	pass
 	
 func handle_game_over(current_point):
+	_areas.material.set_shader_parameter("contrast", 1)
+	_clockup_bar.hide()
 	if current_point > playerData.high_score:
 		playerData.change_high_score(current_point)
 	playerData.change_latest_score(current_point)
@@ -74,6 +76,7 @@ func _physics_process(delta):
 		_player.global_position.y = clamp(_player.global_position.y, bounds_uw + player_height * 2, bounds_dw)
 
 	var player_position = _player.global_transform.origin
+	print("LENGTH: ", len(_areas.get_children()))
 	for area in _areas.get_children():
 		area.position.x -= speed * delta
 		if area.position.x < -bounds_fw - speed * delta:
@@ -125,7 +128,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 
 func handle_clockup(turned_on, time_left) -> void:
 	if turned_on:
-		_areas.material.set_shader_parameter("contrast", 1.2)
+		_areas.material.set_shader_parameter("contrast", 1.5)
 		_clockup_bar.show()
 		var player_clockup_timer = _player.get_node("ClockupTimer")
 		_clockup_bar.value = time_left * 100/player_clockup_timer.wait_time
