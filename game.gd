@@ -76,7 +76,6 @@ func _physics_process(delta):
 		_player.global_position.y = clamp(_player.global_position.y, bounds_uw + player_height * 2, bounds_dw)
 
 	var player_position = _player.global_transform.origin
-	print("LENGTH: ", len(_areas.get_children()))
 	for area in _areas.get_children():
 		area.position.x -= speed * delta
 		if area.position.x < -bounds_fw - speed * delta:
