@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://blaprf7osksqh"]
+[gd_scene load_steps=17 format=3 uid="uid://blaprf7osksqh"]
 
 [ext_resource type="PackedScene" uid="uid://d2b4pil8rjuvn" path="res://pickup-items/base_pickup.tscn" id="1_0xhel"]
 [ext_resource type="Script" path="res://pickup-items/score_item.gd" id="2_1lmyp"]
 [ext_resource type="Texture2D" uid="uid://dm8r1oaiiq5dr" path="res://prototype-sprites/score.png" id="2_cc5fj"]
 [ext_resource type="Texture2D" uid="uid://cvdcxlux8v48e" path="res://prototype-sprites/coin-picked.png" id="3_kq7hg"]
+[ext_resource type="AudioStream" uid="uid://s57i8ihe81ou" path="res://sounds/score_item.wav" id="5_mp3ba"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4uivp"]
 atlas = ExtResource("2_cc5fj")
@@ -97,3 +98,6 @@ position = Vector2(0, 0)
 scale = Vector2(0.55, 0.544)
 sprite_frames = SubResource("SpriteFrames_jx13e")
 animation = &"idle"
+
+[node name="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("5_mp3ba")

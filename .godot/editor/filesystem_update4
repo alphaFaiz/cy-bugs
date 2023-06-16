@@ -1,7 +1,14 @@
 res://segments/test-environment.tscn
 res://enemies/kick_hopper_enemy.tscn
+res://enemies/punch_hopper_enemy.tscn
+res://Player.tscn
+res://ui/background_music.tscn
+res://pickup-items/base_pickup.tscn
+res://pickup-items/score_item.tscn
+res://effects/explosion.tscn
+res://effects/thunder_attack.tscn
+res://segments/A.tscn
+res://segments/B.tscn
+res://segments/C.tscn
 res://enemies/hopper_enemy.gd
 res://Player.gd
-res://enemies/punch_hopper_enemy.tscn
-res://segments/BaseSegment.gd
-res://game.gd

@@ -26,8 +26,8 @@ var pickup_items = [
 
 const underground_dirt_scn = preload("res://effects/under_ground_effect.tscn")
 var segments = [
-	preload("res://segments/C.tscn"),
-	preload("res://segments/C.tscn"),
+	preload("res://segments/A.tscn"),
+	preload("res://segments/B.tscn"),
 	preload("res://segments/C.tscn"),
 ]
 var current_segment_index = 0
@@ -62,7 +62,6 @@ func _process(_delta):
 	
 func handle_game_over(current_point):
 	_areas.material.set_shader_parameter("contrast", 1)
-	_clockup_bar.hide()
 	if current_point > playerData.high_score:
 		playerData.change_high_score(current_point)
 	playerData.change_latest_score(current_point)
@@ -128,9 +127,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 func handle_clockup(turned_on, time_left) -> void:
 	if turned_on:
 		_areas.material.set_shader_parameter("contrast", 1.5)
-		_clockup_bar.show()
 		var player_clockup_timer = _player.get_node("ClockupTimer")
 		_clockup_bar.value = time_left * 100/player_clockup_timer.wait_time
 	else:
 		_areas.material.set_shader_parameter("contrast", 1)
-		_clockup_bar.hide()

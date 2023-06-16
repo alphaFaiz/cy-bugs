@@ -2,7 +2,7 @@ extends BaseEnemy
 
 const JUMP_VELOCITY = 300.0
 var jumping = false
-var jump_heigh = 160
+var jump_heigh = 200
 @onready var start_attack_position = position
 
 func _physics_process(delta: float) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj65hy0xwcdw7"]
+[gd_scene load_steps=11 format=3 uid="uid://dj65hy0xwcdw7"]
 
 [ext_resource type="Script" path="res://effects/thunder_attack.gd" id="1_ubauf"]
 [ext_resource type="Texture2D" uid="uid://cgacpj7bkraow" path="res://prototype-sprites/thunder-attack-small.png" id="2_5p50d"]
+[ext_resource type="AudioStream" uid="uid://betv485iqn4t4" path="res://sounds/thunder_attack.wav" id="3_m0yyg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc1pl"]
 radius = 75.5017
@@ -63,5 +64,9 @@ shape = SubResource("CircleShape2D_lc1pl")
 sprite_frames = SubResource("SpriteFrames_vfvcp")
 frame = 4
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m0yyg")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

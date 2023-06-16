@@ -8,7 +8,7 @@ func orbit_target() -> void:
 func follow(target_global_position: Vector2) -> void:
 	var desired_velocity: Vector2= global_position.direction_to(target_global_position) * speed
 	var steering := desired_velocity - _velocity
-	velocity += steering / 3.0
+	velocity += steering / 7.0
 
 func attack_player(delta = null) -> void:
 	velocity += Vector2(-speed * 6, 0) * delta

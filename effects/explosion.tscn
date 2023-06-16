@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://bn3fhqf8hxppf"]
 
 [ext_resource type="Texture2D" uid="uid://cs4xpvt3ps84x" path="res://prototype-sprites/explosion.png" id="1_x6v6r"]
 [ext_resource type="Material" path="res://resources/Clockup_material.tres" id="1_y7xy5"]
+[ext_resource type="AudioStream" uid="uid://cbrcie0m6fa74" path="res://sounds/explosion.wav" id="3_p6o47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxs2r"]
 atlas = ExtResource("1_x6v6r")
@@ -74,3 +75,7 @@ sprite_frames = SubResource("SpriteFrames_lonor")
 autoplay = "default"
 frame = 7
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p6o47")
+autoplay = true

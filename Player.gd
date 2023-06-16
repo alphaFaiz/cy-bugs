@@ -16,6 +16,11 @@ signal game_over(current_point)
 @onready var _hitbox = $HitBox
 @onready var regenEnergyTimer = $RegenEnergyTimer
 @onready var clockupTimer = $ClockupTimer
+@onready var putOnAudioPlayer = $PutonAudioPlayer
+@onready var castOffAudioPlayer = $CastOffAudioPlayer
+@onready var clockUpAudioPlayer = $ClockUpAudioPlayer
+@onready var clockOverAudioPlayer = $ClockOverAudioPlayer
+@onready var underGroundAudioPlayer = $UnderGroundAudioPlayer
 
 const clockup_speed_scn = preload("res://effects/clock_up_effect.tscn")
 const thunder_attack_scn = preload("res://effects/thunder_attack.tscn")
@@ -134,6 +139,7 @@ func _physics_process(delta):
 			position.y += y_vel * delta
 		elif up and undergrounded:
 			emit_signal("walk_underground", false, false, true, false)
+			underGroundAudioPlayer.stop()
 			y_vel = -jump_speed * 4
 			position.y += y_vel * delta
 			exiting_underground = true
@@ -141,6 +147,7 @@ func _physics_process(delta):
 		elif down and grounded and rayCastBottom.get_collider().collision_mask == 1:
 			current_mask = 2
 			entering_underground = true
+			underGroundAudioPlayer.play()
 			emit_signal("walk_underground", true, false, false, false)
 		elif not up and not exiting_underground:
 			if undergrounded:
@@ -159,6 +166,10 @@ func _physics_process(delta):
 		position.x += direction * 10
 	
 	if switch_form and not undergrounded:
+		if is_casted_off and not putOnAudioPlayer.playing and not castOffAudioPlayer.playing:
+			putOnAudioPlayer.play()
+		elif not is_casted_off and not castOffAudioPlayer.playing and not putOnAudioPlayer.playing:
+			castOffAudioPlayer.play()
 		is_switching_form = true
 		current_mask = 1
 	
@@ -213,7 +224,9 @@ func _physics_process(delta):
 	changeCollisionMask(current_mask)
 
 func _on_hit_box_body_entered(body: Node):
+	print("collide:", body)
 	if body is BaseEnemy:
+		print("collide with enemy")
 		crashed = true
 		await destroy()
 
@@ -250,9 +263,9 @@ func destroy() -> void:
 	queue_free()
 
 func clock_up() -> bool:
-	print("clock up")
 	if not clockupTimer.is_stopped() or energy < 5 or is_in_speed_force:
 		return false
+	clockUpAudioPlayer.play()
 	energy -= 2
 	is_in_speed_force = true
 	var clockup_effect = clockup_speed_scn.instantiate()
@@ -273,8 +286,7 @@ func _on_regen_energy_timer_timeout() -> void:
 	energy += 1
 
 func _on_clock_over() -> void:
-	print("clock over")
-#	_animated_sprite.material.set_shader_parameter("contrast", 1)
+	clockOverAudioPlayer.play()
 	is_in_speed_force = false
 	clockupTimer.stop()
 	var enemies = get_tree().get_nodes_in_group("Enemy")

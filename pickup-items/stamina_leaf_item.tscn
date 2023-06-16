@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfx8phkl3rp5u"]
+[gd_scene load_steps=13 format=3 uid="uid://cfx8phkl3rp5u"]
 
 [ext_resource type="PackedScene" uid="uid://d2b4pil8rjuvn" path="res://pickup-items/base_pickup.tscn" id="1_vrmuv"]
 [ext_resource type="Texture2D" uid="uid://ds02g6fgo36jm" path="res://prototype-sprites/stamina-leaf.png" id="2_5c5sp"]
 [ext_resource type="Script" path="res://pickup-items/stamina_leaf_item.gd" id="2_77non"]
 [ext_resource type="Texture2D" uid="uid://b4lnhykwbwmhb" path="res://prototype-sprites/stamina-leaf-destroy.png" id="3_mowfp"]
+[ext_resource type="AudioStream" uid="uid://gdivrk2b4wj6" path="res://sounds/stamina_item.wav" id="5_4xbyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_816q5"]
 atlas = ExtResource("2_5c5sp")
@@ -67,3 +68,6 @@ script = ExtResource("2_77non")
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0.499999, 3)
 sprite_frames = SubResource("SpriteFrames_uvimc")
+
+[node name="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("5_4xbyp")

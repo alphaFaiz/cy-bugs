@@ -15,6 +15,10 @@ run/main_scene="res://main-menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BackgroundMusic="*res://ui/background_music.tscn"
+
 [display]
 
 window/size/viewport_width=1024

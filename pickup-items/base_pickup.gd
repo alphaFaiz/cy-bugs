@@ -2,6 +2,7 @@ class_name BasePickup
 extends Area2D
 
 @onready var _animated_sprite := $AnimatedSprite2D
+@onready var _audio_player := $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,7 @@ func play(animation: String, fliph = false, flipv= false) -> void:
 
 func _on_body_entered(node: Node) -> void:
 	if node is Player:
+		_audio_player.play()
 		play("picked")
 		apply_effect(node)
 		await _animated_sprite.animation_finished

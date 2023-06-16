@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2b4pil8rjuvn"]
+[gd_scene load_steps=15 format=3 uid="uid://d2b4pil8rjuvn"]
 
 [ext_resource type="Script" path="res://pickup-items/base_pickup.gd" id="1_6qyvv"]
 [ext_resource type="Texture2D" uid="uid://cbcr4by38am8r" path="res://prototype-sprites/energy-stone-idle.png" id="2_anjus"]
 [ext_resource type="Texture2D" uid="uid://bjo25lfcc1d0q" path="res://prototype-sprites/energy-stone-destroy.png" id="3_afcpl"]
+[ext_resource type="AudioStream" uid="uid://dgun3ogfl5q8v" path="res://sounds/energy_pickup.wav" id="4_4ln68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxmjj"]
 atlas = ExtResource("2_anjus")
@@ -90,3 +91,6 @@ animation = &"picked"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kvesa")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4ln68")

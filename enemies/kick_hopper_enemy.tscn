@@ -152,8 +152,5 @@ animation = &"approach"
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_p8wj4")
 
-[node name="AttackArea" parent="." index="3"]
-visible = true
-
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_dvbx1")
