@@ -1,12 +1,12 @@
 bdbec74c6e5bd72edee867077d70896c
-::res://::1687013437
+::res://::1687082067
 copyright-note.txt::TextFile::-1::1686991013::0::1::::<><>::
-export_presets.cfg::TextFile::-1::1687000180::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1687013437::0::1::::<><>::
 game.gd::GDScript::-1::1686991013::0::1::::<>Node2D<>::
-game.tscn::PackedScene::2309586268306899838::1687013372::0::1::::<><>::res://game.gd<>res://resources/Clockup_material.tres<>uid://bp4t61akwt6bb<>uid://cn1iat65somp8<>uid://5fd0bw77rlxo<>res://backgrounds/CloudLayer.gd<>uid://dsquq0jymkv0a<>uid://dxxulptcf1hb3<>uid://v0qe50hcgq20<>res://backgrounds/MountainLayer.gd<>uid://d2epuvtq0plau<>uid://cc8q3wlga35pl<>uid://cvtqkjy58phyl<>uid://d3j46866ymudn<>uid://dpao1f52o33ko<>uid://bcjt5woms5x6<>uid://t5t7r3qh3s3i<>uid://bf8oe63n0nk0v<>uid://ddqr2jt0h28xi<>uid://cgkc58cnri6ks<>uid://cvs3mjskkn22u<>uid://xdub1iend4no
+game.tscn::PackedScene::2309586268306899838::1687082067::0::1::::<><>::res://game.gd<>res://resources/Clockup_material.tres<>uid://bp4t61akwt6bb<>uid://cn1iat65somp8<>uid://5fd0bw77rlxo<>res://backgrounds/CloudLayer.gd<>uid://dsquq0jymkv0a<>uid://dxxulptcf1hb3<>uid://v0qe50hcgq20<>res://backgrounds/MountainLayer.gd<>uid://d2epuvtq0plau<>uid://cc8q3wlga35pl<>uid://cvtqkjy58phyl<>uid://d3j46866ymudn<>uid://dpao1f52o33ko<>uid://bcjt5woms5x6<>uid://t5t7r3qh3s3i<>uid://bf8oe63n0nk0v<>uid://ddqr2jt0h28xi<>uid://cgkc58cnri6ks<>uid://cvs3mjskkn22u<>uid://xdub1iend4no
 icon.svg::CompressedTexture2D::8115527038404002229::1686991013::1686992031::1::::<><>::
 main-menu.gd::GDScript::-1::1686991013::0::1::::<>Control<>::
-main-menu.tscn::PackedScene::5768207539551542873::1687010119::0::1::::<><>::res://main-menu.gd<>uid://cl1q3x2qvvjp<>uid://bedndah7qmgb2<>uid://0li1n0b6f8uo<>uid://1f6mfrrdeysy<>uid://cgw48544qt70g<>uid://h32lnbxistpa<>uid://cp4kjo124or6p<>uid://dhtb6mm8f4665<>uid://dyrbmguitfwma<>uid://d2epuvtq0plau
+main-menu.tscn::PackedScene::5768207539551542873::1687082066::0::1::::<><>::res://main-menu.gd<>uid://cl1q3x2qvvjp<>uid://bedndah7qmgb2<>uid://0li1n0b6f8uo<>uid://1f6mfrrdeysy<>uid://cgw48544qt70g<>uid://h32lnbxistpa<>uid://cp4kjo124or6p<>uid://dhtb6mm8f4665<>uid://dyrbmguitfwma<>uid://d2epuvtq0plau
 Player.gd::GDScript::-1::1686991013::0::1::::Player<>CharacterBody2D<>::
 Player.tscn::PackedScene::3500330641696574935::1686991013::0::1::::<><>::res://Player.gd<>uid://b63wpywcg2h8e<>uid://mqwlw8jnl6ny<>res://resources/Clockup_material.tres<>uid://dsci8ejlwi4jg<>uid://cnesidf3e6tmr<>uid://bpnhtlktmf16x<>uid://c5l2b7v1elegs<>uid://comsqfxswyc5a<>uid://dhtb6mm8f4665<>uid://dyrbmguitfwma<>uid://sue03hangrup<>uid://c8vnn6du0gys1<>uid://b3k7na1edbknc<>uid://b6128xgf8shtg<>uid://cjw50vjffnekj
 ::res://backgrounds/::1686991013
@@ -383,12 +383,12 @@ stamina_item.wav::AudioStreamWAV::427850342278763137::1686991014::1686991014::1:
 thunder_attack.wav::AudioStreamWAV::2707727860443801215::1686991014::1686991014::1::::<><>::
 underground.wav::AudioStreamWAV::5451824542476392453::1686991014::1686991014::1::::<><>::
 [background]Jeremy Blake - Powerup!.mp3::AudioStreamMP3::5119424698876324358::1686991014::1686991014::1::::<><>::
-::res://ui/::1686991014
+::res://ui/::1687082067
 background_music.tscn::PackedScene::1606742032049009024::1686991014::0::1::::<><>::uid://ce65gaoisxllm
 energy-bar-control.gd::GDScript::-1::1686991014::0::1::::<>Control<>::
 energy-bar-control.tscn::PackedScene::5739456939448580063::1686991014::0::1::::<><>::uid://n1py7p1nvjau<>res://ui/energy-bar-control.gd<>uid://cu1t76xyn6ri7
 game-over.gd::GDScript::-1::1686991014::0::1::::<>Control<>::
-game-over.tscn::PackedScene::808387037065468850::1686991014::0::1::::<><>::uid://cl1q3x2qvvjp<>res://ui/game-over.gd<>uid://c1uiso5tt8dog<>uid://dlsjgf8ustgtm<>uid://4k3y0noeidg2<>uid://bfp5v7fsnx1qs<>uid://d2epuvtq0plau
+game-over.tscn::PackedScene::808387037065468850::1687082067::0::1::::<><>::uid://cl1q3x2qvvjp<>res://ui/game-over.gd<>uid://c1uiso5tt8dog<>uid://dlsjgf8ustgtm<>uid://4k3y0noeidg2<>uid://bfp5v7fsnx1qs<>uid://d2epuvtq0plau
 Minecraft.ttf::FontFile::9063565944194625928::1686991014::1686991014::1::::<><>::
 point_label.gd::GDScript::-1::1686991014::0::1::::<>Label<>::
 point_label.tscn::PackedScene::1526555389951648095::1686991014::0::1::::<><>::res://ui/point_label.gd

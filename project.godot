@@ -22,6 +22,9 @@ BackgroundMusic="*res://ui/background_music.tscn"
 [display]
 
 window/size/viewport_width=1024
+window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 

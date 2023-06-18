@@ -106,5 +106,8 @@ label_settings = SubResource("LabelSettings_e1mcn")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(511, 325)
+
 [connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

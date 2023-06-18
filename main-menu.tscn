@@ -197,4 +197,7 @@ label_settings = SubResource("LabelSettings_p7182")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(511, 325)
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

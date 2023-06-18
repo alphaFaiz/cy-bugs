@@ -22,10 +22,10 @@ res://segments/BaseSegment.tscn::23ba4d202e1a6a509bc8e99503d45d15::1686991014::r
 res://segments/C.tscn::ffaca549db3a5b410106f2b5ea2ced46::1686991014::res://.godot/exported/133200997/export-4348292196b46f047028f5e587378535-C.scn
 res://segments/test-environment.tscn::0ccea407e213421bf0b7d03f82f64769::1686991014::res://.godot/exported/133200997/export-b045b597ce79e7ef1b41fa94683bcd16-test-environment.scn
 res://ui/energy-bar-control.tscn::69484ff5285ee21bdb4dd7d3a07a1e59::1686991014::res://.godot/exported/133200997/export-d401aeb3e1de911657b2d9bef7d56229-energy-bar-control.scn
-res://ui/game-over.tscn::fe65dc4c18c5b390fe644ca1d9540dbb::1686991014::res://.godot/exported/133200997/export-b020bbdc880b4efb560caab2a29d3909-game-over.scn
+res://ui/game-over.tscn::815c0c74451d6296957ed1bf03285152::1687081722::res://.godot/exported/133200997/export-b020bbdc880b4efb560caab2a29d3909-game-over.scn
 res://ui/point_label.tscn::4853a206d6e03c35714a57081eb9e8bb::1686991014::res://.godot/exported/133200997/export-f1e75119f0ee7e613f8039b36ac6fe92-point_label.scn
 res://ui/stamina_bar.tscn::2f6afce14e1acb3f19d0bc3bde7d6de5::1686991014::res://.godot/exported/133200997/export-7aff12ad93933cc39f5b4a77bd3db9f2-stamina_bar.scn
-res://game.tscn::358aea6fc28d611780b79b6f73f4934d::1687013372::res://.godot/exported/133200997/export-609f762188a68253d349ec58c4f3a8d3-game.scn
-res://main-menu.tscn::8704fac050b9c566dfc4b507c027d97a::1687010119::res://.godot/exported/133200997/export-8a03a1fcaff5b4bd3606ffe65f4b76a1-main-menu.scn
+res://game.tscn::d630f2d2997e6ae8685156ed2eacd3a5::1687081722::res://.godot/exported/133200997/export-609f762188a68253d349ec58c4f3a8d3-game.scn
+res://main-menu.tscn::2b0d49f4650cffea4e71dc993052ffd8::1687081722::res://.godot/exported/133200997/export-8a03a1fcaff5b4bd3606ffe65f4b76a1-main-menu.scn
 res://Player.tscn::b21d7e41fa2c3150dd27d0956e6cfd91::1686991013::res://.godot/exported/133200997/export-90e1ff3baa03524a506ff0f7a9d78dcf-Player.scn
 res://ui/background_music.tscn::621cfe6bc91377046b40ba2ba3bffec1::1686991014::res://.godot/exported/133200997/export-f663bba68dc47fc2af128b0013634d00-background_music.scn
