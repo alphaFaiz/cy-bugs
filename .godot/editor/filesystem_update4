@@ -1,3 +1,9 @@
-res://game.tscn
-res://main-menu.tscn
 res://ui/game-over.tscn
+res://main-menu.tscn
+res://game.tscn
+res://segments/BaseSegment.gd
+res://Player.tscn
+res://segments/test-environment.tscn
+res://segments/A.tscn
+res://segments/C.tscn
+res://segments/B.tscn

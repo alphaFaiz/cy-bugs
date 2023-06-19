@@ -74,40 +74,41 @@ grow_vertical = 2
 script = ExtResource("1_sxxry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(513, 325)
+position = Vector2(641, 373)
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_ecmpi")
 autoplay = "default"
 
 [node name="ReplayButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 252.0
-offset_right = 488.0
-offset_bottom = 380.0
+offset_left = 486.0
+offset_top = 272.0
+offset_right = 614.0
+offset_bottom = 400.0
 texture_normal = ExtResource("2_mty3d")
 texture_pressed = ExtResource("3_ywqux")
 
 [node name="ExitButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 541.0
-offset_top = 252.0
-offset_right = 669.0
-offset_bottom = 380.0
+offset_left = 657.0
+offset_top = 268.0
+offset_right = 785.0
+offset_bottom = 396.0
 texture_normal = ExtResource("4_loady")
 texture_pressed = ExtResource("5_t86hf")
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 247.0
-offset_top = 124.0
-offset_right = 788.0
-offset_bottom = 253.0
+offset_left = 376.0
+offset_top = 106.0
+offset_right = 917.0
+offset_bottom = 235.0
 label_settings = SubResource("LabelSettings_e1mcn")
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(511, 325)
+position = Vector2(645, 362)
 
 [connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

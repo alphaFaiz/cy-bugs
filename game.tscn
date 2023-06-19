@@ -31,13 +31,13 @@ font_size = 20
 size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g46vn"]
-size = Vector2(50, 50)
+size = Vector2(90, 90)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(511, 325)
+position = Vector2(638, 355)
 
 [node name="Areas" type="Node2D" parent="."]
 material = ExtResource("1_qrysc")
@@ -47,18 +47,18 @@ position = Vector2(279, 300)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(0, -112)
-scale = Vector2(1.8, 1.8)
-transform = Transform2D(1.8, 0, 0, 1.8, 0, -112)
+scale = Vector2(2.3, 2.3)
+transform = Transform2D(2.3, 0, 0, 2.3, 0, -112)
 
 [node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(720, 242.222)
+position = Vector2(713.72, 220.87)
 motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
 texture = ExtResource("8_reqle")
 
 [node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(720, 242.222)
+position = Vector2(713.72, 220.87)
 motion_mirroring = Vector2(1440, 0)
 script = ExtResource("9_gxu3y")
 
@@ -66,7 +66,7 @@ script = ExtResource("9_gxu3y")
 texture = ExtResource("10_t4xli")
 
 [node name="MountainLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(718.889, 242.222)
+position = Vector2(712.609, 220.87)
 motion_mirroring = Vector2(1440, 0)
 script = ExtResource("11_iay07")
 
@@ -111,21 +111,21 @@ shape = SubResource("RectangleShape2D_g46vn")
 action = "ui_down"
 
 [node name="SwitchFormTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(706, 346)
+position = Vector2(1041, 332)
 texture_normal = ExtResource("17_dreeq")
 texture_pressed = ExtResource("18_l0anw")
 shape = SubResource("RectangleShape2D_g46vn")
 action = "switch_form"
 
 [node name="ClockupTouchScreenButton2" type="TouchScreenButton" parent="."]
-position = Vector2(758, 398)
+position = Vector2(1127, 437)
 texture_normal = ExtResource("19_6pp6u")
 texture_pressed = ExtResource("20_0svdp")
 shape = SubResource("RectangleShape2D_g46vn")
 action = "skill"
 
 [node name="AttackTouchScreenButton3" type="TouchScreenButton" parent="."]
-position = Vector2(657, 398)
+position = Vector2(966, 439)
 texture_normal = ExtResource("21_5ktqa")
 texture_pressed = ExtResource("22_egkk1")
 shape = SubResource("RectangleShape2D_g46vn")

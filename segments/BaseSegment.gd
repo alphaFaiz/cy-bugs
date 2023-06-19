@@ -12,7 +12,11 @@ var x_left_border = 0
 @onready var step = $Step
 @onready var x_end_of_step = 0
 @onready var y_end_of_step = 0
-
+@onready var solid_ground = {
+	"start": Vector2($CollisionShape2D.position.x, $CollisionShape2D.position.y),
+	"end": Vector2($CollisionShape2D.position.x + $CollisionShape2D.shape.size.x, $CollisionShape2D.position.y + $CollisionShape2D.shape.size.y)
+}
+var spawn_cells = []
 var has_step = false
 
 var enemies = [
@@ -88,6 +92,7 @@ func _ready() -> void:
 #		print("y_underground_border: ", y_underground_border)
 	var spawn_item_times = randi() % 6 + 1
 	var spawn_enemy_times = randi() % 4 + 1
+	generate_spawn_positions()
 #	print("spawn_item_times: ", spawn_item_times)
 #	print("spawn_enemy_times: ", spawn_enemy_times)
 	for i in spawn_enemy_times:
@@ -147,6 +152,20 @@ func spawn_item():
 func spawn_enemy():
 	var index = randi() % len(enemies)
 	var enemy = enemies[index]
+	var cell_index = randi() % len(spawn_cells)
+	var inst = enemy.src.instantiate()
+	if enemy.ground_enemy:
+		pass 
+	elif enemy.underground_enemy:
+		pass
+	else:
+		inst.position = spawn_cells[cell_index].center
+		add_child(inst)
+		spawn_cells.remove_at(index)
+
+func spawn_old_enemy():
+	var index = randi() % len(enemies)
+	var enemy = enemies[index]
 	var x_position = randi() % int(x_right_border) + 1
 	var y_position = randi() % int(y_down_border) + 1
 	var inst = enemy.src.instantiate()
@@ -199,3 +218,70 @@ func spawn_enemy():
 #		print(enemy.name, ": ", inst.position)
 		add_child(inst)
 		unavailable_positions.push_back(inst.position)
+
+func generate_spawn_positions():
+	var viewport = get_viewport_rect().size
+#	var viewport_width = viewport.x
+#	var viewport_height = viewport.y
+	var number_of_collums = 8
+	var number_of_rows = 5
+
+	var cell_width = floor(viewport.x/number_of_collums)
+	var cell_height = floor(viewport.y/number_of_rows)
+
+	for i in number_of_collums:
+		var x_position = (i + 1) * cell_width / 2
+		for j in number_of_rows:
+			var y_position = (j + 1) * cell_height
+			spawn_cells.push_back({
+				"start": Vector2(i * cell_width, j * cell_height),
+				"center": Vector2((i + 1) * cell_width / 2, (j + 1) * cell_height / 2),
+				"end": Vector2((i + 1) * cell_width, (j + 1) * cell_height),
+				"is_underground": false
+			})
+	#filter cells that duplicated with the ground
+	spawn_cells = spawn_cells.filter(func(cell):
+			var is_duplicated = check_duplicate_with_the_solid_ground(cell)
+			if is_duplicated:
+				return false
+			return true
+	)
+	print("after filter cells: ", spawn_cells.size())
+	if has_step:
+		print("before: ", spawn_cells.size())
+		spawn_cells = spawn_cells.filter(func(cell): 
+			var is_duplicated = check_duplicate_with_steps(cell)
+			if is_duplicated:
+				return false
+			return true
+		)
+
+func check_duplicate_with_steps(cell):
+	var step_head_inside_the_cell = cell.start.x <= step.position.x and step.position.x <= cell.end.x
+	var step_tail_inside_the_cell = cell.start.x <= x_end_of_step and x_end_of_step <= cell.end.x
+	var step_go_through_the_cell = step.position.x <= cell.start.x and cell.start.x <= x_end_of_step
+	
+	if step_head_inside_the_cell or step_tail_inside_the_cell or step_go_through_the_cell:
+		if cell.start.y <= step.position.y and step.position.y <= cell.end.y:
+			return true
+		elif step.position.y <= cell.start.y and cell.start.y <= y_end_of_step:
+			return true
+		elif step.position.y <= cell.end.y and cell.end.y <= y_end_of_step:
+			return true
+		return false
+	return false
+
+func check_duplicate_with_the_solid_ground(cell):
+	var ground_head_inside_the_cell = cell.start.x <= solid_ground.start.x and solid_ground.start.x <= cell.end.x
+	var ground_tail_inside_the_cell = cell.start.x <= solid_ground.end.x and solid_ground.end.x <= cell.end.x
+	var ground_go_through_the_cell = solid_ground.start.x <= cell.start.x and cell.start.x <= solid_ground.end.x
+	
+	if ground_head_inside_the_cell or ground_tail_inside_the_cell or ground_go_through_the_cell:
+		if cell.start.y <= solid_ground.start.y and solid_ground.start.y <= cell.end.y:
+			return true
+		elif solid_ground.start.y <= cell.start.y and cell.start.y <= solid_ground.end.y:
+			return true
+		elif solid_ground.start.y <= cell.end.y and cell.end.y <= solid_ground.end.y:
+			return true
+		return false
+	return false

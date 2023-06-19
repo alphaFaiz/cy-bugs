@@ -150,54 +150,55 @@ anchors_preset = 0
 script = ExtResource("1_m6ma2")
 
 [node name="BackgroundAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(512, 324)
+position = Vector2(640, 364)
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_el60y")
 autoplay = "default"
 
 [node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 271.0
-offset_top = 471.0
-offset_right = 403.0
-offset_bottom = 586.0
+offset_left = 415.0
+offset_top = 494.0
+offset_right = 547.0
+offset_bottom = 622.0
 texture_normal = ExtResource("3_jtrqy")
 texture_pressed = ExtResource("4_0bmic")
 
 [node name="SettingButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 450.0
-offset_top = 471.0
-offset_right = 578.0
-offset_bottom = 599.0
+offset_left = 594.0
+offset_top = 494.0
+offset_right = 722.0
+offset_bottom = 622.0
 texture_normal = ExtResource("5_hbg1t")
 texture_pressed = ExtResource("6_2tiwg")
 
 [node name="AboutButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 615.0
-offset_top = 470.0
-offset_right = 743.0
-offset_bottom = 598.0
+offset_left = 759.0
+offset_top = 493.0
+offset_right = 887.0
+offset_bottom = 621.0
 texture_normal = ExtResource("7_2y8fp")
 texture_pressed = ExtResource("8_21c1c")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(513, 324)
+position = Vector2(674, 362)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_i4oeh")
 autoplay = "default"
 
 [node name="HighScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 112.0
-offset_right = 643.0
-offset_bottom = 202.0
+offset_left = 514.0
+offset_top = 116.0
+offset_right = 776.0
+offset_bottom = 206.0
 label_settings = SubResource("LabelSettings_p7182")
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(511, 325)
+position = Vector2(640, 362)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
