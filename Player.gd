@@ -224,9 +224,7 @@ func _physics_process(delta):
 	changeCollisionMask(current_mask)
 
 func _on_hit_box_body_entered(body: Node):
-	print("collide:", body)
 	if body is BaseEnemy:
-		print("collide with enemy")
 		crashed = true
 		await destroy()
 

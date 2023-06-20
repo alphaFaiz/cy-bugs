@@ -7,14 +7,15 @@ var x_left_border = 0
 @onready var underground_height = $DigableGround/CollisionShape2D.shape.size.y
 @onready var x_right_border = get_viewport_rect().size.x
 @onready var y_down_border = get_viewport_rect().size.y - underground_height
-@onready var y_spawn_underground = $DigableGround.position.y + $DigableGround/CollisionShape2D.shape.size.y/2
+@onready var y_spawn_underground = $DigableGround.position.y + $DigableGround/CollisionShape2D.shape.size.y * 0.5
 @onready var y_underground_border = $DigableGround.position.y
-@onready var step = $Step
-@onready var x_end_of_step = 0
-@onready var y_end_of_step = 0
+@onready var step = {
+	"start": Vector2(0, 0),
+	"end": Vector2(0, 0)
+}
 @onready var solid_ground = {
-	"start": Vector2($CollisionShape2D.position.x, $CollisionShape2D.position.y),
-	"end": Vector2($CollisionShape2D.position.x + $CollisionShape2D.shape.size.x, $CollisionShape2D.position.y + $CollisionShape2D.shape.size.y)
+	"start": Vector2($CollisionShape2D.position.x - $CollisionShape2D.shape.size.x * 0.5, $CollisionShape2D.position.y - $CollisionShape2D.shape.size.y * 0.5),
+	"end": Vector2($CollisionShape2D.position.x + $CollisionShape2D.shape.size.x * 0.5, $CollisionShape2D.position.y + $CollisionShape2D.shape.size.y * 0.5)
 }
 var spawn_cells = []
 var has_step = false
@@ -80,21 +81,23 @@ var items = [
 ]
 
 var unavailable_positions = []
+var unavailable_ground_x = []
 var unavailable_item_positions = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if step:
+	if $Step:
 		has_step = true
 	if has_step:
-		x_end_of_step = step.position.x + step.shape.size.x
-		y_end_of_step = step.position.y + step.shape.size.y
-#		print("start_of_step: ", step.position.x, ", ", step.position.y, "|end_of_step:", x_end_of_step, ", ", y_end_of_step)
-#		print("y_underground_border: ", y_underground_border)
+		step.start.x = $Step.position.x - $Step.shape.size.x * 0.5
+		step.start.y = $Step.position.y - $Step.shape.size.y * 0.5
+		step.end.x = $Step.position.x + $Step.shape.size.x * 0.5
+		step.end.y = $Step.position.y + $Step.shape.size.y * 0.5
+		print("step range: ", step.start, " - ", step.end, $Step.shape.size)
 	var spawn_item_times = randi() % 6 + 1
-	var spawn_enemy_times = randi() % 4 + 1
+	var spawn_enemy_times = randi() % 6 + 1
 	generate_spawn_positions()
 #	print("spawn_item_times: ", spawn_item_times)
-#	print("spawn_enemy_times: ", spawn_enemy_times)
+#	print("spawn_enemy_times: ", spawn_enemy_times, solid_ground)
 	for i in spawn_enemy_times:
 		spawn_enemy()
 	for i in spawn_item_times:
@@ -117,17 +120,17 @@ func spawn_item():
 		var spawn_y_ranges = [
 			{
 				"start": 0,
-				"end": step.position.y
+				"end": step.start.y
 			}, 
 			{
-				"start": y_end_of_step,
+				"start": step.end.y,
 				"end": y_down_border
 			}
 		]
 		var range_index = randi() % len(spawn_y_ranges)
 		y_position = randi() % int(spawn_y_ranges[range_index].end) + spawn_y_ranges[range_index].start
-		var step_position_condition = (y_position + inst_radius >= step.position.y and y_position + inst_radius <= y_end_of_step)
-		var ground_position_condition = (y_position + inst_radius >= step.position.y and y_position + inst_radius <= y_end_of_step)
+		var step_position_condition = (y_position + inst_radius >= step.start.y and y_position + inst_radius <= step.end.y)
+		var ground_position_condition = (y_position + inst_radius >= step.start.y and y_position + inst_radius <= step.end.y)
 		if step_position_condition:
 			y_position -= 2 * inst_radius
 	if y_underground_border < y_position:
@@ -155,90 +158,43 @@ func spawn_enemy():
 	var cell_index = randi() % len(spawn_cells)
 	var inst = enemy.src.instantiate()
 	if enemy.ground_enemy:
-		pass 
+#		print("157:", unavailable_ground_x)
+		var ground_cells = spawn_cells.filter(func(cell): return cell.in_ground_range and len(unavailable_ground_x.filter(func(x): return cell.center.x == x)) == 0)
+#		print("ground cells length:", len(ground_cells), " - ", ground_cells.map(func(cell): return cell.center.x))
+		cell_index = spawn_cells.find(ground_cells.pick_random(), 0)
+		inst.position = spawn_cells[cell_index].center
 	elif enemy.underground_enemy:
-		pass
+		var useable_cells = spawn_cells.filter(func(cell): return not cell.above_the_step and cell.in_ground_range)
+		cell_index = spawn_cells.find(useable_cells.pick_random(), 0)
+		inst.position = spawn_cells[cell_index].center
+		inst.position.y = y_spawn_underground
 	else:
 		inst.position = spawn_cells[cell_index].center
-		add_child(inst)
-		spawn_cells.remove_at(index)
-
-func spawn_old_enemy():
-	var index = randi() % len(enemies)
-	var enemy = enemies[index]
-	var x_position = randi() % int(x_right_border) + 1
-	var y_position = randi() % int(y_down_border) + 1
-	var inst = enemy.src.instantiate()
-	#get instance height
-	var inst_height = 0;
-	if inst.get_node("CollisionShape2D").shape is RectangleShape2D:
-		inst_height = inst.get_node("CollisionShape2D").shape.size.y
-	elif inst.get_node("CollisionShape2D").shape is CapsuleShape2D:
-		inst_height = inst.get_node("CollisionShape2D").shape.radius
-		
-	if has_step:
-		#divide 2 or 3 (or maybe 4) areas (above the step, under the step, next to the step), 
-		#random to select one of the area and spawn it
-		var spawn_y_ranges = [
-			{
-				"start": 0,
-				"end": step.position.y
-			}, 
-			{
-				"start": y_end_of_step,
-				"end": y_down_border
-			}
-		]
-		var range_index = randi() % len(spawn_y_ranges)
-		y_position = randi() % int(spawn_y_ranges[range_index].end) + spawn_y_ranges[range_index].start
-			
-	if enemy.underground_enemy or enemy.ground_enemy:
-		x_position = randi() % int(underground_width) + $DigableGround.position.x
-	if enemy.underground_enemy:
-		y_position = y_spawn_underground
-	elif enemy.ground_enemy and has_step and y_position < step.position.y:
-		y_position = step.position.y - inst_height/2
-	elif enemy.ground_enemy and y_position < y_underground_border:
-		y_position = y_underground_border - inst_height/2
-	elif y_underground_border < y_position:
-		y_position -= abs(y_underground_border - y_position)
-	#check around positions for duplicate
-	var smaller_position = Vector2(x_position, y_position)/1.5
-	var larger_position = Vector2(x_position, y_position)*1.5
-		
-	var duplicate_position = unavailable_positions.filter(func (position_vector):
-		if smaller_position.x <= position_vector.x and position_vector.x <= larger_position.x and smaller_position.y <= position_vector.y and position_vector.y <= larger_position.y:
-#			print("enemy duplicate with others:", position_vector)
-			return true
-	)
-	if duplicate_position:
-		spawn_enemy()
-	else:
-		inst.position = Vector2(x_position, y_position)
-#		print(enemy.name, ": ", inst.position)
-		add_child(inst)
-		unavailable_positions.push_back(inst.position)
+	unavailable_ground_x.push_back(spawn_cells[cell_index].center.x)	
+	add_child(inst)
+#	print(enemy.name, " |cell_index: ", cell_index, " |position: ", spawn_cells[cell_index].center)
+	spawn_cells.remove_at(cell_index)
 
 func generate_spawn_positions():
 	var viewport = get_viewport_rect().size
-#	var viewport_width = viewport.x
-#	var viewport_height = viewport.y
-	var number_of_collums = 8
-	var number_of_rows = 5
+	var number_of_collums = 16
+	var number_of_rows = 10
 
 	var cell_width = floor(viewport.x/number_of_collums)
 	var cell_height = floor(viewport.y/number_of_rows)
-
+	print("cell width:", cell_width, " | cell_height:", cell_height)
+	
 	for i in number_of_collums:
-		var x_position = (i + 1) * cell_width / 2
 		for j in number_of_rows:
-			var y_position = (j + 1) * cell_height
-			spawn_cells.push_back({
+			var new_cell = {
 				"start": Vector2(i * cell_width, j * cell_height),
-				"center": Vector2((i + 1) * cell_width / 2, (j + 1) * cell_height / 2),
+				"center": Vector2((0.5 + i) * cell_width, (0.5 + j) * cell_height),
 				"end": Vector2((i + 1) * cell_width, (j + 1) * cell_height),
-				"is_underground": false
-			})
+				"above_the_step": has_step and (j + 0.5) * cell_height < step.start.y,
+				"in_ground_range": solid_ground.start.x < (0.5 + i) * cell_width and (0.5 + i) * cell_width < solid_ground.end.x
+			}
+			spawn_cells.push_back(new_cell)
+
 	#filter cells that duplicated with the ground
 	spawn_cells = spawn_cells.filter(func(cell):
 			var is_duplicated = check_duplicate_with_the_solid_ground(cell)
@@ -246,42 +202,56 @@ func generate_spawn_positions():
 				return false
 			return true
 	)
-	print("after filter cells: ", spawn_cells.size())
 	if has_step:
-		print("before: ", spawn_cells.size())
 		spawn_cells = spawn_cells.filter(func(cell): 
 			var is_duplicated = check_duplicate_with_steps(cell)
 			if is_duplicated:
 				return false
 			return true
 		)
+#	for i in len(spawn_cells):
+#		var line = Line2D.new()
+#		add_child(line)
+#		line.width = 1
+#		line.add_point(spawn_cells[i].start)
+#		line.add_point(Vector2(spawn_cells[i].start.x, spawn_cells[i].end.y))
+#		line.add_point(spawn_cells[i].end)
+#		line.add_point(Vector2(spawn_cells[i].end.x, spawn_cells[i].start.y))
+#		line.add_point(Vector2(spawn_cells[i].start.x + 10, spawn_cells[i].start.y))
 
 func check_duplicate_with_steps(cell):
-	var step_head_inside_the_cell = cell.start.x <= step.position.x and step.position.x <= cell.end.x
-	var step_tail_inside_the_cell = cell.start.x <= x_end_of_step and x_end_of_step <= cell.end.x
-	var step_go_through_the_cell = step.position.x <= cell.start.x and cell.start.x <= x_end_of_step
-	
+	var step_head_inside_the_cell = cell.start.x <= step.start.x and step.start.x <= cell.end.x
+	var step_tail_inside_the_cell = cell.start.x <= step.end.x and step.end.x <= cell.end.x
+	var step_go_through_the_cell = step.start.x <= cell.center.x and cell.center.x <= step.end.x
+#	print(step_head_inside_the_cell, " ", step_tail_inside_the_cell, " ", step_go_through_the_cell)
 	if step_head_inside_the_cell or step_tail_inside_the_cell or step_go_through_the_cell:
-		if cell.start.y <= step.position.y and step.position.y <= cell.end.y:
+		if cell.start.y <= step.start.y and step.start.y <= cell.end.y:
 			return true
-		elif step.position.y <= cell.start.y and cell.start.y <= y_end_of_step:
+		if step.start.y <= cell.start.y and cell.start.y <= step.end.y:
 			return true
-		elif step.position.y <= cell.end.y and cell.end.y <= y_end_of_step:
+		if step.start.y <= cell.end.y and cell.end.y <= step.end.y:
 			return true
-		return false
+		if step.start.y <= cell.center.y and cell.center.y <= step.end.y:
+			return true
 	return false
 
 func check_duplicate_with_the_solid_ground(cell):
-	var ground_head_inside_the_cell = cell.start.x <= solid_ground.start.x and solid_ground.start.x <= cell.end.x
-	var ground_tail_inside_the_cell = cell.start.x <= solid_ground.end.x and solid_ground.end.x <= cell.end.x
-	var ground_go_through_the_cell = solid_ground.start.x <= cell.start.x and cell.start.x <= solid_ground.end.x
-	
-	if ground_head_inside_the_cell or ground_tail_inside_the_cell or ground_go_through_the_cell:
-		if cell.start.y <= solid_ground.start.y and solid_ground.start.y <= cell.end.y:
-			return true
-		elif solid_ground.start.y <= cell.start.y and cell.start.y <= solid_ground.end.y:
-			return true
-		elif solid_ground.start.y <= cell.end.y and cell.end.y <= solid_ground.end.y:
-			return true
-		return false
+#	var ground_head_inside_the_cell = cell.start.x <= solid_ground.start.x and solid_ground.start.x <= cell.end.x
+#	var ground_tail_inside_the_cell = cell.start.x <= solid_ground.end.x and solid_ground.end.x <= cell.end.x
+#	var ground_go_through_the_cell = solid_ground.start.x <= cell.center.x and cell.center.x <= solid_ground.end.x
+#	if ground_head_inside_the_cell or ground_tail_inside_the_cell or ground_go_through_the_cell:
+#		if cell.start.y <= solid_ground.start.y and solid_ground.start.y <= cell.end.y:
+#			return true
+#		if solid_ground.start.y <= cell.start.y and cell.start.y <= solid_ground.end.y:
+#			return true
+#		if solid_ground.start.y <= cell.end.y and cell.end.y <= solid_ground.end.y:
+#			return true
+#		if solid_ground.start.y <= cell.center.y and cell.center.y <= solid_ground.end.y:
+#			return true
+	if solid_ground.start.y <= cell.start.y and cell.start.y <= solid_ground.end.y:
+		return true
+	if solid_ground.start.y <= cell.end.y and cell.end.y <= solid_ground.end.y:
+		return true
+	if solid_ground.start.y <= cell.center.y and cell.center.y <= solid_ground.end.y:
+		return true
 	return false

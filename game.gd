@@ -33,7 +33,7 @@ var segments = [
 var current_segment_index = 0
 var player_height = 0
 
-var speed = 200   
+var speed = 250   
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(save_file_path)

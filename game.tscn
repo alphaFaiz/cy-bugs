@@ -47,18 +47,18 @@ position = Vector2(279, 300)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(0, -112)
-scale = Vector2(2.3, 2.3)
-transform = Transform2D(2.3, 0, 0, 2.3, 0, -112)
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, -112)
 
 [node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(713.72, 220.87)
+position = Vector2(713.778, 171.333)
 motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
 texture = ExtResource("8_reqle")
 
 [node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(713.72, 220.87)
+position = Vector2(713.778, 171.333)
 motion_mirroring = Vector2(1440, 0)
 script = ExtResource("9_gxu3y")
 
@@ -66,7 +66,7 @@ script = ExtResource("9_gxu3y")
 texture = ExtResource("10_t4xli")
 
 [node name="MountainLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(712.609, 220.87)
+position = Vector2(712.667, 171.333)
 motion_mirroring = Vector2(1440, 0)
 script = ExtResource("11_iay07")
 
