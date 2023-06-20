@@ -5,8 +5,3 @@ res://Player.tscn
 res://segments/C.tscn
 res://segments/A.tscn
 res://segments/B.tscn
-res://segments/BaseSegment.gd
-res://backgrounds/CloudLayer.gd
-res://backgrounds/MountainLayer.gd
-res://game.gd
-res://Player.gd
