@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not grounded:
 		velocity.y += gravity * delta
-	if _bottom_raycast.is_colliding():
+	if _bottom_raycast.is_colliding() and not _bottom_raycast.get_collider() is Player:
 		var orig = _bottom_raycast.global_transform.origin
 		var coll = _bottom_raycast.get_collision_point()
 		var dist = abs(orig.y - coll.y)

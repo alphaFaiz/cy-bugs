@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://751sv7qlcmxa"]
+[gd_scene load_steps=15 format=3 uid="uid://751sv7qlcmxa"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_htrjj"]
 [ext_resource type="Material" path="res://resources/Clockup_material.tres" id="1_qrysc"]
@@ -12,26 +12,11 @@
 [ext_resource type="Script" path="res://backgrounds/MountainLayer.gd" id="11_iay07"]
 [ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="12_c3t07"]
 [ext_resource type="Texture2D" uid="uid://cc8q3wlga35pl" path="res://backgrounds/parallax-02.png" id="12_e4yh0"]
-[ext_resource type="Texture2D" uid="uid://cvtqkjy58phyl" path="res://prototype-sprites/up-button-idle.png" id="13_d0dqf"]
-[ext_resource type="Texture2D" uid="uid://d3j46866ymudn" path="res://prototype-sprites/up-button-pressed.png" id="14_2gws0"]
-[ext_resource type="Texture2D" uid="uid://dpao1f52o33ko" path="res://prototype-sprites/down-button-idle.png" id="15_bm56n"]
-[ext_resource type="Texture2D" uid="uid://bcjt5woms5x6" path="res://prototype-sprites/down-button-pressed.png" id="16_yg7rr"]
-[ext_resource type="Texture2D" uid="uid://t5t7r3qh3s3i" path="res://prototype-sprites/switch-button-idle.png" id="17_dreeq"]
-[ext_resource type="Texture2D" uid="uid://bf8oe63n0nk0v" path="res://prototype-sprites/switch-button-pressed.png" id="18_l0anw"]
-[ext_resource type="Texture2D" uid="uid://ddqr2jt0h28xi" path="res://prototype-sprites/clockup-button-idle.png" id="19_6pp6u"]
-[ext_resource type="Texture2D" uid="uid://cgkc58cnri6ks" path="res://prototype-sprites/clockup-button-pressed.png" id="20_0svdp"]
-[ext_resource type="Texture2D" uid="uid://cvs3mjskkn22u" path="res://prototype-sprites/attack-button-idle.png" id="21_5ktqa"]
-[ext_resource type="Texture2D" uid="uid://xdub1iend4no" path="res://prototype-sprites/attack-button-pressed.png" id="22_egkk1"]
+[ext_resource type="PackedScene" uid="uid://b5rrh80qfrxnr" path="res://ui/TouchScreenController.tscn" id="13_ct71q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ab2fx"]
 font = ExtResource("12_c3t07")
 font_size = 20
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmjce"]
-size = Vector2(50, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g46vn"]
-size = Vector2(40, 40)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_htrjj")
@@ -96,42 +81,4 @@ offset_right = -952.0
 offset_bottom = 55.0
 label_settings = SubResource("LabelSettings_ab2fx")
 
-[node name="UpTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(78, 332)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("13_d0dqf")
-texture_pressed = ExtResource("14_2gws0")
-shape = SubResource("RectangleShape2D_fmjce")
-action = "ui_up"
-
-[node name="DownTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(76, 474)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("15_bm56n")
-texture_pressed = ExtResource("16_yg7rr")
-shape = SubResource("RectangleShape2D_g46vn")
-action = "ui_down"
-
-[node name="SwitchFormTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(882, 212)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("17_dreeq")
-texture_pressed = ExtResource("18_l0anw")
-shape = SubResource("RectangleShape2D_g46vn")
-action = "switch_form"
-
-[node name="ClockupTouchScreenButton2" type="TouchScreenButton" parent="."]
-position = Vector2(1014, 408)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("19_6pp6u")
-texture_pressed = ExtResource("20_0svdp")
-shape = SubResource("RectangleShape2D_g46vn")
-action = "skill"
-
-[node name="AttackTouchScreenButton3" type="TouchScreenButton" parent="."]
-position = Vector2(754, 407)
-scale = Vector2(3, 3)
-texture_normal = ExtResource("21_5ktqa")
-texture_pressed = ExtResource("22_egkk1")
-shape = SubResource("RectangleShape2D_g46vn")
-action = "attack"
+[node name="TouchScreenController" parent="." instance=ExtResource("13_ct71q")]

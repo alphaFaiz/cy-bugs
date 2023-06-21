@@ -1,3 +1,6 @@
+TextEdit
+RichTextLabel
+PopupPanel
 Line2D
 Path2D
 MeshInstance2D
@@ -8,7 +11,6 @@ CollisionShape2D
 StaticBody2D
 TileMap
 Label
-RichTextLabel
 TextureButton
 AnimatedSprite2D
 AnimationPlayer

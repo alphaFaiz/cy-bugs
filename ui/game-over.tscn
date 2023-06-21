@@ -8,50 +8,50 @@
 [ext_resource type="Texture2D" uid="uid://bfp5v7fsnx1qs" path="res://prototype-sprites/exit-button-pressed.png" id="5_t86hf"]
 [ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="7_e5i0j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_llq3b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihv2p"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(5120, 0, 1024, 648)
+region = Rect2(5760, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_quhl3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_22rna"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(4096, 0, 1024, 648)
+region = Rect2(4608, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j68kt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_65dol"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(3072, 0, 1024, 648)
+region = Rect2(3456, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_luhjb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooysc"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(2048, 0, 1024, 648)
+region = Rect2(2304, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uf1k8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ra7q"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(1024, 0, 1024, 648)
+region = Rect2(1152, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wij6b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6ixo"]
 atlas = ExtResource("1_sxkdo")
-region = Rect2(0, 0, 1024, 648)
+region = Rect2(0, 0, 1152, 648)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecmpi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_llq3b")
+"texture": SubResource("AtlasTexture_ihv2p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_quhl3")
+"texture": SubResource("AtlasTexture_22rna")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j68kt")
+"texture": SubResource("AtlasTexture_65dol")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_luhjb")
+"texture": SubResource("AtlasTexture_ooysc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uf1k8")
+"texture": SubResource("AtlasTexture_2ra7q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wij6b")
+"texture": SubResource("AtlasTexture_a6ixo")
 }],
 "loop": false,
 "name": &"default",
@@ -78,22 +78,26 @@ position = Vector2(641, 373)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_ecmpi")
 autoplay = "default"
+frame = 5
+frame_progress = 1.0
 
 [node name="ReplayButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 486.0
-offset_top = 272.0
-offset_right = 614.0
-offset_bottom = 400.0
+offset_left = 337.0
+offset_top = 223.0
+offset_right = 466.0
+offset_bottom = 351.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_mty3d")
 texture_pressed = ExtResource("3_ywqux")
 
 [node name="ExitButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 657.0
-offset_top = 268.0
-offset_right = 785.0
-offset_bottom = 396.0
+offset_left = 706.0
+offset_top = 220.0
+offset_right = 834.0
+offset_bottom = 348.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("4_loady")
 texture_pressed = ExtResource("5_t86hf")
 

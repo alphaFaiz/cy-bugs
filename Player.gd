@@ -72,6 +72,13 @@ var gravity: int = default_gravity
 var y_vel = 0
 var max_y_vel = 300
 
+#controllers
+var attack = false
+var	switch_form = false
+var skill = false
+var up = false
+var down = false
+	
 func play(animation: String, fliph = false, flipv= false) -> void:
 	_animated_sprite.set_flip_h(fliph)
 	_animated_sprite.set_flip_v(flipv)
@@ -81,11 +88,18 @@ func _ready() -> void:
 #	regenEnergyTimer.start()
 	pass
 
+func _process(delta: float) -> void:
+	attack = Input.is_action_just_pressed("attack")
+	switch_form = Input.is_action_pressed("switch_form")
+	skill = Input.is_action_just_pressed("skill")
+	if is_casted_off and not is_exhausted:
+		up = Input.is_action_pressed("ui_up")
+		down = Input.is_action_pressed("ui_down")
+	else:
+		up = Input.is_action_just_pressed("ui_up")
+		down = Input.is_action_just_pressed("ui_down")
+	
 func _physics_process(delta):
-	var attack = Input.is_action_just_pressed("attack")
-	var switch_form = Input.is_action_pressed("switch_form")
-	var skill = Input.is_action_just_pressed("skill")
-
 	if is_exhausted:
 		destroy()
 	
@@ -110,8 +124,6 @@ func _physics_process(delta):
 			is_casted_off = true
 		is_switching_form = false
 	elif is_casted_off and not is_exhausted:
-		var up = Input.is_action_pressed("ui_up")
-		var down = Input.is_action_pressed("ui_down")
 		if up and not ceil_touched:
 			if is_ceil_landing:
 				play("prepare_landing")
@@ -132,8 +144,6 @@ func _physics_process(delta):
 		if skill: #clock up
 			clock_up()
 	else:
-		var up = Input.is_action_just_pressed("ui_up")
-		var down = Input.is_action_just_pressed("ui_down")
 		if not grounded and not undergrounded:
 			y_vel = min(max_y_vel, y_vel+gravity)
 			position.y += y_vel * delta

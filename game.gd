@@ -25,6 +25,7 @@ var pickup_items = [
 ]
 
 const underground_dirt_scn = preload("res://effects/under_ground_effect.tscn")
+var default_segment = preload("res://segments/Default.tscn")
 var segments = [
 	preload("res://segments/A.tscn"),
 	preload("res://segments/B.tscn"),
@@ -51,7 +52,11 @@ func _ready():
 		_player.connect("point_changed", _point_label.set_point)
 		_player.connect("game_over", handle_game_over)
 	randomize()
-	spawn_inst(0, 0)
+#	spawn_inst(0, 0)
+	#spawn default segment
+	var default_segment_inst = default_segment.instantiate()
+	default_segment_inst.position = Vector2(0, 0)
+	_areas.add_child(default_segment_inst)
 	spawn_inst(bounds_fw, 0)
 	
 func verify_save_directory(path: String):
@@ -88,7 +93,7 @@ func spawn_inst(x, y):
 	var inst = segments[index].instantiate()
 	inst.position = Vector2(x, y)
 	_areas.add_child(inst)
-
+	
 func add_underground_effect(is_entering, walking, is_exiting, ground_landing) -> bool:
 	var segment_index = current_segment_index
 	var old_dirt_effect = _areas.get_child(segment_index).get_child(-1) #The last index will be equal to the dirt effect

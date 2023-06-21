@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cogfsg7tm68nd"]
+[gd_scene load_steps=34 format=3 uid="uid://cogfsg7tm68nd"]
 
 [ext_resource type="Script" path="res://main-menu.gd" id="1_m6ma2"]
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="2_kcjcb"]
@@ -11,51 +11,52 @@
 [ext_resource type="Texture2D" uid="uid://dhtb6mm8f4665" path="res://prototype-sprites/kabuto-cast-off.png" id="9_544ev"]
 [ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="9_ueyaj"]
 [ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="11_23lmf"]
+[ext_resource type="FontFile" uid="uid://lsugdsdc0yx7" path="res://resources/Minecraft.ttf" id="12_jtdvs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_28h4d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yd0i"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(0, 0, 1024, 648)
+region = Rect2(0, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_unlyr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_48hco"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(1024, 0, 1024, 648)
+region = Rect2(1152, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jiao1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4lt6"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(2048, 0, 1024, 648)
+region = Rect2(2304, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lphh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fntys"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(3072, 0, 1024, 648)
+region = Rect2(3456, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yoxa3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4jwe"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(4096, 0, 1024, 648)
+region = Rect2(4608, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pqtpb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnsrv"]
 atlas = ExtResource("2_kcjcb")
-region = Rect2(5120, 0, 1024, 648)
+region = Rect2(5760, 0, 1152, 648)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_el60y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_28h4d")
+"texture": SubResource("AtlasTexture_5yd0i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_unlyr")
+"texture": SubResource("AtlasTexture_48hco")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jiao1")
+"texture": SubResource("AtlasTexture_o4lt6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3lphh")
+"texture": SubResource("AtlasTexture_fntys")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yoxa3")
+"texture": SubResource("AtlasTexture_n4jwe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pqtpb")
+"texture": SubResource("AtlasTexture_tnsrv")
 }],
 "loop": false,
 "name": &"default",
@@ -144,6 +145,20 @@ font_size = 20
 outline_size = 3
 outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 
+[sub_resource type="Theme" id="Theme_5ewyg"]
+default_font = ExtResource("12_jtdvs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp21q"]
+bg_color = Color(0.737255, 0.658824, 0.0862745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="Theme" id="Theme_ouw1d"]
+default_font = ExtResource("12_jtdvs")
+default_font_size = 33
+
 [node name="main-menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -157,28 +172,31 @@ autoplay = "default"
 
 [node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 415.0
-offset_top = 494.0
-offset_right = 547.0
-offset_bottom = 622.0
+offset_left = 547.0
+offset_top = 456.0
+offset_right = 679.0
+offset_bottom = 584.0
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("3_jtrqy")
 texture_pressed = ExtResource("4_0bmic")
 
 [node name="SettingButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 594.0
-offset_top = 494.0
-offset_right = 722.0
-offset_bottom = 622.0
+offset_left = 299.0
+offset_top = 489.0
+offset_right = 427.0
+offset_bottom = 617.0
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("5_hbg1t")
 texture_pressed = ExtResource("6_2tiwg")
 
 [node name="AboutButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 759.0
-offset_top = 493.0
-offset_right = 887.0
-offset_bottom = 621.0
+offset_left = 793.0
+offset_top = 488.0
+offset_right = 921.0
+offset_bottom = 616.0
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("7_2y8fp")
 texture_pressed = ExtResource("8_21c1c")
 
@@ -201,4 +219,36 @@ autowrap_mode = 3
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 362)
 
+[node name="AboutPopupPanel" type="PopupPanel" parent="."]
+position = Vector2i(301, 80)
+size = Vector2i(680, 600)
+content_scale_mode = 1
+content_scale_aspect = 4
+theme = SubResource("Theme_5ewyg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 678.0
+offset_bottom = 598.0
+theme = SubResource("Theme_ouw1d")
+text = "
+							ABOUT:
+	
+	Kabugto is a beetle with the power
+	of godspeed. In beetle mode, it can
+	use super speed. In cocoon mode, 
+	it can go underground and pick items 
+	under there. Its stamina will be 
+	reduced over time. Eating leaves will 
+	help it recover.
+	
+	2023@ God Speed Bug
+
+	Theme song:  Jeremy Blake - Powerup 
+	(youtu.be/mrgVpZhjOWk)"
+fit_content = true
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="AboutButton" to="." method="_on_about_button_pressed"]

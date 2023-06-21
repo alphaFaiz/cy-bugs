@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cybv3xhkjxsd1"]
+[gd_scene load_steps=11 format=3 uid="uid://cybv3xhkjxsd1"]
 
 [ext_resource type="Script" path="res://segments/test-environment.gd" id="1_4rsh2"]
 [ext_resource type="Material" path="res://resources/Clockup_material.tres" id="2_nn0hi"]
 [ext_resource type="Texture2D" uid="uid://bbsc8uo0mjg30" path="res://common/Tilemap/tiles_packed.png" id="3_4ey7g"]
+[ext_resource type="PackedScene" uid="uid://b5rrh80qfrxnr" path="res://ui/TouchScreenController.tscn" id="4_wmyjt"]
 [ext_resource type="PackedScene" uid="uid://bp4t61akwt6bb" path="res://Player.tscn" id="5_ft6an"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cxm3"]
@@ -266,6 +267,8 @@ shape = SubResource("RectangleShape2D_lwbqy")
 [node name="Step" type="CollisionShape2D" parent="."]
 position = Vector2(494, 148.961)
 shape = SubResource("RectangleShape2D_j4mci")
+
+[node name="TouchScreenController" parent="." instance=ExtResource("4_wmyjt")]
 
 [node name="Player" parent="." instance=ExtResource("5_ft6an")]
 position = Vector2(386, 315)

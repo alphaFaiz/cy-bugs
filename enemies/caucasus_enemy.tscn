@@ -115,10 +115,8 @@ script = ExtResource("2_ofmd7")
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_hna6s")
-animation = &"walk"
 
 [node name="DetectionArea" parent="." index="2"]
-visible = false
 position = Vector2(-394, 0)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
@@ -126,7 +124,6 @@ position = Vector2(106, 0)
 shape = SubResource("CircleShape2D_bh7fc")
 
 [node name="AttackArea" parent="." index="3"]
-visible = false
 position = Vector2(-268, 0)
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
