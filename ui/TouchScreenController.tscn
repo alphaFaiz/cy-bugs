@@ -20,40 +20,40 @@ size = Vector2(40, 40)
 [node name="TouchScreenController" type="Node2D"]
 
 [node name="UpTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(78, 332)
-scale = Vector2(2, 2)
+position = Vector2(95, 275)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("1_v1rr8")
 texture_pressed = ExtResource("2_3d3w0")
 shape = SubResource("RectangleShape2D_vgare")
 action = "ui_up"
 
 [node name="DownTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(76, 474)
-scale = Vector2(2, 2)
+position = Vector2(93, 417)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("3_i3e7j")
 texture_pressed = ExtResource("4_fp4m8")
 shape = SubResource("RectangleShape2D_pxp24")
 action = "ui_down"
 
 [node name="SwitchFormTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(895, 332)
-scale = Vector2(2, 2)
+position = Vector2(868, 271)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("5_xnpae")
 texture_pressed = ExtResource("6_3ic22")
 shape = SubResource("RectangleShape2D_pxp24")
 action = "switch_form"
 
 [node name="ClockupTouchScreenButton2" type="TouchScreenButton" parent="."]
-position = Vector2(963, 460)
-scale = Vector2(2, 2)
+position = Vector2(936, 399)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("7_ts4u4")
 texture_pressed = ExtResource("8_k4ajx")
 shape = SubResource("RectangleShape2D_pxp24")
 action = "skill"
 
 [node name="AttackTouchScreenButton3" type="TouchScreenButton" parent="."]
-position = Vector2(1037, 332)
-scale = Vector2(2, 2)
+position = Vector2(1010, 271)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("9_o13v7")
 texture_pressed = ExtResource("10_vg071")
 shape = SubResource("RectangleShape2D_pxp24")

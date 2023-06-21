@@ -92,7 +92,7 @@ func _ready() -> void:
 		step.start.y = $Step.position.y - $Step.shape.size.y * 0.5
 		step.end.x = $Step.position.x + $Step.shape.size.x * 0.5
 		step.end.y = $Step.position.y + $Step.shape.size.y * 0.5
-		print("step range: ", step.start, " - ", step.end, $Step.shape.size)
+#		print("step range: ", step.start, " - ", step.end, $Step.shape.size)
 	var spawn_item_times = randi() % 6 + 1
 	var spawn_enemy_times = randi() % 6 + 1
 	generate_spawn_positions()
@@ -182,7 +182,7 @@ func generate_spawn_positions():
 
 	var cell_width = floor(viewport.x/number_of_collums)
 	var cell_height = floor(viewport.y/number_of_rows)
-	print("cell width:", cell_width, " | cell_height:", cell_height)
+#	print("cell width:", cell_width, " | cell_height:", cell_height)
 	
 	for i in number_of_collums:
 		for j in number_of_rows:
