@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cogfsg7tm68nd"]
+[gd_scene load_steps=40 format=3 uid="uid://cogfsg7tm68nd"]
 
 [ext_resource type="Script" path="res://main-menu.gd" id="1_m6ma2"]
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="2_kcjcb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dyrbmguitfwma" path="res://prototype-sprites/kabuto-walk.png" id="9_ueyaj"]
 [ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="11_23lmf"]
 [ext_resource type="FontFile" uid="uid://lsugdsdc0yx7" path="res://resources/Minecraft.ttf" id="12_jtdvs"]
+[ext_resource type="PackedScene" uid="uid://3j8vhcpunrus" path="res://ui/volume_slider.tscn" id="13_q2h1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yd0i"]
 atlas = ExtResource("2_kcjcb")
@@ -146,10 +147,11 @@ outline_size = 3
 outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 
 [sub_resource type="Theme" id="Theme_5ewyg"]
+resource_local_to_scene = true
 default_font = ExtResource("12_jtdvs")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp21q"]
-bg_color = Color(0.737255, 0.658824, 0.0862745, 1)
+bg_color = Color(0.835294, 0.517647, 0.0823529, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -158,6 +160,28 @@ border_width_bottom = 2
 [sub_resource type="Theme" id="Theme_ouw1d"]
 default_font = ExtResource("12_jtdvs")
 default_font_size = 33
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd76g"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+bg_color = Color(0.286275, 0.635294, 0.87451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6m1v"]
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yfm3"]
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_au6bo"]
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugsfo"]
+font_size = 33
 
 [node name="main-menu" type="Control"]
 layout_mode = 3
@@ -223,7 +247,7 @@ position = Vector2(640, 362)
 position = Vector2i(301, 80)
 size = Vector2i(680, 600)
 content_scale_mode = 1
-content_scale_aspect = 4
+content_scale_aspect = 3
 theme = SubResource("Theme_5ewyg")
 theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
 
@@ -250,5 +274,60 @@ text = "
 	(youtu.be/mrgVpZhjOWk)"
 fit_content = true
 
+[node name="SettingPopupPanel" type="PopupPanel" parent="."]
+position = Vector2i(301, 80)
+size = Vector2i(680, 600)
+content_scale_mode = 1
+content_scale_aspect = 3
+theme = SubResource("Theme_5ewyg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wd76g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingPopupPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 630.0
+offset_bottom = 598.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="SettingPopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_i6m1v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master Volume" type="Label" parent="SettingPopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_7yfm3")
+
+[node name="MasterVolume" parent="SettingPopupPanel/VBoxContainer" instance=ExtResource("13_q2h1p")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Music Volume" type="Label" parent="SettingPopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_au6bo")
+
+[node name="MusicVolume" parent="SettingPopupPanel/VBoxContainer" instance=ExtResource("13_q2h1p")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SFX Volume" type="Label" parent="SettingPopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_ugsfo")
+
+[node name="SFXVolume" parent="SettingPopupPanel/VBoxContainer" instance=ExtResource("13_q2h1p")]
+layout_mode = 2
+bus_name = "SFX"
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="AboutButton" to="." method="_on_about_button_pressed"]

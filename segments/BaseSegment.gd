@@ -93,8 +93,8 @@ func _ready() -> void:
 		step.end.x = $Step.position.x + $Step.shape.size.x * 0.5
 		step.end.y = $Step.position.y + $Step.shape.size.y * 0.5
 #		print("step range: ", step.start, " - ", step.end, $Step.shape.size)
-	var spawn_item_times = randi() % 6 + 1
-	var spawn_enemy_times = randi() % 6 + 1
+	var spawn_item_times = randf_range(3, 8)# randi() % 6 + 1
+	var spawn_enemy_times = randf_range(4, 6)# randi() % 8 + 4
 	generate_spawn_positions()
 #	print("spawn_item_times: ", spawn_item_times)
 #	print("spawn_enemy_times: ", spawn_enemy_times, solid_ground)
@@ -155,11 +155,15 @@ func spawn_item():
 func spawn_enemy():
 	var index = randi() % len(enemies)
 	var enemy = enemies[index]
-	var cell_index = randi() % len(spawn_cells)
+	var cell_index# = randi() % len(spawn_cells)
 	var inst = enemy.src.instantiate()
+#	print("unavailable_ground_x:", unavailable_ground_x)
+	if not len(spawn_cells):
+		print("empty")
+	if not enemy.underground_enemy:
+		spawn_cells = spawn_cells.filter(func(cell): return not len(unavailable_ground_x.filter(func(x): return cell.center.x == x)))
 	if enemy.ground_enemy:
-#		print("157:", unavailable_ground_x)
-		var ground_cells = spawn_cells.filter(func(cell): return cell.in_ground_range and len(unavailable_ground_x.filter(func(x): return cell.center.x == x)) == 0)
+		var ground_cells = spawn_cells.filter(func(cell): return cell.in_ground_range)
 #		print("ground cells length:", len(ground_cells), " - ", ground_cells.map(func(cell): return cell.center.x))
 		cell_index = spawn_cells.find(ground_cells.pick_random(), 0)
 		inst.position = spawn_cells[cell_index].center
@@ -169,6 +173,8 @@ func spawn_enemy():
 		inst.position = spawn_cells[cell_index].center
 		inst.position.y = y_spawn_underground
 	else:
+		var useable_cells = spawn_cells.filter(func(cell): return not len(unavailable_ground_x.filter(func(x): return cell.center.x == x)))
+		cell_index = randi() % len(spawn_cells)# spawn_cells.find(useable_cells.pick_random(), 0)
 		inst.position = spawn_cells[cell_index].center
 	unavailable_ground_x.push_back(spawn_cells[cell_index].center.x)	
 	add_child(inst)
@@ -191,7 +197,8 @@ func generate_spawn_positions():
 				"center": Vector2((0.5 + i) * cell_width, (0.5 + j) * cell_height),
 				"end": Vector2((i + 1) * cell_width, (j + 1) * cell_height),
 				"above_the_step": has_step and (j + 0.5) * cell_height < step.start.y,
-				"in_ground_range": solid_ground.start.x < (0.5 + i) * cell_width and (0.5 + i) * cell_width < solid_ground.end.x
+				"in_ground_range": solid_ground.start.x < (0.5 + i) * cell_width and (0.5 + i) * cell_width < solid_ground.end.x,
+#				"is_ground_cell": 
 			}
 			spawn_cells.push_back(new_cell)
 

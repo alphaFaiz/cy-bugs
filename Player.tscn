@@ -407,20 +407,25 @@ autostart = true
 
 [node name="PutonAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_4vpps")
+bus = &"SFX"
 
 [node name="CastOffAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_ksg6e")
+bus = &"SFX"
 
 [node name="ClockUpAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_fx0at")
 volume_db = 5.584
+bus = &"SFX"
 
 [node name="ClockOverAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_cerk5")
 volume_db = 2.0
+bus = &"SFX"
 
 [node name="UnderGroundAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_hulp6")
+bus = &"SFX"
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="RegenEnergyTimer" to="." method="_on_regen_energy_timer_timeout"]

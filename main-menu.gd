@@ -5,6 +5,7 @@ extends Control
 @onready var about_button = $AboutButton
 @onready var characterAnimation = $CharacterAnimatedSprite2D
 @onready var about_popup = $AboutPopupPanel
+@onready var setting_popup = $SettingPopupPanel
 
 @onready var score_label = $HighScoreLabel
 var save_file_path = "user://save/"
@@ -22,9 +23,12 @@ func _process(_delta: float) -> void:
 		characterAnimation.play("walk")
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://game.tscn")
+	Loading.load_scene(self, "res://game.tscn")
+#	get_tree().change_scene_to_file("res://game.tscn")
 
 
 func _on_about_button_pressed() -> void:
 	about_popup.show()
-	pass # Replace with function body.
+
+func _on_setting_button_pressed() -> void:
+	setting_popup.show()
