@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var _player: Player = $Player
 @onready var _energy_bar: Control = $EnergyBar

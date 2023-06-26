@@ -1,3 +1,4 @@
+Control
 ProgressBar
 ColorRect
 CanvasLayer
@@ -19,7 +20,6 @@ TileMap
 TextureButton
 AnimatedSprite2D
 AnimationPlayer
-Control
 Timer
 RayCast2D
 CharacterBody2D

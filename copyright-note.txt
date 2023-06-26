@@ -1,1 +1,3 @@
 Jeremy Blake - Powerup (youtu.be/mrgVpZhjOWk)
+
+using admob plugin: https://github.com/Poing-Studios/godot-admob-plugin
