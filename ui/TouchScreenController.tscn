@@ -20,7 +20,7 @@ size = Vector2(40, 40)
 [node name="TouchScreenController" type="Node2D"]
 
 [node name="UpTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(95, 275)
+position = Vector2(57, 268)
 scale = Vector2(3, 3)
 texture_normal = ExtResource("1_v1rr8")
 texture_pressed = ExtResource("2_3d3w0")
@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_vgare")
 action = "ui_up"
 
 [node name="DownTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(93, 417)
+position = Vector2(55, 410)
 scale = Vector2(3, 3)
 texture_normal = ExtResource("3_i3e7j")
 texture_pressed = ExtResource("4_fp4m8")

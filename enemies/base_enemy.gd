@@ -63,6 +63,9 @@ func attack_player(_delta = null):
 	pass
 
 func destroy() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		player.point += 1
 	var enemy_collision = get_child(1)
 	remove_child(enemy_collision)
 	var explosion_inst = explosion_scn.instantiate()

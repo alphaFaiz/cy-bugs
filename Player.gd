@@ -313,8 +313,8 @@ func _on_clock_over() -> void:
 
 func _on_stamina_timer_timeout() -> void:
 	if is_casted_off:
-		stamina -= 0.4
+		stamina -= 0.8
 	else:
-		stamina -= 0.1
+		stamina -= 0.4
 	if stamina == 0 and not crashed:
 		is_exhausted = true

@@ -20,7 +20,11 @@ font_size = 20
 
 [node name="Game" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_htrjj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,7 +34,7 @@ position = Vector2(638, 355)
 material = ExtResource("1_qrysc")
 
 [node name="Player" parent="." instance=ExtResource("2_04a31")]
-position = Vector2(279, 300)
+position = Vector2(343, 290)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(0, -112)
@@ -61,6 +65,11 @@ script = ExtResource("11_iay07")
 texture = ExtResource("12_e4yh0")
 
 [node name="StaminaBar" parent="." instance=ExtResource("10_0vx1d")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 141.0
+offset_right = 45.0
+offset_bottom = 291.0
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_atb2s")]
 layout_mode = 1
@@ -70,6 +79,7 @@ offset_right = 60.0
 offset_bottom = 135.0
 
 [node name="ClockupBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = 110.0
 offset_top = 141.0
 offset_right = 120.0
@@ -78,10 +88,11 @@ fill_mode = 3
 show_percentage = false
 
 [node name="PointLabel" parent="." instance=ExtResource("11_f4hx3")]
-offset_left = -1119.0
-offset_top = 38.0
-offset_right = -1079.0
-offset_bottom = 66.0
+layout_mode = 0
+offset_left = 162.0
+offset_top = 34.0
+offset_right = 202.0
+offset_bottom = 62.0
 label_settings = SubResource("LabelSettings_ab2fx")
 
 [node name="TouchScreenController" parent="." instance=ExtResource("13_ct71q")]
