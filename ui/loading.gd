@@ -16,10 +16,10 @@ func load_scene(current_scene, next_scene):
 	
 	while true:
 		var status = ResourceLoader.load_threaded_get_status(next_scene, progress)
-		progress_bar.value = progress[0] * 100
 		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			pass
+			progress_bar.value = progress[0] * 100.0
 		elif status == ResourceLoader.THREAD_LOAD_LOADED:
+			print("loaded")
 			var scene = ResourceLoader.load_threaded_get(next_scene)
 			get_tree().change_scene_to_packed(scene)
 			loading_screen_inst.queue_free()

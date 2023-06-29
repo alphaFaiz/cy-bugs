@@ -1,10 +1,10 @@
-res://segments/B.tscn
+res://ui/loading_screen.tscn
 res://main-menu.tscn
 res://game.tscn
 res://ui/game-over.tscn
 res://Player.tscn
 res://segments/C.tscn
 res://segments/A.tscn
+res://segments/B.tscn
 res://ui/TouchScreenController.tscn
-res://enemies/base_enemy.gd
-res://Player.gd
+res://ui/loading.gd
