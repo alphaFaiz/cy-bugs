@@ -1,5 +1,4 @@
 res://ui/loading_screen.tscn
-res://ui/loading.gd
 res://main-menu.tscn
 res://game.tscn
 res://ui/game-over.tscn
@@ -8,3 +7,5 @@ res://segments/C.tscn
 res://segments/A.tscn
 res://segments/B.tscn
 res://ui/TouchScreenController.tscn
+res://ui/loading.gd
+res://main-menu.gd

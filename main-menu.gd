@@ -6,8 +6,9 @@ extends Control
 @onready var characterAnimation = $CharacterAnimatedSprite2D
 @onready var about_popup = $AboutPopupPanel
 @onready var setting_popup = $SettingPopupPanel
-
 @onready var score_label = $HighScoreLabel
+@onready var loading_screen = $loading_screen
+
 var save_file_path = "user://save/"
 var save_file_name = "PlayerScore.tres"
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +24,7 @@ func _process(_delta: float) -> void:
 		characterAnimation.play("walk")
 
 func _on_play_button_pressed() -> void:
-	Loading.load_scene(self, "res://game.tscn")
+	Loading.load_scene(self, "res://game.tscn", loading_screen)
 #	get_tree().change_scene_to_file("res://game.tscn")
 
 
