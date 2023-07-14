@@ -7,3 +7,6 @@ res://segments/C.tscn
 res://segments/A.tscn
 res://segments/B.tscn
 res://ui/TouchScreenController.tscn
+res://game.gd
+res://effects/under_ground_effect.tscn
+res://segments/BaseSegment.tscn

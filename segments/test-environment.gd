@@ -58,5 +58,5 @@ func _process(delta: float) -> void:
 		var enemy = enemies[3]
 		var inst = enemy.src.instantiate()
 		inst.position = Vector2(747, 483)
-		add_child(inst)
+		add_child(inst, true)
 	pass
