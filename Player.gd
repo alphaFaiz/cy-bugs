@@ -257,18 +257,19 @@ func changeCollisionMask(mask: int) -> void:
  
 func destroy() -> void:
 	var hitbox = get_node("HitBox")
-	remove_child(hitbox)
-	if is_exhausted and is_casted_off:
-		play("exhausted")
-		await _animated_sprite.animation_finished
-	elif is_exhausted and not is_casted_off:
-		play("cocoon_exhausted")
-		await _animated_sprite.animation_finished
-	var explosion_inst = explosion_scn.instantiate()
-	add_child(explosion_inst, true)
-	await explosion_inst.animation_finished
-	emit_signal("game_over", point)
-	queue_free()
+	if hitbox:
+		remove_child(hitbox)
+		if is_exhausted and is_casted_off:
+			play("exhausted")
+			await _animated_sprite.animation_finished
+		elif is_exhausted and not is_casted_off:
+			play("cocoon_exhausted")
+			await _animated_sprite.animation_finished
+		var explosion_inst = explosion_scn.instantiate()
+		add_child(explosion_inst, true)
+		await explosion_inst.animation_finished
+		emit_signal("game_over", point)
+		queue_free()
 
 func clock_up() -> bool:
 	if not clockupTimer.is_stopped() or energy < 5 or is_in_speed_force:

@@ -1,12 +1,6 @@
-res://ui/loading_screen.tscn
-res://main-menu.tscn
-res://game.tscn
-res://ui/game-over.tscn
-res://Player.tscn
-res://segments/C.tscn
-res://segments/A.tscn
-res://segments/B.tscn
-res://ui/TouchScreenController.tscn
-res://game.gd
 res://effects/under_ground_effect.tscn
+res://game.tscn
 res://segments/BaseSegment.tscn
+res://game.gd
+res://Player.tscn
+res://Player.gd

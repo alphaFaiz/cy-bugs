@@ -77,8 +77,9 @@ func _physics_process(delta):
 	#after the character is moved, clamp its position to the end of the camera bounds
 	if _player:
 		_player.global_position.x = clamp(_player.global_position.x, bounds_bw, bounds_fw)
-		_player.global_position.y = clamp(_player.global_position.y, bounds_uw + player_height * 2, bounds_dw)
-
+		_player.global_position.y = clamp(_player.global_position.y, bounds_uw + player_height * 2, bounds_dw - player_height * 2)
+	if _player and not _player.is_casted_off and _player.global_position.y >= bounds_dw - 2 * player_height:
+		_player.is_exhausted = true
 	var player_position = _player.global_transform.origin
 	for area in _areas.get_children():
 		area.position.x -= speed * delta
