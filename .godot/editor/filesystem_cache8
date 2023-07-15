@@ -1,8 +1,8 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1688901656
+::res://::1689171762
 copyright-note.txt::TextFile::-1::1687796457::0::1::::<><>::
 default_bus_layout.tres::AudioBusLayout::7191013581121438497::1687796457::0::1::::<><>::
-export_presets.cfg::TextFile::-1::1688899154::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1689000120::0::1::::<><>::
 game.gd::GDScript::-1::1687796457::0::1::::<>Control<>::
 game.tscn::PackedScene::2309586268306899838::1688901656::0::1::::<><>::res://game.gd<>res://resources/Clockup_material.tres<>uid://bp4t61akwt6bb::::res://Player.tscn<>uid://cn1iat65somp8::::res://ui/energy-bar-control.tscn<>uid://5fd0bw77rlxo::::res://backgrounds/parallax-00.png<>res://backgrounds/CloudLayer.gd<>uid://dsquq0jymkv0a::::res://ui/stamina_bar.tscn<>uid://dxxulptcf1hb3::::res://backgrounds/parallax-01.png<>uid://v0qe50hcgq20::::res://ui/point_label.tscn<>res://backgrounds/MountainLayer.gd<>uid://d2epuvtq0plau::::res://ui/Minecraft.ttf<>uid://cc8q3wlga35pl::::res://backgrounds/parallax-02.png<>uid://b5rrh80qfrxnr::::res://ui/TouchScreenController.tscn
 icon.svg::CompressedTexture2D::8115527038404002229::1686991013::1688047476::1::::<><>::
