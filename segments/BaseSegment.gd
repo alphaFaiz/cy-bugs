@@ -149,7 +149,7 @@ func spawn_item():
 		spawn_item()
 	else:
 		inst.position = Vector2(x_position, y_position)
-		add_child(inst)
+		add_child(inst, true)
 		unavailable_item_positions.push_back(inst.position)
 
 func spawn_enemy():
@@ -177,7 +177,7 @@ func spawn_enemy():
 		cell_index = randi() % len(spawn_cells)# spawn_cells.find(useable_cells.pick_random(), 0)
 		inst.position = spawn_cells[cell_index].center
 	unavailable_ground_x.push_back(spawn_cells[cell_index].center.x)	
-	add_child(inst)
+	add_child(inst, true)
 #	print(enemy.name, " |cell_index: ", cell_index, " |position: ", spawn_cells[cell_index].center)
 	spawn_cells.remove_at(cell_index)
 

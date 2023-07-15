@@ -244,7 +244,7 @@ func thunder_attack(is_ceil_touched: bool):
 		var thunder_attack_inst = thunder_attack_scn.instantiate()
 		thunder_attack_inst.position = Vector2(_animated_sprite.position)
 		var _attack_sprite = thunder_attack_inst.get_child(1)
-		add_child(thunder_attack_inst)
+		add_child(thunder_attack_inst, true)
 		_attack_sprite.set_flip_v(is_ceil_touched)
 		_attack_sprite.play("default")
 		await _attack_sprite.animation_finished
@@ -265,7 +265,7 @@ func destroy() -> void:
 		play("cocoon_exhausted")
 		await _animated_sprite.animation_finished
 	var explosion_inst = explosion_scn.instantiate()
-	add_child(explosion_inst)
+	add_child(explosion_inst, true)
 	await explosion_inst.animation_finished
 	emit_signal("game_over", point)
 	queue_free()
@@ -278,7 +278,7 @@ func clock_up() -> bool:
 	is_in_speed_force = true
 	var clockup_effect = clockup_speed_scn.instantiate()
 	clockup_effect.position = Vector2(-80, 0)
-	add_child(clockup_effect)
+	add_child(clockup_effect, true)
 #	_animated_sprite.material.set_shader_parameter("contrast", 2)
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:

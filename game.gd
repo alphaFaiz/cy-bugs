@@ -56,7 +56,7 @@ func _ready():
 	#spawn default segment
 	var default_segment_inst = default_segment.instantiate()
 	default_segment_inst.position = Vector2(0, 0)
-	_areas.add_child(default_segment_inst)
+	_areas.add_child(default_segment_inst, true)
 	spawn_inst(bounds_fw, 0)
 	
 func verify_save_directory(path: String):
@@ -92,7 +92,7 @@ func spawn_inst(x, y):
 	var index = randi() % len(segments)
 	var inst = segments[index].instantiate()
 	inst.position = Vector2(x, y)
-	_areas.add_child(inst)
+	_areas.add_child(inst, true)
 	
 func add_underground_effect(is_entering, walking, is_exiting, ground_landing) -> bool:
 	var segment_index = current_segment_index
@@ -125,7 +125,7 @@ func add_underground_effect(is_entering, walking, is_exiting, ground_landing) ->
 		animation_name = "ground_landing"
 		dirt_effect.position = player_position - segment_position + Vector2(player_width/5, player_height/7)
 	if dirt_effect:
-		_areas.get_child(segment_index).add_child(dirt_effect)
+		_areas.get_child(segment_index).add_child(dirt_effect, true)
 		dirt_effect.play(animation_name)
 	return true
 

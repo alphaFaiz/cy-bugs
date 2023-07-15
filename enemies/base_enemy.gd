@@ -69,7 +69,7 @@ func destroy() -> void:
 	var enemy_collision = get_child(1)
 	remove_child(enemy_collision)
 	var explosion_inst = explosion_scn.instantiate()
-	add_child(explosion_inst)
+	add_child(explosion_inst, true)
 	await explosion_inst.animation_finished
 	queue_free()
 

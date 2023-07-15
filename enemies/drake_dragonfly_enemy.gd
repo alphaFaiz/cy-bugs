@@ -36,4 +36,4 @@ func _on_shoot_timer_timeout() -> void:
 	if is_attacking:
 		var inst = drake_bullet.instantiate()
 		inst.position = Vector2(position.x - sprite_width/1.9, position.y + 20)
-		get_parent().add_child(inst)
+		get_parent().add_child(inst, true)
