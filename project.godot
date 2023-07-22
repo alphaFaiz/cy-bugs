@@ -18,7 +18,7 @@ config={
 "size": "BANNER",
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-3940256099942544/6300978111"
+"standard": "ca-app-pub-1107028746475837~7597877972"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/2934735716"
@@ -38,7 +38,7 @@ config={
 "interstitial": {
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-3940256099942544/1033173712"
+"standard": "ca-app-pub-1107028746475837~7597877972"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/4411468910"
@@ -48,7 +48,7 @@ config={
 "rewarded": {
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-3940256099942544/5224354917"
+"standard": "ca-app-pub-1107028746475837~7597877972"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/1712485313"
@@ -72,6 +72,7 @@ config={
 config/name="Cy-bugs"
 run/main_scene="res://main-menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
+boot_splash/bg_color=Color(0.00392157, 0.00392157, 0.00392157, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -89,7 +90,7 @@ window/stretch/aspect="ignore"
 
 [editor]
 
-movie_writer/movie_file="/home/nmt97/Projects/Godot/record.avi"
+movie_writer/movie_file="D:/Dev-projects/Godot/record.avi"
 
 [editor_plugins]
 

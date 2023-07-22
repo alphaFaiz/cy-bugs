@@ -253,17 +253,18 @@ autowrap_mode = 3
 position = Vector2(640, 362)
 
 [node name="AboutPopupPanel" type="PopupPanel" parent="."]
-position = Vector2i(301, 80)
+initial_position = 2
 size = Vector2i(680, 600)
 content_scale_mode = 1
 theme = SubResource("Theme_5ewyg")
 theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 678.0
-offset_bottom = 598.0
+[node name="VBoxContainer" type="VBoxContainer" parent="AboutPopupPanel"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel/VBoxContainer"]
+layout_mode = 2
 theme = SubResource("Theme_ouw1d")
 text = "
 							ABOUT:
@@ -283,7 +284,7 @@ text = "
 fit_content = true
 
 [node name="SettingPopupPanel" type="PopupPanel" parent="."]
-position = Vector2i(301, 80)
+initial_position = 2
 size = Vector2i(680, 600)
 content_scale_mode = 1
 theme = SubResource("Theme_5ewyg")
@@ -295,8 +296,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 50.0
-offset_right = 630.0
-offset_bottom = 598.0
+offset_right = -50.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20

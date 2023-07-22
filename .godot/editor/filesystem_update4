@@ -1,6 +1,5 @@
-res://effects/under_ground_effect.tscn
-res://game.tscn
-res://segments/BaseSegment.tscn
-res://game.gd
 res://Player.tscn
-res://Player.gd
+res://game.tscn
+res://effects/under_ground_effect.tscn
+res://segments/BaseSegment.tscn
+res://main-menu.tscn

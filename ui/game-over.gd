@@ -6,6 +6,10 @@ var save_file_name = "PlayerScore.tres"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MobileAds.load_banner()
+	await MobileAds.banner_loaded
+	MobileAds.show_banner()
+	await MobileAds.banner_closed
 	var playerData = ResourceLoader.load(save_file_path + save_file_name)
 	score_label.text = "YOUR SCORE: " + str(playerData.latest_score) + "\nHIGHEST SCORE: " + str(playerData.high_score)
 	pass # Replace with function body.

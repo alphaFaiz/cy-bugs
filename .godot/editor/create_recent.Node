@@ -1,13 +1,13 @@
+VBoxContainer
+PopupPanel
 Control
 ProgressBar
 ColorRect
 CanvasLayer
 Label
-VBoxContainer
 HSlider
 TextEdit
 RichTextLabel
-PopupPanel
 Line2D
 Path2D
 MeshInstance2D
