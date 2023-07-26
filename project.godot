@@ -18,7 +18,7 @@ config={
 "size": "BANNER",
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-1107028746475837~7597877972"
+"standard": "ca-app-pub-1107028746475837/1889722894"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/2934735716"
@@ -38,7 +38,7 @@ config={
 "interstitial": {
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-1107028746475837~7597877972"
+"standard": "ca-app-pub-1107028746475837/7003368644"
 },
 "iOS": {
 "standard": "ca-app-pub-3940256099942544/4411468910"

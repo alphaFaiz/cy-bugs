@@ -6,6 +6,11 @@ var save_file_name = "PlayerScore.tres"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MobileAds.load_interstitial()
+	await MobileAds.interstitial_loaded
+	MobileAds.show_interstitial()
+	await MobileAds.interstitial_closed
+	
 	MobileAds.load_banner()
 	await MobileAds.banner_loaded
 	MobileAds.show_banner()

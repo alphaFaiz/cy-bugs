@@ -260,8 +260,10 @@ theme = SubResource("Theme_5ewyg")
 theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AboutPopupPanel"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 678.0
+offset_bottom = 598.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel/VBoxContainer"]
 layout_mode = 2
