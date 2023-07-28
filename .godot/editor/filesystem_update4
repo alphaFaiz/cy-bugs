@@ -1,4 +1,4 @@
-res://Player.tscn
-res://game.tscn
-res://effects/under_ground_effect.tscn
-res://segments/BaseSegment.tscn
+res://ui/game-over.tscn
+res://admob-lib/admob.gd
+res://ui/game-over.gd
+res://main-menu.tscn

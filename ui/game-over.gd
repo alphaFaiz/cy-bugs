@@ -1,20 +1,13 @@
 extends Control
-
+@onready var admob = $AdMob
 @onready var score_label = $ScoreLabel
 var save_file_path = "user://save/"
 var save_file_name = "PlayerScore.tres"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MobileAds.load_interstitial()
-	await MobileAds.interstitial_loaded
-	MobileAds.show_interstitial()
-	await MobileAds.interstitial_closed
-	
-	MobileAds.load_banner()
-	await MobileAds.banner_loaded
-	MobileAds.show_banner()
-	await MobileAds.banner_closed
+	admob.load_banner()
+	admob.show_banner()
 	var playerData = ResourceLoader.load(save_file_path + save_file_name)
 	score_label.text = "YOUR SCORE: " + str(playerData.latest_score) + "\nHIGHEST SCORE: " + str(playerData.high_score)
 	pass # Replace with function body.

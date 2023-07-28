@@ -1,6 +1,9 @@
-VBoxContainer
-PopupPanel
 Control
+VBoxContainer
+HBoxContainer
+AdMob
+AnimationTree
+PopupPanel
 ProgressBar
 ColorRect
 CanvasLayer
@@ -27,6 +30,3 @@ TextureProgressBar
 Area2D
 Sprite2D
 TextureRect
-ParallaxLayer
-ParallaxBackground
-CollisionPolygon2D

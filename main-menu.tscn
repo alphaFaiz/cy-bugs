@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cogfsg7tm68nd"]
+[gd_scene load_steps=42 format=3 uid="uid://cogfsg7tm68nd"]
 
 [ext_resource type="Script" path="res://main-menu.gd" id="1_m6ma2"]
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="2_kcjcb"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://lsugdsdc0yx7" path="res://resources/Minecraft.ttf" id="12_jtdvs"]
 [ext_resource type="PackedScene" uid="uid://3j8vhcpunrus" path="res://ui/volume_slider.tscn" id="13_q2h1p"]
 [ext_resource type="PackedScene" uid="uid://dteoumswrtgwg" path="res://ui/loading_screen.tscn" id="14_0yodx"]
+[ext_resource type="Script" path="res://admob-lib/admob.gd" id="15_ar8p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yd0i"]
 atlas = ExtResource("2_kcjcb")
@@ -260,10 +261,8 @@ theme = SubResource("Theme_5ewyg")
 theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AboutPopupPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 678.0
-offset_bottom = 598.0
+offset_right = 1.0
+offset_bottom = 510.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel/VBoxContainer"]
 layout_mode = 2
@@ -298,8 +297,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 50.0
-offset_right = -50.0
-offset_bottom = -2.0
+offset_right = 246.0
+offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -340,6 +339,11 @@ bus_name = "SFX"
 
 [node name="loading_screen" parent="." instance=ExtResource("14_0yodx")]
 visible = false
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource("15_ar8p5")
+is_real = true
+banner_id = "ca-app-pub-1107028746475837/1889722894"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]

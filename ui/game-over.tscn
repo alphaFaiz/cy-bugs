@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lruas7lofysg"]
+[gd_scene load_steps=17 format=3 uid="uid://lruas7lofysg"]
 
 [ext_resource type="Texture2D" uid="uid://cl1q3x2qvvjp" path="res://prototype-sprites/main-menu-background.png" id="1_sxkdo"]
 [ext_resource type="Script" path="res://ui/game-over.gd" id="1_sxxry"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://4k3y0noeidg2" path="res://prototype-sprites/exit-button-idle.png" id="4_loady"]
 [ext_resource type="Texture2D" uid="uid://bfp5v7fsnx1qs" path="res://prototype-sprites/exit-button-pressed.png" id="5_t86hf"]
 [ext_resource type="FontFile" uid="uid://d2epuvtq0plau" path="res://ui/Minecraft.ttf" id="7_e5i0j"]
+[ext_resource type="Script" path="res://admob-lib/admob.gd" id="8_co3uo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihv2p"]
 atlas = ExtResource("1_sxkdo")
@@ -113,6 +114,13 @@ autowrap_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(645, 362)
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource("8_co3uo")
+is_real = true
+banner_on_top = false
+banner_size = "FULL_BANNER"
+banner_id = "ca-app-pub-1107028746475837/1889722894"
 
 [connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
