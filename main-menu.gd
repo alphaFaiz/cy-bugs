@@ -5,6 +5,7 @@ extends Control
 @onready var about_button = $AboutButton
 @onready var characterAnimation = $CharacterAnimatedSprite2D
 @onready var about_popup = $AboutPopupPanel
+@onready var about_container = $AboutPopupScrollContainer
 @onready var setting_popup = $SettingPopupPanel
 @onready var score_label = $HighScoreLabel
 @onready var loading_screen = $loading_screen
@@ -29,7 +30,12 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_about_button_pressed() -> void:
-	about_popup.show()
+	about_container.show()
+#	about_popup.show()
 
 func _on_setting_button_pressed() -> void:
 	setting_popup.show()
+
+
+func _on_button_pressed():
+	about_container.hide()

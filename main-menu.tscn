@@ -148,24 +148,14 @@ font_size = 20
 outline_size = 3
 outline_color = Color(0.133333, 0.133333, 0.133333, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kjos"]
+bg_color = Color(0.831373, 0.517647, 0.054902, 1)
+
+[sub_resource type="Theme" id="Theme_sdi3n"]
+
 [sub_resource type="Theme" id="Theme_5ewyg"]
 resource_local_to_scene = true
 default_font = ExtResource("12_jtdvs")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp21q"]
-bg_color = Color(0.835294, 0.517647, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="Theme" id="Theme_ouw1d"]
-default_font = ExtResource("12_jtdvs")
-default_font_size = 33
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd76g"]
 content_margin_left = 50.0
@@ -253,20 +243,24 @@ autowrap_mode = 3
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 362)
 
-[node name="AboutPopupPanel" type="PopupPanel" parent="."]
-initial_position = 2
-size = Vector2i(680, 600)
-content_scale_mode = 1
-theme = SubResource("Theme_5ewyg")
-theme_override_styles/panel = SubResource("StyleBoxFlat_lp21q")
+[node name="AboutPopupScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 415.0
+offset_top = 143.0
+offset_right = 847.0
+offset_bottom = 496.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kjos")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AboutPopupPanel"]
-offset_right = 1.0
-offset_bottom = 510.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AboutPopupScrollContainer"]
 layout_mode = 2
-theme = SubResource("Theme_ouw1d")
+theme = SubResource("Theme_sdi3n")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutPopupScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("12_jtdvs")
+theme_override_font_sizes/normal_font_size = 20
 text = "
 							ABOUT:
 	
@@ -284,6 +278,12 @@ text = "
 	(youtu.be/mrgVpZhjOWk)"
 fit_content = true
 
+[node name="Button" type="Button" parent="AboutPopupScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_jtdvs")
+theme_override_font_sizes/font_size = 20
+text = "Close"
+
 [node name="SettingPopupPanel" type="PopupPanel" parent="."]
 initial_position = 2
 size = Vector2i(680, 600)
@@ -297,8 +297,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 50.0
-offset_right = 246.0
-offset_bottom = 326.0
+offset_right = -50.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -348,3 +348,4 @@ banner_id = "ca-app-pub-1107028746475837/1889722894"
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="AboutPopupScrollContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

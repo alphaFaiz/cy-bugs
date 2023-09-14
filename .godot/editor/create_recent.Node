@@ -1,3 +1,7 @@
+RichTextLabel
+ScrollContainer
+Button
+TextureRect
 Control
 VBoxContainer
 HBoxContainer
@@ -10,7 +14,6 @@ CanvasLayer
 Label
 HSlider
 TextEdit
-RichTextLabel
 Line2D
 Path2D
 MeshInstance2D
@@ -27,6 +30,3 @@ Timer
 RayCast2D
 CharacterBody2D
 TextureProgressBar
-Area2D
-Sprite2D
-TextureRect

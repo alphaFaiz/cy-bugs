@@ -1,13 +1,13 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1690570758
+::res://::1694702435
 copyright-note.txt::TextFile::-1::1687796457::0::1::::<><>::
 default_bus_layout.tres::AudioBusLayout::7191013581121438497::1687796457::0::1::::<><>::
-export_presets.cfg::TextFile::-1::1690382708::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1690570758::0::1::::<><>::
 game.gd::GDScript::-1::1689428161::0::1::::<>Control<>::
 game.tscn::PackedScene::2309586268306899838::1690378313::0::1::::<><>::res://game.gd<>res://resources/Clockup_material.tres<>uid://bp4t61akwt6bb
 icon.svg::CompressedTexture2D::8115527038404002229::1686991013::1688047476::1::::<><>::
-main-menu.gd::GDScript::-1::1688484741::0::1::::<>Control<>::
-main-menu.tscn::PackedScene::5768207539551542873::1690570550::0::1::::<><>::res://main-menu.gd<>uid://cl1q3x2qvvjp::::res://prototype-sprites/main-menu-background.png<>uid://bedndah7qmgb2::::res://prototype-sprites/play-button-idle.png<>uid://0li1n0b6f8uo::::res://prototype-sprites/play-button-pressed.png<>uid://1f6mfrrdeysy::::res://prototype-sprites/setting-button-idle.png<>uid://cgw48544qt70g::::res://prototype-sprites/setting-button-pressed.png<>uid://h32lnbxistpa::::res://prototype-sprites/about-button-idle.png<>uid://cp4kjo124or6p::::res://prototype-sprites/about-button-pressed.png<>uid://dhtb6mm8f4665::::res://prototype-sprites/kabuto-cast-off.png<>uid://dyrbmguitfwma::::res://prototype-sprites/kabuto-walk.png<>uid://d2epuvtq0plau::::res://ui/Minecraft.ttf<>uid://lsugdsdc0yx7::::res://resources/Minecraft.ttf<>uid://3j8vhcpunrus::::res://ui/volume_slider.tscn<>uid://dteoumswrtgwg::::res://ui/loading_screen.tscn<>res://admob-lib/admob.gd
+main-menu.gd::GDScript::-1::1694619038::0::1::::<>Control<>::
+main-menu.tscn::PackedScene::5768207539551542873::1694701534::0::1::::<><>::res://main-menu.gd<>uid://cl1q3x2qvvjp::::res://prototype-sprites/main-menu-background.png<>uid://bedndah7qmgb2::::res://prototype-sprites/play-button-idle.png<>uid://0li1n0b6f8uo::::res://prototype-sprites/play-button-pressed.png<>uid://1f6mfrrdeysy::::res://prototype-sprites/setting-button-idle.png<>uid://cgw48544qt70g::::res://prototype-sprites/setting-button-pressed.png<>uid://h32lnbxistpa::::res://prototype-sprites/about-button-idle.png<>uid://cp4kjo124or6p::::res://prototype-sprites/about-button-pressed.png<>uid://dhtb6mm8f4665::::res://prototype-sprites/kabuto-cast-off.png<>uid://dyrbmguitfwma::::res://prototype-sprites/kabuto-walk.png<>uid://d2epuvtq0plau::::res://ui/Minecraft.ttf<>uid://lsugdsdc0yx7::::res://resources/Minecraft.ttf<>uid://3j8vhcpunrus::::res://ui/volume_slider.tscn<>uid://dteoumswrtgwg::::res://ui/loading_screen.tscn<>res://admob-lib/admob.gd
 Player.gd::GDScript::-1::1689427995::0::1::::Player<>CharacterBody2D<>::
 Player.tscn::PackedScene::3500330641696574935::1690378315::0::1::::<><>::res://Player.gd<>uid://b63wpywcg2h8e
 ::res://addons/::1690382619
@@ -394,12 +394,12 @@ stamina_item.wav::AudioStreamWAV::427850342278763137::1686991014::1686991014::1:
 thunder_attack.wav::AudioStreamWAV::2707727860443801215::1686991014::1686991014::1::::<><>::
 underground.wav::AudioStreamWAV::5451824542476392453::1686991014::1686991014::1::::<><>::
 [background]Jeremy Blake - Powerup!.mp3::AudioStreamMP3::5119424698876324358::1686991014::1686991014::1::::<><>::
-::res://ui/::1690570550
+::res://ui/::1691936426
 background_music.tscn::PackedScene::1606742032049009024::1687796457::0::1::::<><>::uid://ce65gaoisxllm
 energy-bar-control.gd::GDScript::-1::1686991014::0::1::::<>Control<>::
 energy-bar-control.tscn::PackedScene::5739456939448580063::1686991014::0::1::::<><>::uid://n1py7p1nvjau
 game-over.gd::GDScript::-1::1690569550::0::1::::<>Control<>::
-game-over.tscn::PackedScene::808387037065468850::1690570550::0::1::::<><>::uid://cl1q3x2qvvjp::::res://prototype-sprites/main-menu-background.png<>res://ui/game-over.gd<>uid://c1uiso5tt8dog::::res://prototype-sprites/replay-button-idle.png<>uid://dlsjgf8ustgtm::::res://prototype-sprites/replay-button-pressed.png<>uid://4k3y0noeidg2::::res://prototype-sprites/exit-button-idle.png<>uid://bfp5v7fsnx1qs::::res://prototype-sprites/exit-button-pressed.png<>uid://d2epuvtq0plau::::res://ui/Minecraft.ttf<>res://admob-lib/admob.gd
+game-over.tscn::PackedScene::808387037065468850::1691936426::0::1::::<><>::uid://cl1q3x2qvvjp
 loading.gd::GDScript::-1::1688484741::0::1::::<>Node<>::
 loading_screen.tscn::PackedScene::8501994004104718706::1688901657::0::1::::<><>::uid://bp4t61akwt6bb
 Minecraft.ttf::FontFile::9063565944194625928::1686991014::1686991014::1::::<><>::

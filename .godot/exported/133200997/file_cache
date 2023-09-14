@@ -22,11 +22,11 @@ res://segments/BaseSegment.tscn::13fd870d09ceb38005cf2d91eaaf2434::1690378314::r
 res://segments/C.tscn::e7b2e611b46c6e5c3620b546350d0b11::1688901656::res://.godot/exported/133200997/export-4348292196b46f047028f5e587378535-C.scn
 res://segments/test-environment.tscn::26df6e61611c799b567b237e991a3b21::1687359821::res://.godot/exported/133200997/export-b045b597ce79e7ef1b41fa94683bcd16-test-environment.scn
 res://ui/energy-bar-control.tscn::69484ff5285ee21bdb4dd7d3a07a1e59::1686991014::res://.godot/exported/133200997/export-d401aeb3e1de911657b2d9bef7d56229-energy-bar-control.scn
-res://ui/game-over.tscn::56ff0b65c005605f6f65df210e016f54::1690570550::res://.godot/exported/133200997/export-b020bbdc880b4efb560caab2a29d3909-game-over.scn
+res://ui/game-over.tscn::56ff0b65c005605f6f65df210e016f54::1691936426::res://.godot/exported/133200997/export-b020bbdc880b4efb560caab2a29d3909-game-over.scn
 res://ui/point_label.tscn::4853a206d6e03c35714a57081eb9e8bb::1686991014::res://.godot/exported/133200997/export-f1e75119f0ee7e613f8039b36ac6fe92-point_label.scn
 res://ui/stamina_bar.tscn::2f6afce14e1acb3f19d0bc3bde7d6de5::1686991014::res://.godot/exported/133200997/export-7aff12ad93933cc39f5b4a77bd3db9f2-stamina_bar.scn
 res://game.tscn::f785a73958b30438437f387f0692930e::1690378313::res://.godot/exported/133200997/export-609f762188a68253d349ec58c4f3a8d3-game.scn
-res://main-menu.tscn::82bdc2059f1104478fab6c2a730527f4::1690570550::res://.godot/exported/133200997/export-8a03a1fcaff5b4bd3606ffe65f4b76a1-main-menu.scn
+res://main-menu.tscn::fd8ecff2146ba3b4255d1f89ab65be58::1694701534::res://.godot/exported/133200997/export-8a03a1fcaff5b4bd3606ffe65f4b76a1-main-menu.scn
 res://Player.tscn::6df5deea743cc78be5c7ef8cca611fd4::1690378315::res://.godot/exported/133200997/export-90e1ff3baa03524a506ff0f7a9d78dcf-Player.scn
 res://ui/background_music.tscn::10733e10b2fd1ddb54de685863b82203::1687796457::res://.godot/exported/133200997/export-f663bba68dc47fc2af128b0013634d00-background_music.scn
 res://segments/.tscn::d90853246cf493382b43dc746f8d954b::1687356157::res://.godot/exported/133200997/export-ebaf78bf8a72ba040133c15704bb851e-.scn
