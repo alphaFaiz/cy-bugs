@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cnsyk6d1p4wir"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_tsqlu"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_tsqlu"]
 [ext_resource type="Script" path="res://enemies/drake_dragonfly_enemy.gd" id="2_2khrb"]
 [ext_resource type="Texture2D" uid="uid://dvhfofo2d3io" path="res://prototype-sprites/Drake-flying-forward.png" id="3_snsvo"]
 [ext_resource type="Texture2D" uid="uid://ddj2g8k8b8hxt" path="res://prototype-sprites/Drake-attack.png" id="4_c140e"]
@@ -120,14 +120,12 @@ autoplay = "idle"
 position = Vector2(2, 3)
 
 [node name="DetectionArea" parent="." index="2"]
-visible = false
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_808hn")
 
 [node name="AttackArea" parent="." index="3"]
-visible = false
 position = Vector2(0, 3)
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
@@ -138,5 +136,6 @@ shape = SubResource("CircleShape2D_ndefg")
 position = Vector2(-50, 0)
 
 [node name="ShootTimer" type="Timer" parent="." index="6"]
+wait_time = 1.5
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -94,7 +94,7 @@ func _ready() -> void:
 		step.end.y = $Step.position.y + $Step.shape.size.y * 0.5
 #		print("step range: ", step.start, " - ", step.end, $Step.shape.size)
 	var spawn_item_times = randf_range(3, 8)# randi() % 6 + 1
-	var spawn_enemy_times = randf_range(4, 6)# randi() % 8 + 4
+	var spawn_enemy_times = randf_range(3, 5)# randi() % 8 + 4
 	generate_spawn_positions()
 #	print("spawn_item_times: ", spawn_item_times)
 #	print("spawn_enemy_times: ", spawn_enemy_times, solid_ground)

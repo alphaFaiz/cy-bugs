@@ -171,9 +171,9 @@ func _physics_process(delta):
 	if attack:
 		thunder_attack(ceil_touched)
 
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		position.x += direction * 10
+#	var direction = Input.get_axis("ui_left", "ui_right")
+#	if direction:
+#		position.x += direction * 10
 	
 	if switch_form and not undergrounded:
 		if is_casted_off and not putOnAudioPlayer.playing and not castOffAudioPlayer.playing:
@@ -275,7 +275,7 @@ func clock_up() -> bool:
 	if not clockupTimer.is_stopped() or energy < 5 or is_in_speed_force:
 		return false
 	clockUpAudioPlayer.play()
-	energy -= 2
+	energy -= 1
 	is_in_speed_force = true
 	var clockup_effect = clockup_speed_scn.instantiate()
 	clockup_effect.position = Vector2(-80, 0)
@@ -314,8 +314,8 @@ func _on_clock_over() -> void:
 
 func _on_stamina_timer_timeout() -> void:
 	if is_casted_off:
-		stamina -= 0.8
-	else:
 		stamina -= 0.4
+	else:
+		stamina -= 0.2
 	if stamina == 0 and not crashed:
 		is_exhausted = true

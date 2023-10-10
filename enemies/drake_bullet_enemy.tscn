@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b24eghi870kf7"]
+[gd_scene load_steps=17 format=3 uid="uid://b24eghi870kf7"]
 
-[ext_resource type="PackedScene" path="res://enemies/base_enemy.tscn" id="1_b1uuo"]
+[ext_resource type="PackedScene" uid="uid://c62elcy8ir21" path="res://enemies/base_enemy.tscn" id="1_b1uuo"]
 [ext_resource type="Texture2D" uid="uid://lhguxi0pwqx3" path="res://prototype-sprites/Drake-bullet.png" id="2_24q8c"]
 [ext_resource type="Script" path="res://enemies/drake_bullet_enemy.gd" id="2_bsfi5"]
+[ext_resource type="Texture2D" uid="uid://cymsv7xfwspjl" path="res://prototype-sprites/Drake-bullet-v2.png" id="4_yngv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_siygg"]
 atlas = ExtResource("2_24q8c")
@@ -20,12 +21,12 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_24q8c")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2bob"]
-atlas = ExtResource("2_24q8c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w135u"]
+atlas = ExtResource("4_yngv3")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t86r1"]
-atlas = ExtResource("2_24q8c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_slwrq"]
+atlas = ExtResource("4_yngv3")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h23hh"]
@@ -63,10 +64,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f2bob")
+"texture": SubResource("AtlasTexture_w135u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t86r1")
+"texture": SubResource("AtlasTexture_slwrq")
 }],
 "loop": true,
 "name": &"idle",
